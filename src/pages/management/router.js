@@ -27,13 +27,14 @@ export let router = new Router({
         {
             path: '/',
             name: 'home',
-            component: _('home')
-        },
-        // {
-        //     path: '/login',
-        //     name: 'login',
-        //     component: _('login')
-        // },
+            component: _('home'),
+        children: [
+        {
+            path: '/login',
+            name: 'login',
+            component: _('login'),
+        }
+        ]},
         // {
         //     path: '/register',
         //     name: 'register',
