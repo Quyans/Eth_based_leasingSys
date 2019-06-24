@@ -2,6 +2,7 @@
     <div class="home" :style="note"  >
         <div   class="sub_home" :style="sub_note" style="">
                 <MyTitle></MyTitle>
+                <searchCondition></searchCondition>
         </div>
     </div>
 </template>
@@ -12,14 +13,15 @@
     import MyTitle from "./components/MyTitle"
     import loginForm from "./components/loginForm"
     import RegisterForm from "./components/RegisterForm"
-
+    import searchCondition from "./components/searchCondition"
     export default {
         name: 'home',
         components: {
             Icon,
             MyTitle,
             loginForm,
-            RegisterForm
+            RegisterForm,
+            searchCondition
         },
         created() {
         },
@@ -78,7 +80,7 @@
         margin: 0 auto;
         top: 40px;
         box-shadow:5px 5px 30px darkgrey;
-        min-height: 400px;
+        /*min-height: 400px;*/
         width: 80%;
     }
 </style>
