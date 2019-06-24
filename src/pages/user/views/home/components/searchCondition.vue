@@ -6,7 +6,7 @@
                     <el-row>
                         <el-col :span="4">
                             <div class="grid-content bg-purple">
-                                <el-tag type="warning">位置</el-tag>
+                                <el-tag >位置</el-tag>
                             </div>
                         </el-col>
                         <el-col :span="18">
@@ -28,7 +28,7 @@
                     <el-row>
                         <el-col :span="4">
                             <div class="grid-content bg-purple">
-                                <el-tag type="warning">租金</el-tag>
+                                <el-tag >租金</el-tag>
                             </div>
                         </el-col>
                         <el-col :span="18">
@@ -52,7 +52,7 @@
                 <div  class="grid-content bg-purple" style="background-color: darkgrey">
                     <el-col :span="4">
                         <div class="grid-content bg-purple">
-                            <el-tag type="warning">租金</el-tag>
+                            <el-tag >租金</el-tag>
                         </div>
                     </el-col>
                     <el-col :span="18">
@@ -73,7 +73,7 @@
                     <el-row>
                         <el-col :span="4">
                             <div class="grid-content bg-purple">
-                                <el-tag type="warning">位置</el-tag>
+                                <el-tag >位置</el-tag>
                             </div>
                         </el-col>
                         <el-col :span="18">
@@ -89,10 +89,20 @@
             </el-col>
         </el-row>
 
-
-
-
-
+        <el-row style="">
+            <el-col :span="16">
+                <div  class="grid-content bg-purple" style="background-color: darkgrey">
+                    <el-col :span="4">
+                        <div id="moreSelect" class="grid-content bg-purple">
+                            <el-tag >更多筛选</el-tag>
+                        </div>
+                    </el-col>
+                    <el-col :span="18">
+                        <el-checkbox v-model="elavator">电梯房</el-checkbox>
+                    </el-col>
+                </div>
+            </el-col>
+        </el-row>
     </div>
 </template>
 
@@ -105,6 +115,7 @@
                 lease_select:2,
                 type_select:3,
                 lease_type:2,
+                elavator:false
             }
         }
     }
@@ -119,4 +130,16 @@
        margin-top: 5px;
        margin-bottom: 5px;
    }
+
+    #searchCondition .el-row{
+        padding: 5px 0;
+    }
+    #searchCondition .el-tag{
+        background-color: #ffd068;
+        color: #fff9ef;
+    }
+    #moreSelect .el-tag{
+        background-color: #ffffff;
+        color: black;
+    }
 </style>
