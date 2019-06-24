@@ -1,35 +1,26 @@
 <template>
-
-
         <div class="home">
-            <my-header/>
-            <MyGroupTable ref="table" style="margin-bottom: 50px"></MyGroupTable>
-            <!--<div id="allmap"></div>-->
-            <div class="footer">
-                <el-button @click="ChuangJianGroup">
-                    <span class="letter_footer">创</span>
-                    <span class="letter_footer">建</span>
-                    <span class="letter_footer">群</span>
-                    <span class="letter_footer">体</span>
-                </el-button>
-
+            <v-head></v-head>
+            <v-sidebar></v-sidebar>
+            <div class="content-box" :class="{'content-collapse':collapse}">
+                <div class="content">
+                    <transition name="move" mode="out-in">
+                        <router-view></router-view>
+                    </transition>
+                </div>
             </div>
         </div>
-
-
-
+<!---->
 </template>
 
 <script>
-    import MyGroupTable from "./component/MyGroupTable"
-    import MyHeader from "../../../../components/MyHeader"
-    import {createGroup} from "../../../../resource/group"
-    import {logout} from "../../../../resource/authorization"
-    import {getUserInfo, updateUserInfo} from "../../../../resource/user"
 
+    import vHead from './component/Header.vue';
+    import vSidebar from './component/Sidebar.vue'
+    import vTags from './component/Tags'
     export default {
         name: 'home',
-        components: {MyHeader, MyGroupTable},
+        components: {vHead,vSidebar,vTags},
 
         computed: {
             // editPerInfoFormData() {
@@ -50,86 +41,71 @@
 
         data() {
             return {
-                BASE_URL: process.env.BASE_URL,
-                headPhoto:null,
-                // note: {
-                //     backgroundImage: "url(" + require("../../../../image/head3.png") + ")",
-                //     backgroundRepeat: "no-repeat",
-                //     height: '60px',
-                //     width: "100%",
-                //     backgroundSize: '100% 100%',
-                //     position: "relative",
-                // },
-                //
-                //
-                // dialogFormVisible:false,
-                //
-                // formLabelWidth: '120px',
-
-
+                tableData: [{
+                    date: '2016-05-03',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                    date: '2016-05-04',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                    date: '2016-05-01',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                    date: '2016-05-08',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                    date: '2016-05-06',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                    date: '2016-05-07',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+                }]
             }
         },
 
-        methods:{
-
-            update(){
+        methods: {
+            goto() {
+                this.$router.replace('/login')
+            },
+            update() {
 
                 this.$refs.table.update()
 
             },
-
-            ChuangJianGroup() {
-                this.$prompt('请输入群体名称', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-
-                }).then(({ value }) => {
-                    console.log(value)
-                    createGroup(value).then(()=>{
-                        console.log(value)
-                        this.$message({
-                            type: 'success',
-                            message: '成功创建群体：: ' + value
-                        });
-                        this.update();
-                    })
-                    // alert(value);
-
-                }).catch(() => {
-                    this.$message({
-                        type: 'info',
-                        message: '取消输入'
-                    });
-                });
-            }
         }
     }
 </script>
 
-<style scoped lang="scss">
+<style type="text/css">
 
-    .footer .el-button {
-        width: 100%;
-        height: 100%;
-        background-color: #409EFF;
+    @import "../../style/main.css";
+    @import "../../style/color-dark.css";
+    .el-header{
+        line-height: 100px;
+        background-color:powderblue;
+
+    }
+    .el-aside {
+        background-color: #545c64;
+        color: #333;
+        text-align: center;
+        line-height: 1000px;
     }
 
-    .footer .letter_footer{
-        padding: 0 10px;
-        font-size: 20px;
-        font-weight: inherit;
-        color: white;
-    }
-</style>
-<style lang="scss">
-    .footer{
-        position: fixed;
-        bottom: 0;
-        /*background-color: beige;*/
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        z-index: 100;
-        height: 50px;
+    .el-main {
+        background-color: #E9EEF3;
+        color: #333;
+        text-align: center;
+        line-height:1000px;
     }
 </style>
