@@ -8,6 +8,7 @@
                             <div class="grid-content bg-purple">
                                 <el-tag >位置</el-tag>
                             </div>
+                            <!---->
                         </el-col>
                         <el-col :span="18">
                             <el-radio-group v-model="site_select">
