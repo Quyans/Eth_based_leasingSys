@@ -3,20 +3,23 @@
         <div   class="sub_home" :style="sub_note" style="">
                 <MyTitle></MyTitle>
         </div>
-
     </div>
 </template>
 
 <script>
 
     import Icon from "@/components/Icon";
-    import {getGroupInfo} from "@/resource/group";
     import MyTitle from "./components/MyTitle"
+    import loginForm from "./components/loginForm"
+    import RegisterForm from "./components/RegisterForm"
+
     export default {
         name: 'home',
         components: {
             Icon,
-            MyTitle
+            MyTitle,
+            loginForm,
+            RegisterForm
         },
         created() {
         },
@@ -28,7 +31,7 @@
                 note:{
                     backgroundImage: "url(" + require("../../../../image/User/bk1.png") + ")",
                     backgroundRepeat: "no-repeat",
-                    backgroundSize: '100% 100%',
+                    backgroundSize: 'cover',
                 },
                 sub_note:{
                     backgroundImage: "url(" + require("../../../../image/User/bk2.jpg") + ")",
