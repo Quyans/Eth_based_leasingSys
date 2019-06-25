@@ -108,3 +108,36 @@ export function getSpeInfo(house_hash) {
         // }).then(handleResponse)
     }
 }
+
+
+export function searchLowHouse(low_location,lease_inter,house_type,lease_type) {
+    // console.log(form.get('profile'))
+    return {
+        "status": 200,
+        "message": "success",
+        "data": [
+            {
+                "photo": "sadfadsfadf",   //一张图片的hash
+                "low_location": "山东省济南市历下区**小区",
+                "lease": "5000",
+                "house_type": "2",
+                "lease_type": "1",
+            },
+            {
+                "photo": "sadfadsfadf",   //一张图片的hash
+                "low_location": "山东省济南市历下区**小区",
+                "lease": "5000",
+                "house_type": "2",
+                "lease_type": "1",
+            },
+            {
+                "photo": "sadfadsfadf",   //一张图片的hash
+                "low_location": "山东省济南市历下区**小区",
+                "lease": "5000",
+                "house_type": "2",
+                "lease_type": "1",
+            },
+        ]
+    }
+    return server.post('house/search',  qs.stringify({low_location, lease_inter,house_type,lease_type})).then(handleResponse)
+}

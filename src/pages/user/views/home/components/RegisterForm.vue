@@ -22,17 +22,26 @@
                 </el-form-item>
 
                 <el-form-item >
-                    <el-input v-model="registerForm.password" placeholder="请输入密码" ></el-input>
+                    <el-input type="password" v-model="registerForm.password" placeholder="请输入密码" ></el-input>
                 </el-form-item>
 
                 <el-form-item >
-                    <el-input v-model="registerForm.pay_password" placeholder="请输入支付密码" ></el-input>
+                    <el-input v-model="registerForm.pay_password" type="password" placeholder="请输入支付密码" ></el-input>
                 </el-form-item>
                 <p style="color: #6e3eb4">该密码不可修改，请妥善保管</p>
-                <el-form-item >
-                    <el-input v-model="registerForm.gender" placeholder="性别" ></el-input>
+                <el-form-item id="gender_item" >
+                    <div style="  color: darkgrey;    border-radius: 4px;  padding: 0 15px;">
+                        <span>性别</span>
+                        <div style="text-align: right; display: inline-block;float: right;">
+                            <el-radio-group v-model="radio1" size="mini">
+                                <el-radio-button label="0">女</el-radio-button>
+                                <el-radio-button label="1">男</el-radio-button>
+                            </el-radio-group>
+                        </div>
+
+                    </div>
                 </el-form-item>
-                <el-form-item >
+                <el-form-item>
                     <el-checkbox v-model="registerForm.checked">
                         我已阅读并同意
                     </el-checkbox>
@@ -76,6 +85,7 @@
         data() {
 
             return {
+                radio1:1,
                 registerForm: {
                     username: '',
                     password: '',
@@ -133,5 +143,10 @@
         background-image: url("../../../../../image/User/loginBk.jpg");
         background-size: cover;
         background-repeat: no-repeat;
+    }
+    #gender_item .el-form-item__content{
+         border: 1px solid #8268c3;
+        border-radius: 4px;
+         background-color: white;
     }
 </style>

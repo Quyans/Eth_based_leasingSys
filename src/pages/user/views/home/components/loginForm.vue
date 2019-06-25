@@ -10,7 +10,7 @@
                     </el-form-item>
 
                     <el-form-item  >
-                        <el-input v-model="loginForm.password" placeholder="请输入密码" ></el-input>
+                        <el-input type="password" v-model="loginForm.password" placeholder="请输入密码" ></el-input>
                     </el-form-item>
                     <p style=" margin-bottom: 20px">
                         <span style="float: right; padding: 10px 0 0 0;">没有账号？
