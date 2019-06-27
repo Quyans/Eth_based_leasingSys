@@ -2,7 +2,7 @@ import {handleResponse, server} from "../utils/http";
 import qs from "qs";
 
 export function getMyHouse(house_hash) {
-    return  {
+    return  Promise.resolve({
         "status":200,
         "message":"success",
         "data":{
@@ -48,7 +48,7 @@ export function getMyHouse(house_hash) {
     //         house_hash
     //     }
     // }).then(handleResponse)
-    }
+    })
 }
 
 //修改我的房子
@@ -60,7 +60,7 @@ export function updateHouseInfo(form) {
 
 //获取房源详细信息
 export function getSpeInfo(house_hash) {
-    return  {
+    return  Promise.resolve({
         "status":200,
         "message":"success",
         "data":{
@@ -106,13 +106,13 @@ export function getSpeInfo(house_hash) {
         //         house_hash
         //     }
         // }).then(handleResponse)
-    }
+    })
 }
 
 
 export function searchLowHouse(low_location,lease_inter,house_type,lease_type) {
     // console.log(form.get('profile'))
-    return {
+    return Promise.resolve({
         "status": 200,
         "message": "success",
         "data": [
@@ -138,6 +138,6 @@ export function searchLowHouse(low_location,lease_inter,house_type,lease_type) {
                 "lease_type": "1",
             },
         ]
-    }
+    })
     return server.post('house/search',  qs.stringify({low_location, lease_inter,house_type,lease_type})).then(handleResponse)
 }

@@ -2,7 +2,7 @@ import {handleResponse, server} from "../utils/http";
 import qs from "qs";
 
 export function getUserInfo(id) {
-    return  {
+    return  Promise.resolve({
         "status":200,
         "message":"success",
         "data":{
@@ -25,7 +25,7 @@ export function getUserInfo(id) {
                 },
             ]
         }
-    }
+    })
     // return server.get('user/user', {
     //     params: {
     //         username
@@ -41,7 +41,7 @@ export function updateUserInfo(password,phone) {
 //充值
 export function invest(money) {
     // console.log(form.get('profile'))
-    return {
+    return Promise.resolve({
         "status":200,
         "message":"success",
         "data":{
@@ -49,13 +49,13 @@ export function invest(money) {
             "name":"刘鹏昊",//姓名
             "balance":85500  // 充值后余额
         }
-    }
+    })
     return server.post('user/account',  qs.stringify({money})).then(handleResponse)
 }
 
 
 export function getUserBalance(username) {
-    return  {
+    return  Promise.resolve({
         "status":200,
         "message":"success",
         "data":{
@@ -63,7 +63,7 @@ export function getUserBalance(username) {
             "name":"刘鹏昊",//姓名
             "balance":85500  // 余额
         }
-    }
+    })
     // return server.get('user/balance', {
     //     params: {
     //         username
@@ -72,7 +72,7 @@ export function getUserBalance(username) {
 }
 //获取交易记录
 export function getTransRecord(username) {
-    return  {
+    return  Promise.resolve({
         "status":200,
         "message":"success",
         "data":{
@@ -104,7 +104,7 @@ export function getTransRecord(username) {
                 },
             ],
         }
-    }
+    })
     // return server.get('user/trans_record', {
     //     params: {
     //         username
@@ -115,30 +115,30 @@ export function getTransRecord(username) {
 //联系房主
 export function contactOwner(house_hash) {
     // console.log(form.get('profile'))
-    return {
+    return Promise.resolve({
         "status":200,
         "message":"success",
         "data": {
             "phone":"18560125097"
         }
-    }
+    })
     return server.post('/user/contact_owner',  qs.stringify({house_hash})).then(handleResponse)
 }
 
 
 //评价房子
 export function evaluateHouse(form) {
-    return {
+    return Promise.resolve({
         "status":200,
         "message":"success",
-    }
+    })
     return server.post('/house/valuation', form).then(handleResponse)
 }
 
 
 //获取所有用户信息
 export function getAllUser() {
-    return  {
+    return  Promise.resolve({
         "status":200,
         "message":"success",
         "data":{
@@ -169,7 +169,7 @@ export function getAllUser() {
                 }
             ]
         }
-    }
+    })
     return server.get('/user/changeinfo', {
         params: {
         }
@@ -179,14 +179,14 @@ export function getAllUser() {
 //管理员修改用户信息
 export function changeUserInfo(username,credit) {
     // console.log(form.get('profile'))
-    return {
+    return Promise.resolve({
         "status":200,
         "message":"success",
         "data":{
             "username":"qys",
             "credit":30
         }
-    }
+    })
     return server.post('/user/contact_owner',  qs.stringify({house_hash})).then(handleResponse)
 }
 
@@ -194,7 +194,7 @@ export function changeUserInfo(username,credit) {
 
 //获取房屋列表
 export function getHouseList() {
-    return  {
+    return  Promise.resolve({
         "status":200,
         "message":"success",
         "data":{
@@ -251,7 +251,7 @@ export function getHouseList() {
                },
             ],
         }
-    }
+    })
     // return server.get('house/allInfo', {
     //     params: {
     //

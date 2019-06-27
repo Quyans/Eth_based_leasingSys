@@ -16,6 +16,15 @@
                 <el-form-item >
                     <el-input v-model="registerForm.id" placeholder="请输入身份证号码" ></el-input>
                 </el-form-item>
+                <el-upload
+                        class="avatar-uploader"
+                        action="https://jsonplaceholder.typicode.com/posts/"
+                        :show-file-list="false"
+                        :on-success="handleAvatarSuccess"
+                        :before-upload="beforeAvatarUpload">
+                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                </el-upload>
 
                 <el-form-item >
                     <el-input v-model="registerForm.phone" placeholder="请输入电话号码" ></el-input>
@@ -97,7 +106,7 @@
                     checked:false
                 },
                 formLabelWidth:'80px',
-
+                imageUrl:''
             }
         },
         methods: {
@@ -110,6 +119,21 @@
                 this.$emit("goLogin", true)
                 //子组件发射自定义事件sendiptVal 并携带要传递给父组件的值，
                 // 如果要传递给父组件很多值，这些值要作为参数依次列出 如 this.$emit('valueUp', this.inputValue
+            },
+            handleAvatarSuccess(res, file) {
+                this.imageUrl = URL.createObjectURL(file.raw);
+            },
+            beforeAvatarUpload(file) {
+                const isJPG = file.type === 'image/jpeg';
+                const isLt2M = file.size / 1024 / 1024 < 2;
+
+                if (!isJPG) {
+                    this.$message.error('上传头像图片只能是 JPG 格式!');
+                }
+                if (!isLt2M) {
+                    this.$message.error('上传头像图片大小不能超过 2MB!');
+                }
+                return isJPG && isLt2M;
             }
 
         }

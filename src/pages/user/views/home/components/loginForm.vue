@@ -21,7 +21,7 @@
                 </el-form>
 
                 <div slot="footer" class="dialog-footer">
-                    <el-button @click="" style="width: 100%;margin: 20px 0;background-color: #7140b6;color: #ffffed;font-size: 20px;
+                    <el-button @click="submit" style="width: 100%;margin: 20px 0;background-color: #7140b6;color: #ffffed;font-size: 20px;
                                             font-weight: 300">
                         登    录
                     </el-button>
@@ -37,7 +37,7 @@
 <script>
 
 
-
+    import {login} from   "../../../../../resource/authorization"
     export default {
 
         name: 'loginForm',
@@ -84,6 +84,16 @@
                 this.$emit("goRegister", false)
                 //子组件发射自定义事件sendiptVal 并携带要传递给父组件的值，
                 // 如果要传递给父组件很多值，这些值要作为参数依次列出 如 this.$emit('valueUp', this.inputValue
+            },
+
+            submit(){
+                login(this.loginForm.username,this.loginForm.password).then(() => {
+                    this.$message({
+                        message: "修改成功",
+                        type: "success",
+                        center: true
+                    })
+                })
             }
 
         }
