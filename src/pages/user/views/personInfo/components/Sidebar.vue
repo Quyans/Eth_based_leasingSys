@@ -1,6 +1,6 @@
 <template>
     <div class="sidebar">
-        <el-menu class="sidebar-el-menu" :default-active="onRoutes":style="note"
+        <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse":style="note"
                  text-color="indigo" active-text-color="#20a0ff" unique-opened router>
             <template v-for="item in items">
                 <template v-if="item.subs">
@@ -38,79 +38,44 @@
                 collapse: false,
                 items: [
                     {
-                        icon: 'el-icon-lx-home',
-                        index: 'login',
-                        title: '系统首页'
+                        icon: 'el-icon-user-solid',
+                        index: 'info',
+                        title: '个人资料'
                     },
                     {
-                        icon: 'el-icon-lx-cascades',
-                        index: 'userinfo',
-                        title: '用户列表'
+                        icon: 'el-icon-s-cooperation',
+                        index: 'pocket',
+                        title: '钱包'
                     },
                     {
-                        icon: 'el-icon-lx-copy',
-                        index: 'houseinfo',
-                        title: '房子列表'
-                    },
-                    {
-                        icon: 'el-icon-lx-calendar',
+                        icon: 'el-icon-s-home',
                         index: '3',
-                        title: '表单相关',
+                        title: '我的房屋',
                         subs: [
                             {
-                                index: 'form',
-                                title: '基本表单'
+                                index: 'Myhouse1',
+                                title: '房子1'
                             },
                             {
                                 index: '3-2',
-                                title: '三级菜单',
-                                subs: [
-                                    {
-                                        index: 'editor',
-                                        title: '富文本编辑器'
-                                    },
-                                    {
-                                        index: 'markdown',
-                                        title: 'markdown编辑器'
-                                    },
-                                ]
+                                title: '房子2',
                             },
                             {
                                 index: 'upload',
-                                title: '文件上传'
+                                title: '房子3'
                             }
                         ]
                     },
                     {
-                        icon: 'el-icon-lx-emoji',
-                        index: 'icon',
-                        title: '自定义图标'
+                        icon: 'el-icon-school',
+                        index: 'Mybus',
+                        title: '我的交易'
                     },
                     {
-                        icon: 'el-icon-lx-favor',
+                        icon: 'el-icon-chat-line-round',
                         index: 'charts',
-                        title: 'schart图表'
+                        title: '我的通知'
                     },
-                    {
-                        icon: 'el-icon-lx-favor',
-                        index: 'drag',
-                        title: '拖拽列表'
-                    },
-                    // {
-                    //     icon: 'el-icon-lx-warn',
-                    //     index: '6',
-                    //     title: '错误处理',
-                    //     subs: [
-                    //         {
-                    //             index: 'permission',
-                    //             title: '权限测试'
-                    //         },
-                    //         {
-                    //             index: '404',
-                    //             title: '404页面'
-                    //         }
-                    //     ]
-                    // }
                 ],
                 note:{
                     backgroundImage: "url(" + require("../../../../../image/User/bk1.png") + ")",

@@ -31,9 +31,21 @@ export let router = new Router({
         children: [
         {
             path: '/login',
-            name: 'login',
             component: _('login'),
-        }
+        },
+            {
+                path:'/info',
+                component: resolve => require(['../user/views/personInfo/components/Info'], resolve),
+            },
+            {
+                path:'/userinfo',
+                component: resolve => require(['../management/views/home/component/userinfo'], resolve),
+            },
+            {
+                path:'/houseinfo',
+                component: resolve => require(['../management/views/home/component/houseinfo'], resolve),
+            }
+
         ]},
         // {
         //     path: '/register',

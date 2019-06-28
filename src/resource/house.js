@@ -6,7 +6,6 @@ export function getMyHouse(house_hash) {
         "status":200,
         "message":"success",
         "data":{
-
             "house_pic":[
                 "sdfadfasfasfasdfa",   //图片一的哈希值
                 "sdfadsfadsfasf",

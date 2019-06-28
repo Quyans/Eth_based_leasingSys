@@ -2,7 +2,7 @@
         <div class="home">
             <v-head></v-head>
             <v-sidebar></v-sidebar>
-            <div class="content-box" :class="{'content-collapse':collapse}">
+            <div class="content-box" :class="">
                 <div class="content">
                     <transition name="move" mode="out-in">
                         <router-view></router-view>
@@ -10,7 +10,6 @@
                 </div>
             </div>
         </div>
-<!---->
 </template>
 
 <script>
@@ -20,7 +19,7 @@
     import vTags from './component/Tags'
     export default {
         name: 'home',
-        components: {vHead,vSidebar,vTags},
+        components: {vHead,vSidebar},
 
         computed: {
             // editPerInfoFormData() {
@@ -41,46 +40,17 @@
 
         data() {
             return {
-                tableData: [{
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-08',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-06',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-07',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }]
+                note:{
+                    backgroundImage: "url(" + require("../../../../image/User/bk1.png") + ")",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: 'cover',
+                },
             }
         },
 
         methods: {
             goto() {
                 this.$router.replace('/login')
-            },
-            update() {
-
-                this.$refs.table.update()
-
             },
         }
     }
@@ -90,22 +60,5 @@
 
     @import "../../style/main.css";
     @import "../../style/color-dark.css";
-    .el-header{
-        line-height: 100px;
-        background-color:powderblue;
 
-    }
-    .el-aside {
-        background-color: #545c64;
-        color: #333;
-        text-align: center;
-        line-height: 1000px;
-    }
-
-    .el-main {
-        background-color: #E9EEF3;
-        color: #333;
-        text-align: center;
-        line-height:1000px;
-    }
 </style>

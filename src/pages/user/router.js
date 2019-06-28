@@ -37,6 +37,38 @@ export let router = new Router({
             props:true,
             component:_('group')
         },
+        {
+            path:'/person',
+            name:'personInfo',
+            props:true,
+            component:_('personInfo'),
+            children:[
+                {
+                    path:'/info',
+                    name:'info',
+                    props:true,
+                    component: resolve => require(['./views/personInfo/components/Info.vue'], resolve),
+                },
+                {
+                    path:'/pocket',
+                    name:'pocket',
+                    props:true,
+                    component: resolve => require(['./views/personInfo/components/pocket.vue'], resolve),
+                },
+                {
+                    path:'/Myhouse1',
+                    props:true,
+                    component: resolve => require(['./views/personInfo/components/Myhouse.vue'], resolve),
+                },
+                {
+                    path:'/Mybus',
+                    props:true,
+                    component: resolve => require(['./views/personInfo/components/Mybus.vue'], resolve),
+                }
+            ]
+
+        },
+
     ]
 })
 // router.beforeEach(((to, from, next) => {

@@ -1,0 +1,131 @@
+<template>
+    <div>
+        <div class="userinfo" :style="note">
+            <div class="button_group">
+                用户管理
+            </div>
+        </div>
+        <div class="bk":style="note2">
+            <el-table
+                    :data="tableData"
+                    stripe
+                    style="width: 100%">
+                <el-table-column
+                        prop="username"
+                        label="用户名"
+                        width="180">
+                </el-table-column>
+                <el-table-column
+                        prop="name"
+                        label="姓名"
+                        width="100">
+                </el-table-column>
+                <el-table-column
+                        prop="gender"
+                        label="性别"
+                        width="100">
+                </el-table-column>
+                <el-table-column
+                        prop="phone"
+                        label="电话"
+                        width="200">
+                </el-table-column>
+                <el-table-column
+                        prop="id"
+                        label="身份证号">
+                </el-table-column>
+                <el-table-column
+                        prop="credit"
+                        label="信誉度"
+                        width="100">
+                    <div v-if="showinput">
+                    <el-input
+                            placeholder="请输入内容"
+                            v-model="input">
+                    </el-input>
+                    </div>
+                </el-table-column>
+                <el-table-column
+                        label="操作"
+                        width="100">
+                    <template slot-scope="scope">
+                        <el-button @click="handleClick(scope.$index)" type="text" size="small">修改</el-button>
+                        <el-button @click="Enter" type="text" size="small">确认</el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+        </div>
+    </div>
+</template>
+
+<script>
+
+    import {getAllUser} from "../../../../../resource/user";
+    export default {
+        name: "userinfo",
+        components: {},
+
+
+        data() {
+            return {
+                input:0,
+                showinput:false,
+                tableData:[],
+                note: {
+                    backgroundImage: "url(" + require("../../../../../image/User/bk3.png") + ")",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: '100% 100%',
+
+                },
+                note2: {
+                    backgroundImage: "url(" + require("../../../../../image/User/bk1.png") + ")",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: '100% 100%',
+
+                },
+                data123:{}
+
+            }
+        },
+        created(){
+            getAllUser().then(res => {
+                this.tableData = res.data.users;
+                this.input = res.data.users.credit
+            })
+        },
+
+
+
+        methods:{
+            handleClick(row){
+
+                console.log(row)
+                this.tableData[row].showinput = !this.showinput;
+                this.tableData[row].credit = 18;
+
+            },
+            Enter(){
+
+            }
+        }
+    }
+</script>
+
+<style scoped lang="scss">
+    .Mybus{
+        width: 100%;
+        height: 100px;
+    }
+    .bk{
+        width:100%;
+        height: 600px;
+    }
+    .button_group{
+        color: white;
+        float: left;
+        margin-left: 40px;
+        width:250px;
+        line-height: 70px;
+        font-size: 200%;
+    }
+</style>

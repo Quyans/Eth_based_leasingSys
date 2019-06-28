@@ -13,6 +13,7 @@ export function getUserInfo(id) {
             "phone":18560125097,  //电话号码
             "id":370102199711111111,  //身份证号
             "credit":15,   //信誉值
+            "password":123456,
             "myhouse":[
                 {
                     "commu_name":"奥龙官邸",
@@ -47,7 +48,7 @@ export function invest(money) {
         "data":{
             "username":"liupenghao",//用户名
             "name":"刘鹏昊",//姓名
-            "balance":85500  // 充值后余额
+            "balance":86500  // 充值后余额
         }
     })
     return server.post('user/account',  qs.stringify({money})).then(handleResponse)

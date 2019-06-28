@@ -1,10 +1,7 @@
 <template>
-    <div class="header">
+    <div class="header":style="note">
         <div class="logo">后台管理系统</div>
         <div class="header-right">
-            <div class="header-user-con">
-                <el-button style="float: right;margin-top: 10px" type="info" plain @click="goto">个人信息</el-button>
-            </div>
         </div>
     </div>
 </template>
@@ -12,6 +9,11 @@
     export default {
         data() {
             return {
+                note:{
+                    backgroundImage: "url(" + require("../../../../../image/User/bk1.png") + ")",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: 'cover',
+                },
             }
         },
         methods:{
@@ -26,13 +28,7 @@
         width: 100%;
         height: 70px;
         font-size: 22px;
-        color: #fff;
-    }
-    .collapse-btn{
-        float: left;
-        padding: 0 21px;
-        cursor: pointer;
-        line-height: 70px;
+        color: indigo;
     }
     .header .logo{
         float: left;
