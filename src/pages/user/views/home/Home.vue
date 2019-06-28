@@ -1,17 +1,18 @@
 <template>
-    <div class="home" :style="note"  >
-        <div   class="sub_home" :style="sub_note" style="">
-            <MyTitle></MyTitle>
-            <searchCondition></searchCondition>
-
-            <el-row>
-                <el-col :span="8"><RoughHouse></RoughHouse></el-col>
-                <el-col :span="8"><RoughHouse></RoughHouse></el-col>
-                <el-col :span="8"><RoughHouse></RoughHouse></el-col>
-            </el-row>
+    <div id="home">
+        <div class="home_2"  >
+            <div   class="sub_home" :style="sub_note" style="">
+                <MyTitle></MyTitle>
+                <searchCondition></searchCondition>
+                <el-divider style="background-color: black" content-position="left"></el-divider>
+                <el-row>
+                    <el-col :span="8"><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>
+                    <el-col :span="8"><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>
+                    <el-col :span="8"><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>
+                </el-row>
+            </div>
 
         </div>
-
     </div>
 </template>
 
@@ -40,24 +41,26 @@
                 BASE_URL: process.env.BASE_URL,
                 searchId: '',
                 isScanningQRCode: false,
-                note:{
-                    backgroundImage: "url(" + require("../../../../image/User/bk1.png") + ")",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: 'cover',
-                },
+
                 sub_note:{
                     backgroundImage: "url(" + require("../../../../image/User/bk2.jpg") + ")",
                     backgroundRepeat: "no-repeat",
-                    backgroundSize: '100% 100%',
+                    backgroundSize: 'cover',
                 },
-
+                computed_rough_Info:{
+                    "photo":"sadfadsfadf",   //一张图片的hash
+                    "low_str_location":"山东省济南市历下区**小区",
+                    "lease":"5000",
+                    "house_type":"2",
+                    "lease_type":"1",
+                }
 
 
             }
         },
         methods: {
 
-
+        //
 
         }
     }
@@ -99,11 +102,18 @@
 
 </style>
 <style>
+    #home{
+        background-image: url("../../../../image/User/bk1.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-top: 3vh;
+    }
+
     #home .avatar-uploader .el-upload {
         border: 1px dashed #d9d9d9;
         border-radius: 6px;
         cursor: pointer;
-        position: relative;
+        /*position: relative;*/
         overflow: hidden;
     }
     #home  .avatar-uploader .el-upload:hover {
@@ -138,7 +148,7 @@
         /*}*/
     }
     .sub_home{
-        position: relative;
+        /*position: relative;*/
         margin: 0 auto;
         top: 40px;
         box-shadow:5px 5px 30px darkgrey;
