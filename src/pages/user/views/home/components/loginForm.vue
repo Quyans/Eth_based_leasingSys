@@ -60,7 +60,6 @@
             //         this.loginForm_vis = true
             //     }
             // }
-
         },
         data() {
 

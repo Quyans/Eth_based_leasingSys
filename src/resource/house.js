@@ -141,3 +141,36 @@ export function searchLowHouse(low_location,lease_inter,house_type,lease_type,el
     })
     return server.post('house/search',  qs.stringify({low_location, lease_inter,house_type,lease_type,elevator})).then(handleResponse)
 }
+
+export function compute_int2str(computedInfo) {
+    // console.log(form.get('profile'))
+    var temp = computedInfo;
+    switch (computedInfo.house_type){
+        case '0':
+            temp.house_type='全部';
+            break;
+        case '1':
+            temp.house_type='一室';
+            break;
+        case '2':
+            temp.house_type='二室';
+            break;
+        case '3':
+            temp.house_type='其他';
+            break
+    }
+
+    switch (computedInfo.lease_type){
+        case '0':
+            temp.lease_type='全部';
+            break;
+        case '1':
+            temp.lease_type='整租';
+            break;
+        case '2':
+            temp.lease_type='合租';
+            break;
+    }
+
+    return temp
+}
