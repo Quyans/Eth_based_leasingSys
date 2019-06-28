@@ -3,16 +3,15 @@
         <div   class="sub_home" :style="sub_note" style="">
             <MyTitle></MyTitle>
             <searchCondition></searchCondition>
-            <el-upload
-                    class="avatar-uploader"
-                    action="https://jsonplaceholder.typicode.com/posts/"
-                    :show-file-list="false"
-                    :on-success="handleAvatarSuccess"
-                    :before-upload="beforeAvatarUpload">
-                <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-            </el-upload>
+
+            <el-row>
+                <el-col :span="8"><RoughHouse></RoughHouse></el-col>
+                <el-col :span="8"><RoughHouse></RoughHouse></el-col>
+                <el-col :span="8"><RoughHouse></RoughHouse></el-col>
+            </el-row>
+
         </div>
+
     </div>
 </template>
 
@@ -23,6 +22,7 @@
     import loginForm from "./components/loginForm"
     import RegisterForm from "./components/RegisterForm"
     import searchCondition from "./components/searchCondition"
+    import RoughHouse from "./components/RoughHouse"
     export default {
         name: 'home',
         components: {
@@ -30,7 +30,8 @@
             MyTitle,
             loginForm,
             RegisterForm,
-            searchCondition
+            searchCondition,
+            RoughHouse
         },
         created() {
         },
@@ -48,7 +49,9 @@
                     backgroundImage: "url(" + require("../../../../image/User/bk2.jpg") + ")",
                     backgroundRepeat: "no-repeat",
                     backgroundSize: '100% 100%',
-                }
+                },
+
+
 
             }
         },
@@ -59,6 +62,31 @@
         }
     }
 </script>
+<style>
+    .avatar-uploader .el-upload {
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    .avatar-uploader .el-upload:hover {
+        border-color: #409EFF;
+    }
+    .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 178px;
+        height: 178px;
+        line-height: 178px;
+        text-align: center;
+    }
+    .avatar {
+        width: 178px;
+        height: 178px;
+        display: block;
+    }
+</style>
 <style>
     *{
         margin: 0;

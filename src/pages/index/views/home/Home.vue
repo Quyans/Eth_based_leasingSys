@@ -15,7 +15,7 @@
         data(){
             return{
                 note: {
-                    backgroundImage: "url(" + require("../../../../image/index.png") + ")",
+                    backgroundImage: "url(" + require("../../../../image/testRoughHouse.png") + ")",
                     backgroundRepeat: "no-repeat",
                     height:"100%",
                     backgroundSize: '100% 100%',

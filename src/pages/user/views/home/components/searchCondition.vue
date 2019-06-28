@@ -11,7 +11,7 @@
                             <!---->
                         </el-col>
                         <el-col :span="18">
-                            <el-radio-group v-model="site_select">
+                            <el-radio-group v-model="low_location.site_select">
                                 <el-radio :label="0">全  &nbsp; 部</el-radio>
                                 <el-radio :label="1">历下区</el-radio>
                                 <el-radio :label="2">历城区</el-radio>
@@ -99,24 +99,52 @@
                         </div>
                     </el-col>
                     <el-col :span="18">
-                        <el-checkbox v-model="elavator">电梯房</el-checkbox>
+                        <el-checkbox v-model="elevator">电梯房</el-checkbox>
                     </el-col>
                 </div>
             </el-col>
         </el-row>
+        <el-button @click="search">确认查询</el-button>
     </div>
 </template>
 
+
+
 <script>
+    import {searchLowHouse} from   "../../../../../resource/house"
     export default {
         name: "searchCondition",
         data(){
             return{
-                site_select: 3,
-                lease_select:2,
-                type_select:3,
-                lease_type:2,
-                elavator:false
+                low_location:{
+                    provi:"山东省",
+                    city:"济南市",
+                    site_select:0,
+                },
+
+                lease_select:0,
+                type_select:0,
+                lease_type:0,
+                elevator:false
+            }
+        },
+        methods: {
+            search(){
+                console.log(123)
+                searchLowHouse(this.low_location,this.lease_select,this.type_select,
+                    this.lease_type,this.elevator).then(res => {
+                        console.log(res)
+                    this.$message({
+                        message: "查询成功，请稍后",
+                        type: "success",
+                        center: true
+                    })
+                },
+                    e => {
+                    this.$message.error(`出错：${e.message}`);
+                })
+
+
             }
         }
     }

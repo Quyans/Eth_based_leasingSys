@@ -110,7 +110,7 @@ export function getSpeInfo(house_hash) {
 }
 
 
-export function searchLowHouse(low_location,lease_inter,house_type,lease_type) {
+export function searchLowHouse(low_location,lease_inter,house_type,lease_type,elevator) {
     // console.log(form.get('profile'))
     return Promise.resolve({
         "status": 200,
@@ -139,5 +139,5 @@ export function searchLowHouse(low_location,lease_inter,house_type,lease_type) {
             },
         ]
     })
-    return server.post('house/search',  qs.stringify({low_location, lease_inter,house_type,lease_type})).then(handleResponse)
+    return server.post('house/search',  qs.stringify({low_location, lease_inter,house_type,lease_type,elevator})).then(handleResponse)
 }

@@ -20,7 +20,10 @@ export function logout() {
 }
 
 export function register(form) {
-
+    return Promise.resolve({
+        "status":200,
+        "message":"success",
+    })
     return server.post('user/register', form).then(handleResponse)
 }
 

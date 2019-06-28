@@ -16,15 +16,31 @@
                 <el-form-item >
                     <el-input v-model="registerForm.id" placeholder="请输入身份证号码" ></el-input>
                 </el-form-item>
-                <el-upload
-                        class="avatar-uploader"
-                        action="https://jsonplaceholder.typicode.com/posts/"
-                        :show-file-list="false"
-                        :on-success="handleAvatarSuccess"
-                        :before-upload="beforeAvatarUpload">
-                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                </el-upload>
+                <el-form-item prop="profile_a">
+                    <el-upload
+                            class="upload-demo"
+                            drag
+                            action=""
+                            :on-change="getFile_a"
+                            :auto-upload="false"
+                            multiple>
+                        <i class="el-icon-upload"></i>
+                        <div class="el-upload__text">身份证正面照<em>点击上传</em></div>
+                    </el-upload>
+                </el-form-item>
+                <el-form-item prop="profile_b">
+                    <el-upload
+                            class="upload-demo"
+                            drag
+                            :limit=1
+                            action=""
+                            :on-change="getFile_b"
+                            :auto-upload="false"
+                            multiple>
+                        <i class="el-icon-upload"></i>
+                        <div class="el-upload__text">身份证国徽<em>点击上传</em></div>
+                    </el-upload>
+                </el-form-item>
 
                 <el-form-item >
                     <el-input v-model="registerForm.phone" placeholder="请输入电话号码" ></el-input>
@@ -58,7 +74,7 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="" style="width: 100%;margin: 20px 0;background-color: #7140b6;color: #ffffed;font-size: 20px;
+                <el-button @click="submit_reg" style="width: 100%;margin: 20px 0;background-color: #7140b6;color: #ffffed;font-size: 20px;
                                             font-weight: 300">
                     注   册
                 </el-button>
@@ -70,7 +86,8 @@
 <script>
 
 
-
+    import {compressImage} from "../../../../../utils";
+    import {register} from   "../../../../../resource/authorization"
     export default {
 
         name: 'RegisterForm',
@@ -100,13 +117,28 @@
                     password: '',
                     pay_password:'',
                     name:'',
+                    profile_a:false,
+                    profile_b:false,
                     phone:'',
                     id:'',
                     gender:'',
                     checked:false
                 },
                 formLabelWidth:'80px',
-                imageUrl:''
+                imageUrl_a:'',
+                imageUrl_b:''
+            }
+        },
+        computed: {
+            ruleFormData() {
+                let formData = new FormData()
+                // console.log(this.ruleForm);
+                Object.keys(this.registerForm).forEach(key => {
+                    // if (key === 'checkpassword') return
+                    formData.append(key, this.registerForm[key])
+                })
+                // console.log(formData)
+                return formData
             }
         },
         methods: {
@@ -116,26 +148,56 @@
                 // 如果要传递给父组件很多值，这些值要作为参数依次列出 如 this.$emit('valueUp', this.inputValue, this.mesFather);
             },
             gologin(){
+                console.log(123)
                 this.$emit("goLogin", true)
                 //子组件发射自定义事件sendiptVal 并携带要传递给父组件的值，
                 // 如果要传递给父组件很多值，这些值要作为参数依次列出 如 this.$emit('valueUp', this.inputValue
             },
-            handleAvatarSuccess(res, file) {
-                this.imageUrl = URL.createObjectURL(file.raw);
+
+            //修改图片一 二
+            getFile_a(file,file_list){
+                this.registerForm.profile_a = file.raw
             },
-            beforeAvatarUpload(file) {
-                const isJPG = file.type === 'image/jpeg';
-                const isLt2M = file.size / 1024 / 1024 < 2;
+            getFile_b(file,file_list){
+                this.registerForm.profile_b = file.raw
+            },
+            submit_reg(){
+                var that = this
+                new Promise(resolve => {
+                    // 图片压缩
+                    let formData = this.ruleFormData
+                    let img = new Image()
+                    img.src = URL.createObjectURL(formData.get('profile_a'))
+                    img.onload = () => {
+                        compressImage(img).then(file => {
+                            formData.append('profile_a',file)
+                            resolve(formData)
+                        })
+                    }
+                    img.src = URL.createObjectURL(formData.get('profile_b'))
+                    img.onload = () => {
+                        compressImage(img).then(file => {
+                            formData.append('profile_b',file)
+                            resolve(formData)
+                        })
+                    }
+                }).then(formData => register(formData))
+                    .then(() => {
+                            this.$message({
+                                message: '注册成功  正在跳转',
+                                type: 'success'
+                            });
+                            // 2s后跳转到登录页面
+                            setTimeout(() => {
+                                // this.$router.push('/login')
+                                that.gologin()
+                            }, 2000)
+                        },
+                        e => {
+                            this.$message.error(`出错：${e.message}`);
+                        })
 
-                if (!isJPG) {
-                    this.$message.error('上传头像图片只能是 JPG 格式!');
-                }
-                if (!isLt2M) {
-                    this.$message.error('上传头像图片大小不能超过 2MB!');
-                }
-                return isJPG && isLt2M;
             }
-
         }
     }
 
