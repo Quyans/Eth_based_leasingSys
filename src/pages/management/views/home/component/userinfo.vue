@@ -46,7 +46,7 @@
                     </div>
                 </el-table-column>
                 <el-table-column
-                        label="操作"
+                        label="操作z"
                         width="100">
                     <template slot-scope="scope">
                         <el-button @click="handleClick(scope.$index)" type="text" size="small">修改</el-button>
