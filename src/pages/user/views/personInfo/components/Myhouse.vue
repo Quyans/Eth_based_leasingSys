@@ -81,11 +81,12 @@
                 </el-input>
                 </div>
                 <div class="h-info">
-                    有无电梯:<el-input
+                    有无电梯:
+                    <el-input
                         placeholder="请输入内容"
-                        v-model="elevator"
+                        v-model="elevator_text"
                         v-bind:disabled="showinput">
-                </el-input>
+                    </el-input>
                 </div>
                 <div class="h-info">
                     价格:<el-input
@@ -101,33 +102,33 @@
                         v-bind:disabled="showinput">
                 </el-input>
                 </div>
-                <div class="h-info">
-                    评论
-                <el-table
-                    :data="tableData"
-                    stripe
-                    style="width:800px;margin-left: 100px">
-                    <el-table-column
-                            prop="user_id"
-                            label="评论者"
-                            width="180">
-                    </el-table-column>
-                    <el-table-column
-                            prop="comment"
-                            label="评论">
-                    </el-table-column>
-                    <el-table-column
-                            prop="comment"
-                            label="图片"
-                            width="180">
-                    </el-table-column>
-                </el-table>
+                <div>
+                    <el-button style="margin-left:200px" plain @click="Enter1">修改</el-button>
+                    <el-button style="margin-left:200px" plain @click="Enter2">确认</el-button>
                 </div>
+                <div  v-show="shouphone">
+                    上传图片
+                <el-upload
+                        action="https://jsonplaceholder.typicode.com/posts/"
+                        list-type="picture-card"
+                        :on-preview="handlePictureCardPreview"
+                        :on-remove="handleRemove">
+                    <i class="el-icon-plus"></i>
+                </el-upload>
+                <el-dialog :visible.sync="dialogVisible">
+                    <img width="100%" :src="dialogImageUrl" alt="">
+                </el-dialog>
+                </div>
+                <template v-for="comment in tableData">
+                <div class="view">
+                    评论
+                    <div>{{comment.user_id}}</div>
+                    <div>{{comment.comment}}</div>
+                    <div>{{comment.comment_pic}}</div>
+                </div>
+                </template>
             </div>
-             <div>
-                 <el-button style="margin-right:200px" plain @click="Enter1">修改</el-button>
-                 <el-button style="margin-right:200px" plain @click="Enter2">确认</el-button>
-             </div>
+
          </div>
         </div>
     </div>
@@ -140,7 +141,9 @@
         data() {
 
             return {
-                showinput:"true",
+                tableData:[],
+                showinput:true,
+                shouphone:false,
                 house_hash:0,
                 owner_id:0,
                 verify:0,
@@ -153,16 +156,16 @@
                 commu_name:"",
                 specific_location:"",
                 floor:0,
-                elevator:true,
+                elevator:"",
+                elevator_text:"",
                 lease:0,
                 house_type:0 , // 1 一室 2 二室 3 其他
                 house_owner_credit:0,       //房主的信誉
-                tableData:[{
-
-                }],
+                dialogImageUrl: '',
+                dialogVisible: false,
                 phonelist:[
-                    {key: 'a', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561528949274&di=6bde8ecad4517ba2a488a21b033799c7&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F458af12108c4da0f1cf4fe8e2713a458898e332b28196-jdjJ3j_fw658'},
-                    {key: 'b', src: '/xxx/static/img/aaa.jpg'}
+                    {key: 'a', src: 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1561713939&di=25c1a8a562a1dd37fe024f0604fd46b3&src=http://r.bstatic.com/images/hotel/max1024x768/987/98767654.jpg'},
+                    {key: 'b', src: 'http://192.168.43.94:8080/ipfs/QmXVwBNo3MGKtvHP1AGVHjrgiCgCmUpk9jBTcSFvQeRj11'}
                 ],
                 note: {
                     backgroundImage: "url(" + require("../../../../../image/User/bk3.png") + ")",
@@ -176,7 +179,7 @@
                     backgroundSize: '100% 100%',
 
                 },
-
+                testObj:{}
             }
         },
         created(){
@@ -195,6 +198,12 @@
                 this.specific_location = res.data.specific_location;
                 this.floor = res.data.floor;
                 this.elevator = res.data.elevator;
+                if (this.elevator==true){
+                    this.elevator_text="有电梯"
+                } else {
+                    console.log(this.elevator)
+                    this.elevator_text="没有"
+                }
                 this.lease = res.data.lease;
                 this.house_type = res.data.house_type;
                 this.house_owner_credit = res.data.house_owner_credit;
@@ -202,16 +211,26 @@
 
 
             })
+
         },
         methods:{
             Enter1(){
-                this.showinput =false;
+                this.showinput = false;
+                this.shouphone = true;
             },
             Enter2(){
-                this.showinput=true;
+                this.showinput = true;
+                this.shouphone = false;
             },
             change_p(){
                 src:'http://www.w3school.com.cn/example/html/venus.html';
+            },
+            handleRemove(file, fileList) {
+                console.log(file, fileList);
+            },
+            handlePictureCardPreview(file) {
+                this.dialogImageUrl = file.url;
+                this.dialogVisible = true;
             }
         }
     }

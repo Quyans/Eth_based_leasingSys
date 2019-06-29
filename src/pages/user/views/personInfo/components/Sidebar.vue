@@ -57,8 +57,8 @@
                                 title: '房子1'
                             },
                             {
-                                index: '3-2',
-                                title: '房子2',
+                                index: 'addhouse',
+                                title: '添加房源',
                             },
                             {
                                 index: 'upload',
@@ -73,7 +73,7 @@
                     },
                     {
                         icon: 'el-icon-chat-line-round',
-                        index: 'charts',
+                        index: 'tabs',
                         title: '我的通知'
                     },
                 ],

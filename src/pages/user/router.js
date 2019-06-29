@@ -64,6 +64,11 @@ export let router = new Router({
                     path:'/Mybus',
                     props:true,
                     component: resolve => require(['./views/personInfo/components/Mybus.vue'], resolve),
+                },
+                {
+                    path:'/addhouse',
+                    props:true,
+                    component: resolve => require(['./views/personInfo/components/addhouse.vue'], resolve),
                 }
             ]
 

@@ -39,6 +39,15 @@ export function getMyHouse(house_hash) {
                         "sdfadfasfasfasdfa",
                         "sdfadfasfasfasdfa",
                     ],
+                },
+                {
+                    "user_id":"quyans111",   //评论人账号名
+                    "comment":"这个房子挺不错适合居住",   //评论内容
+                    "comment_pic":[
+                        "sdfadfasfasfasdfa",   //图片一的哈希值
+                        "sdfadfasfasfasdfa",
+                        "sdfadfasfasfasdfa",
+                    ],
                 }
             ]
         }
@@ -55,7 +64,10 @@ export function updateHouseInfo(form) {
     console.log(form.get('profile'))
     return server.post('user/myhouse', form).then(handleResponse)
 }
-
+//增加房源
+export function addHouse() {
+    return server.post('user/myhouse', form).then(handleResponse)
+}
 
 //获取房源详细信息
 export function getSpeInfo(house_hash) {
@@ -84,7 +96,7 @@ export function getSpeInfo(house_hash) {
             },
             "specific_location":"2号楼3单元1801",
             "floor":18,
-            "elevator":true,
+            "elevator":"true",
             "lease":3800,
             "house_type":1 , // 1 一室 2 二室 3 其他
             "house_owner_credit":16,       //房主的信誉

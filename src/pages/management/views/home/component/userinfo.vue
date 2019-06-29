@@ -35,22 +35,18 @@
                         label="身份证号">
                 </el-table-column>
                 <el-table-column
-                        prop="credit"
                         label="信誉度"
                         width="100">
-                    <div v-if="showinput">
-                    <el-input
-                            placeholder="请输入内容"
-                            v-model="input">
-                    </el-input>
-                    </div>
-                </el-table-column>
-                <el-table-column
-                        label="操作z"
-                        width="100">
+<!--                    <template slot-scope="scope">-->
+<!--                        <el-input v-model="scope.row.credit" v-bind:disabled="showinput" placeholder="请输入内容"></el-input>-->
+<!--                        <el-button @click="handleClick(scope.$index)" type="text" size="small">修改</el-button>-->
+<!--                        <el-button @click="Enter" type="text" size="small">确认</el-button>-->
+<!--                    </template>-->
+
                     <template slot-scope="scope">
+                        <el-input v-model="scope.row.credit" v-bind:disabled="showinput" placeholder="请输入内容"></el-input>
                         <el-button @click="handleClick(scope.$index)" type="text" size="small">修改</el-button>
-                        <el-button @click="Enter" type="text" size="small">确认</el-button>
+                        <el-button @click="Enter(scope.$index)" type="text" size="small">确认</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -60,7 +56,7 @@
 
 <script>
 
-    import {getAllUser} from "../../../../../resource/user";
+    import {getAllUser,changeUserInfo} from "../../../../../resource/user";
     export default {
         name: "userinfo",
         components: {},
@@ -68,8 +64,8 @@
 
         data() {
             return {
-                input:0,
-                showinput:false,
+                newcredit:0,
+                showinput:true,
                 tableData:[],
                 note: {
                     backgroundImage: "url(" + require("../../../../../image/User/bk3.png") + ")",
@@ -90,21 +86,31 @@
         created(){
             getAllUser().then(res => {
                 this.tableData = res.data.users;
-                this.input = res.data.users.credit
             })
         },
 
 
 
         methods:{
-            handleClick(row){
+            handleClick(){
 
-                console.log(row)
-                this.tableData[row].showinput = !this.showinput;
-                this.tableData[row].credit = 18;
+
+                 this.showinput = !this.showinput;
 
             },
-            Enter(){
+            Enter(row){
+                this.showinput =true;
+                var username = this.tableData[row].username;
+                var credit = this.tableData[row].credit;
+                changeUserInfo(username,credit).then(()=>{
+                    this.$message({
+                        message: '注册成功  正在跳转',
+                        type: 'success'
+                    });
+                },
+                    e => {
+                        this.$message.error(`出错：${e.message}`);
+                    });
 
             }
         }
