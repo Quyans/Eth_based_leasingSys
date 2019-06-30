@@ -70,6 +70,12 @@ export let router = new Router({
                     props:true,
                     component: resolve => require(['./views/personInfo/components/addhouse.vue'], resolve),
                 }
+                ,
+                {
+                    path:'/tabs',
+                    props:true,
+                    component: resolve => require(['./views/personInfo/components/tabs.vue'], resolve),
+                }
             ]
         },
         {

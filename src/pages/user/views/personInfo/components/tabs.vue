@@ -2,25 +2,44 @@
     <div class="">
         <div class="container">
             <el-tabs v-model="message">
-                <el-tab-pane :label="`未读消息(${unread.length})`" name="first">
+                <el-tab-pane :label="`未处理请求(${unread.length+second.length})`" name="first">
                     <el-table :data="unread" :show-header="false" style="width: 100%">
                         <el-table-column>
                             <template slot-scope="scope">
-                                <span class="message-title">{{scope.row.title}}</span>
+                                请求人帐号：<span class="message-title">{{scope.row.username}}</span>
+                                姓名：<span class="message-title">{{scope.row.name}}</span>
+                                房子：<span class="message-title">{{scope.row.house_hash}}</span>
+                                房子地址：<span class="message-title">{{scope.row.commu_name}}</span>
+                                请求状态：<span class="message-title">{{scope.row.state}}</span>
                             </template>
                         </el-table-column>
                         <el-table-column prop="date" width="180"></el-table-column>
                         <el-table-column width="120">
                             <template slot-scope="scope">
-                                <el-button size="small" @click="handleRead(scope.$index)">标为已读</el-button>
+                                <el-button size="small" @click="yes(scope.$index)">同意</el-button>
+                                <el-button size="small" @click="no(scope.$index)">拒绝</el-button>
                             </template>
                         </el-table-column>
                     </el-table>
-                    <div class="handle-row">
-                        <el-button type="primary">全部标为已读</el-button>
-                    </div>
+                    <el-table :data="second" :show-header="false" style="width: 100%">
+                        <el-table-column>
+                            <template slot-scope="scope">
+                                请求人帐号：<span class="message-title">{{scope.row.username}}</span>
+                                姓名：<span class="message-title">{{scope.row.name}}</span>
+                                房子：<span class="message-title">{{scope.row.house_hash}}</span>
+                                房子地址：<span class="message-title">{{scope.row.commu_name}}</span>
+                                请求状态：<span class="message-title">{{scope.row.state}}</span>
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="date" width="180"></el-table-column>
+                        <el-table-column width="120">
+                            <template slot-scope="scope">
+                                <el-button size="small" @click="pay(scope.$index)">支付</el-button>
+                            </template>
+                        </el-table-column>
+                    </el-table>
                 </el-tab-pane>
-                <el-tab-pane :label="`已读消息(${read.length})`" name="second">
+                <el-tab-pane :label="`已处理消息(${read.length})`" name="second">
                     <template v-if="message === 'second'">
                         <el-table :data="read" :show-header="false" style="width: 100%">
                             <el-table-column>
@@ -35,29 +54,6 @@
                                 </template>
                             </el-table-column>
                         </el-table>
-                        <div class="handle-row">
-                            <el-button type="danger">删除全部</el-button>
-                        </div>
-                    </template>
-                </el-tab-pane>
-                <el-tab-pane :label="`回收站(${recycle.length})`" name="third">
-                    <template v-if="message === 'third'">
-                        <el-table :data="recycle" :show-header="false" style="width: 100%">
-                            <el-table-column>
-                                <template slot-scope="scope">
-                                    <span class="message-title">{{scope.row.title}}</span>
-                                </template>
-                            </el-table-column>
-                            <el-table-column prop="date" width="150"></el-table-column>
-                            <el-table-column width="120">
-                                <template slot-scope="scope">
-                                    <el-button @click="handleRestore(scope.$index)">还原</el-button>
-                                </template>
-                            </el-table-column>
-                        </el-table>
-                        <div class="handle-row">
-                            <el-button type="danger">清空回收站</el-button>
-                        </div>
                     </template>
                 </el-tab-pane>
             </el-tabs>
@@ -66,6 +62,8 @@
 </template>
 
 <script>
+    import {ownerGet,userGet} from "../../../../../resource/user";
+
     export default {
         name: 'tabs',
         data() {
@@ -79,6 +77,8 @@
                     date: '2018-04-19 21:00:00',
                     title: 'xxxx合约取消',
                 }],
+                second:[],
+
                 read: [{
                     date: '2018-04-19 20:00:00',
                     title: '合约签订'
@@ -89,11 +89,46 @@
                 }]
             }
         },
+
+        created(){
+            ownerGet().then(res=>{
+                this.unread = res.data.tract
+            }),
+            userGet().then(res1=>{
+                this.second = res1.data.tract
+            })
+        },
+
         methods: {
-            handleRead(index) {
+            yes(index) {
                 const item = this.unread.splice(index, 1);
                 console.log(item);
                 this.read = item.concat(this.read);
+
+            },
+            no(index) {
+                const item = this.unread.splice(index, 1);
+                console.log(item);
+                this.read = item.concat(this.read);
+            },
+            pay(index) {
+                const item = this.second.splice(index, 1);
+                console.log(item);
+                this.read = item.concat(this.read);
+                this.$prompt('请输入邮箱', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                }).then(({ value }) => {
+                    this.$message({
+                        type: 'success',
+                        message: '你的邮箱是: ' + value
+                    });
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '取消输入'
+                    });
+                });
             },
             handleDel(index) {
                 const item = this.read.splice(index, 1);

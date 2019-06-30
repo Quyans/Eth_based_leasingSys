@@ -73,8 +73,18 @@
                     },
                     {
                         icon: 'el-icon-chat-line-round',
-                        index: 'tabs',
-                        title: '我的通知'
+                        index: '2',
+                        title: '我的通知',
+                        subs: [
+                            {
+                                index: 'tabs',
+                                title: '房主通知'
+                            },
+                            {
+                                index: 'addhouse',
+                                title: '用户通知',
+                            },
+                        ]
                     },
                 ],
                 note:{

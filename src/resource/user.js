@@ -125,7 +125,64 @@ export function contactOwner(house_hash) {
     })
     return server.post('/user/contact_owner',  qs.stringify({house_hash})).then(handleResponse)
 }
+//房主获取与他相关的请求
 
+export function ownerGet(){
+    return Promise.resolve({
+        "status":200,
+        "message":"success",
+        "data":{
+            tract:[
+                {
+                     "requestID":"xxoo",
+                     "username":"xxdd",   //请求的人的用户名
+                     "name":"曲延松",       //请求的人的姓名
+                     "house_hash":"adfafd",    //请求的房子hash
+                     "commu_name":"茗筑美嘉",  //房子小区名
+                     "state":0    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
+                },
+                {
+                    "requestID":"xsxoo",
+                    "username":"xxdd",   //请求的人的用户名
+                    "name":"曲延松",       //请求的人的姓名
+                    "house_hash":"adfafd",    //请求的房子hash
+                    "commu_name":"奥龙官邸",  //房子小区名
+                    "state":0    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
+                 },
+]
+}
+
+    })
+}
+
+//获取用户反馈请求
+export function userGet(){
+    return Promise.resolve({
+        "status":200,
+        "message":"success",
+        "data":{
+            tract:[
+                {
+                    "requestID":"xxoo",
+                    "username":"xxdd",   //请求的人的用户名
+                    "name":"曲延松",       //请求的人的姓名
+                    "house_hash":"adfafd",    //请求的房子hash
+                    "commu_name":"茗筑美嘉",  //房子小区名
+                    "state":2    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
+                },
+                {
+                    "requestID":"xsxoo",
+                    "username":"xxdd",   //请求的人的用户名
+                    "name":"曲延松",       //请求的人的姓名
+                    "house_hash":"adfafd",    //请求的房子hash
+                    "commu_name":"奥龙官邸",  //房子小区名
+                    "state":2    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
+                },
+            ]
+        }
+
+    })
+}
 
 //房客请求入住
 export function userSet(house_hash,owner) {
