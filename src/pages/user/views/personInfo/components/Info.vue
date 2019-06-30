@@ -18,7 +18,7 @@
                 </div>
                 <div v-else class="user-info-name">电话:
                     <span >
-                     <el-input class="bt-input" v-model="input" placeholder="请输入"></el-input>
+                     <el-input class="bt-input" v-model="phonenum" placeholder="请输入"></el-input>
                      <el-button style="float:right;margin-right:200px" plain @click="Enter">确认</el-button>
                     </span>
                 </div>
