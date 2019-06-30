@@ -58,7 +58,6 @@
                 //加载地图，调用浏览器定位服务
                 that.marker,that.map = new AMap.Map('container', {
                     resizeEnable: true,
-
                     center: [that.lngCenter,that.latCenter],
                     zoom:that.zoom
                 });

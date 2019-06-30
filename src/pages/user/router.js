@@ -66,9 +66,13 @@ export let router = new Router({
                     component: resolve => require(['./views/personInfo/components/Mybus.vue'], resolve),
                 }
             ]
-
         },
-
+        {
+            path:'/house/:houseHash',
+            name:'specificInfo',
+            props:true,
+            component:_('SpecificInfo')
+        }
     ]
 })
 // router.beforeEach(((to, from, next) => {
