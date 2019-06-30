@@ -107,7 +107,7 @@
                     <el-button style="margin-left:200px" plain @click="Enter2">确认</el-button>
                 </div>
                 <div  v-show="shouphone">
-                    上传图片
+                    上传图片：
                 <el-upload
                         action="https://jsonplaceholder.typicode.com/posts/"
                         list-type="picture-card"
