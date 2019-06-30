@@ -41,9 +41,7 @@
         data() {
             return {
                 note:{
-                    backgroundImage: "url(" + require("../../../../image/User/bk1.png") + ")",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: 'cover',
+
                 },
             }
         },
@@ -56,7 +54,7 @@
     }
 </script>
 
-<style type="text/css">
+<style type="text/css" scoped>
 
     @import "../../style/main.css";
     @import "../../style/color-dark.css";

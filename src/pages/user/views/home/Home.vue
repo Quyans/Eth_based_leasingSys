@@ -101,12 +101,13 @@
     }
 
 </style>
-<style>
+<style scoped>
     #home{
         background-image: url("../../../../image/User/bk1.png");
         background-repeat: no-repeat;
         background-size: cover;
         padding-top: 3vh;
+        height: 100%;
     }
 
     #home .avatar-uploader .el-upload {
@@ -140,28 +141,19 @@
         }
         height: 100%;
         width: 100%;
-        position: absolute;
-        /*.icon_scan {*/
-            /*width: 14px;*/
-            /*height: 14px;*/
-            /*vertical-align: bottom;*/
-        /*}*/
     }
     .sub_home{
-        /*position: relative;*/
+
         margin: 0 auto;
         top: 40px;
         box-shadow:5px 5px 30px darkgrey;
-        /*min-height: 400px;*/
         width: 80%;
     }
 </style>
-<style lang="scss">
+<style lang="scss" scoped>
     .el-dialog {
         width: 100% !important;
         max-width: 450px;
     }
-    #app {
-        height: 100%;
-    }
+
 </style>

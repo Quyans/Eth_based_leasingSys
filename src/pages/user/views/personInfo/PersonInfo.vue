@@ -33,7 +33,7 @@
     }
 </script>
 
-<style type="text/css">
+<style type="text/css" scoped>
     @import "../../style/main.css";
     @import "../../style/color-dark.css";
 </style>
