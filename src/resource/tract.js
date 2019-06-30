@@ -1,57 +1,60 @@
 import {handleResponse, server} from "../utils/http";
 import qs from "qs";
 
-export function getUserInfo(id) {
-    return  Promise.resolve({
-        "status":200,
-        "message":"success",
-        "data":{
-            "userType":0,
-            "username":"liupenghao",//用户名
-            "name":"刘鹏昊",//姓名
-            "gender":0, //0女 1男
-            "phone":18560125097,  //电话号码
-            "id":370102199711111111,  //身份证号
-            "credit":15,   //信誉值
-            "password":123456,
-            "myhouse":[
-                {
-                    "commu_name":"奥龙官邸",
-                    "house_hash":"sdfaafadsfasd"
-                },
 
-                {
-                    "commu_name":"茗筑美嘉",
-                    "house_hash":"sdfsdafsdfadf"
-                },
-            ]
-        }
-    })
-    // return server.get('user/user', {
-    //     params: {
-    //         username
-    //     }
-    // }).then(handleResponse)
-}
 
-export function updateUserInfo(password,phone) {
-    // console.log(form.get('profile'))
-    return server.post('user/info',  qs.stringify({password, phone})).then(handleResponse)
-}
-
-//充值
-export function invest(money) {
+export function userSet(house_hash,owner) {
     // console.log(form.get('profile'))
     return Promise.resolve({
         "status":200,
         "message":"success",
+        "data": {
+            "requestID": "xxoo",
+        }
+    })
+    return server.post('/tract/userSet',  qs.stringify({house_hash, owner})).then(handleResponse)
+}
+
+//获取交易记录
+export function getTransRecord(username) {
+    return  Promise.resolve({
+        "status":200,
+        "message":"success",
         "data":{
             "username":"liupenghao",//用户名
             "name":"刘鹏昊",//姓名
-            "balance":86500  // 充值后余额
+            "record":[
+                {
+                    "time": "2019-1-13",    //交易时间
+                    "gas": 500,  //花费的手续费
+                    "low_location":{
+                        "provi":"山东省",
+                        "city":"济南市",
+                        "sector":"历下区",
+                        "commu_name":"奥龙官邸"
+                    },
+                    "specific_location":"2号楼3单元1801"
+                },
+
+                {
+                    "time": "2019-1-13 ",   //交易时间
+                    "gas": 500 , //花费的手续费
+                    "low_location":{
+                        "provi":"山东省",
+                        "city":"济南市",
+                        "sector":"历下区",
+                        "commu_name":"奥龙官邸"
+                    },
+                    "specific_location":"2号楼3单元1801",
+                },
+            ],
         }
     })
-    return server.post('user/account',  qs.stringify({money})).then(handleResponse)
+    // return server.get('user/trans_record', {
+    //     params: {
+    //         username
+    //     }
+    // }).then(handleResponse)
 }
 
 
@@ -126,19 +129,6 @@ export function contactOwner(house_hash) {
     return server.post('/user/contact_owner',  qs.stringify({house_hash})).then(handleResponse)
 }
 
-
-//房客请求入住
-export function userSet(house_hash,owner) {
-    // console.log(form.get('profile'))
-    return Promise.resolve({
-        "status":200,
-        "message":"success",
-        "data": {
-            "requestID":"xxoso",
-        }
-    })
-    return server.post('/user/tract/userSet',  qs.stringify({house_hash,owner})).then(handleResponse)
-}
 
 //评价房子
 export function evaluateHouse(form) {

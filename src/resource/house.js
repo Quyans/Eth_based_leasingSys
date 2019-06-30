@@ -65,9 +65,11 @@ export function updateHouseInfo(form) {
     return server.post('user/myhouse', form).then(handleResponse)
 }
 //增加房源
-export function addHouse() {
+export function addHouse(form) {
     return server.post('user/myhouse', form).then(handleResponse)
 }
+
+
 
 //获取房源详细信息
 export function getSpeInfo(house_hash) {
@@ -77,9 +79,9 @@ export function getSpeInfo(house_hash) {
         "data":{
 
             "house_pic":[
-                "sdfadfasfasfasdfa",   //图片一的哈希值
-                "sdfadsfadsfasf",
-                "sadfadsfasfsa",
+                "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561902918490&di=93de199997bd27876fb3e72842da2551&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fa403a1d2880ef70d311b0626f356f0682b8d77da524b-TAk0MZ_fw658",   //图片一的哈希值
+                "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561902918489&di=5f7f910721b2c154270f1cdeca71dc67&imgtype=0&src=http%3A%2F%2Fpic8.nipic.com%2F20100713%2F1954049_091647155567_2.jpg",
+                "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561902918489&di=08e89404ddf20c958c789cbd02a37282&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F67c0b0d20ca69f5a0a0167ab6526dcd2b6a1a3f046e3-l9OP6q_fw658",
             ],
             "house_hash":"sdfwenk31345",//房产证号
             "owner_id":"37012506546564",//房主身份证号
