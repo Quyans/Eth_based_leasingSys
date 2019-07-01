@@ -62,11 +62,11 @@ export function getMyHouse(house_hash) {
 //修改我的房子
 export function updateHouseInfo(form) {
     console.log(form.get('profile'))
-    return server.post('user/myhouse', form).then(handleResponse)
+    return server.post('user/myHouse', form).then(handleResponse)
 }
 //增加房源
 export function addHouse(form) {
-    return server.post('user/myhouse', form).then(handleResponse)
+    return server.post('house/setUpHouse', form).then(handleResponse)
 }
 
 
@@ -114,12 +114,12 @@ export function getSpeInfo(house_hash) {
                 }
             ]
         }
-        // return server.get('user/myhouse', {
-        //     params: {
-        //         house_hash
-        //     }
-        // }).then(handleResponse)
     })
+    return server.get('house/speinfo', {
+        params: {
+            house_hash
+        }
+    }).then(handleResponse)
 }
 
 
@@ -138,15 +138,15 @@ export function searchLowHouse(low_location,lease_inter,house_type,lease_type,el
             },
             {
                 "photo": "sadfadsfadf",   //一张图片的hash
-                "low_location": "山东省济南市历下区**小区",
-                "lease": "5000",
+                "low_location": "山东省济南市历下区B小区",
+                "lease": "3000",
                 "house_type": "2",
                 "lease_type": "1",
             },
             {
                 "photo": "sadfadsfadf",   //一张图片的hash
                 "low_location": "山东省济南市历下区**小区",
-                "lease": "5000",
+                "lease": "2000",
                 "house_type": "2",
                 "lease_type": "1",
             },

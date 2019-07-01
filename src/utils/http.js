@@ -1,7 +1,7 @@
 // http相关模块
 import axios from 'axios'
 
-export const BASE_URL = '/api/v1'
+export const BASE_URL = '/api'
 
 export let server = axios.create({
     baseURL: BASE_URL
@@ -24,11 +24,9 @@ export class RequestError extends Error {
 }
 
 export const handleResponse = resp => {
-    let data = resp.data
-    
-    if (data.status === 200) {
-        return data.data
+    if (resp.status === 200) {
+        return resp.data
     } else {
-        throw new RequestError(resp.data.message, resp.data.status)
+        throw new RequestError(resp.message, resp.status)
     }
 }
