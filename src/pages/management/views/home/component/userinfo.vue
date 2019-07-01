@@ -37,12 +37,6 @@
                 <el-table-column
                         label="信誉度"
                         width="100">
-<!--                    <template slot-scope="scope">-->
-<!--                        <el-input v-model="scope.row.credit" v-bind:disabled="showinput" placeholder="请输入内容"></el-input>-->
-<!--                        <el-button @click="handleClick(scope.$index)" type="text" size="small">修改</el-button>-->
-<!--                        <el-button @click="Enter" type="text" size="small">确认</el-button>-->
-<!--                    </template>-->
-
                     <template slot-scope="scope">
                         <el-input v-model="scope.row.credit" v-bind:disabled="showinput" placeholder="请输入内容"></el-input>
                         <el-button @click="handleClick(scope.$index)" type="text" size="small">修改</el-button>
@@ -104,7 +98,7 @@
                 var credit = this.tableData[row].credit;
                 changeUserInfo(username,credit).then(()=>{
                     this.$message({
-                        message: '注册成功  正在跳转',
+                        message: '修改成功',
                         type: 'success'
                     });
                 },

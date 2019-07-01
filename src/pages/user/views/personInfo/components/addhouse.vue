@@ -15,14 +15,14 @@
                             v-bind:disabled="showinput">
                     </el-input>
                     </div>
-                    <div class="h-info">
+                    <div class="h-info" style="margin-left: 35px">
                         房子可用:<el-input
                             placeholder="请输入内容"
                             v-model="registerForm.state"
                             v-bind:disabled="showinput">
                     </el-input>
                     </div>
-                    <div class="h-info">
+                    <div class="h-info"style="margin-left: 55px">
                         省份:<el-input
                             placeholder="请输入内容"
                             v-model="registerForm.low_location"
@@ -79,7 +79,7 @@
                             v-bind:disabled="showinput">
                             </el-input>
                     </div>
-                    <div class="h-info">
+                    <div class="h-info"style="margin-left: 90px">
                     纬度:<el-input
                         placeholder="请输入内容"
                         v-model="registerForm.lat"
@@ -103,8 +103,8 @@
                         </el-upload>
                     </div>
                     <div>
-                        <el-button style="margin-left:400px" plain @click="Enter1">修改</el-button>
-                        <el-button style="margin-left:200px" plain @click="Enter2">确认</el-button>
+                        <el-button style="margin-left:600px;margin-top: 50px" plain @click="Enter1">修改</el-button>
+                        <el-button style="margin-left:100px" plain @click="Enter2">确认</el-button>
                     </div>
                 </div>
             </div>

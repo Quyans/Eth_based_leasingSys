@@ -12,7 +12,7 @@ export function getMyHouse(house_hash) {
                 "sadfadsfasfsa",
             ],
             "house_hash":"sdfwenk31345",//房产证号
-            "owner_id":"37012506546564",//房主身份证号
+            "owner_id":"370125065465640212",//房主身份证号
             "verify":"true" ,  //经过验证
             "owner":"quyanso111",//拥有者的账号
             "owner_name":"曲延松",//拥有者的姓名
