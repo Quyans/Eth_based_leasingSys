@@ -2,97 +2,44 @@
     <div>
         <div class="addhouse" :style="note">
             <div class="button_group">
-                我的房子
+                添加房子
             </div>
         </div>
         <div class="bk":style="note2">
             <div class="fir">
                 <div class="phone">
-                    上传图片
-                    <el-upload
-                            action="https://jsonplaceholder.typicode.com/posts/"
-                            list-type="picture-card"
-                            :on-preview="handlePictureCardPreview"
-                            :on-remove="handleRemove">
-                        <i class="el-icon-plus"></i>
-                    </el-upload>
-                    <el-dialog :visible.sync="dialogVisible">
-                        <img width="100%" :src="dialogImageUrl" alt="">
-                    </el-dialog>
                     <div class="h-info">
                         房产证:<el-input
                             placeholder="请输入内容"
-                            v-model="house_hash"
-                            v-bind:disabled="showinput">
-                    </el-input>
-                    </div>
-                    <div class="h-info">
-                        房主身份证:<el-input
-                            placeholder="请输入内容"
-                            v-model="owner_id"
-                            v-bind:disabled="showinput">
-                    </el-input>
-                    </div>
-                    <div class="h-info">
-                        房主帐号:<el-input
-                            placeholder="请输入内容"
-                            v-model="owner"
-                            v-bind:disabled="showinput">
-                    </el-input>
-                    </div>
-                    <div class="h-info">
-                        房主姓名:<el-input
-                            placeholder="请输入内容"
-                            v-model="owner_name"
+                            v-model="registerForm.house_id"
                             v-bind:disabled="showinput">
                     </el-input>
                     </div>
                     <div class="h-info">
                         房子可用:<el-input
                             placeholder="请输入内容"
-                            v-model="state"
+                            v-model="registerForm.state"
                             v-bind:disabled="showinput">
                     </el-input>
                     </div>
                     <div class="h-info">
                         省份:<el-input
                             placeholder="请输入内容"
-                            v-model="provi"
-                            v-bind:disabled="showinput">
-                    </el-input>
-                    </div>
-                    <div class="h-info">
-                        城市:<el-input
-                            placeholder="请输入内容"
-                            v-model="city"
-                            v-bind:disabled="showinput">
-                    </el-input>
-                    </div>
-                    <div class="h-info">
-                        市区:<el-input
-                            placeholder="请输入内容"
-                            v-model="sector"
-                            v-bind:disabled="showinput">
-                    </el-input>
-                    </div>
-                    <div class="h-info">
-                        小区:<el-input
-                            placeholder="请输入内容"
-                            v-model="commu_name"
+                            v-model="registerForm.low_location"
                             v-bind:disabled="showinput">
                     </el-input>
                     </div>
                     <div class="h-info">
                         具体地址:<el-input
                             placeholder="请输入内容"
-                            v-model="specific_location"
+                            v-model="registerForm.specific_location"
                             v-bind:disabled="showinput">
                     </el-input>
                     </div>
                     <div class="h-info">
                         楼层:<el-input
                             placeholder="请输入内容"
-                            v-model="floor"
+                            v-model="registerForm.floor"
                             v-bind:disabled="showinput">
                     </el-input>
                     </div>
@@ -100,63 +47,96 @@
                         有无电梯:
                         <el-input
                                 placeholder="请输入内容"
-                                v-model="elevator_text"
+                                v-model="registerForm.elevator"
                                 v-bind:disabled="showinput">
                         </el-input>
                     </div>
                     <div class="h-info">
                         价格:<el-input
                             placeholder="请输入内容"
-                            v-model="lease"
+                            v-model="registerForm.lease"
+                            v-bind:disabled="showinput">
+                    </el-input>
+                    </div>
+                    <div class="h-info">
+                        出租方式:<el-input
+                            placeholder="请输入内容"
+                            v-model="registerForm.lease_type"
                             v-bind:disabled="showinput">
                     </el-input>
                     </div>
                     <div class="h-info">
                         房型:<el-input
                             placeholder="请输入内容"
-                            v-model="house_type"
+                            v-model="registerForm.house_type"
                             v-bind:disabled="showinput">
                     </el-input>
                     </div>
+                    <div class="h-info">
+                        经度:<el-input
+                            placeholder="请输入内容"
+                            v-model="registerForm.lon"
+                            v-bind:disabled="showinput">
+                            </el-input>
+                    </div>
+                    <div class="h-info">
+                    纬度:<el-input
+                        placeholder="请输入内容"
+                        v-model="registerForm.lat"
+                        v-bind:disabled="showinput">
+                         </el-input>
+                    </div>
+                    <div class="h-info">
+                    面积:<el-input
+                        placeholder="请输入内容"
+                        v-model="registerForm.area"
+                        v-bind:disabled="showinput">
+                         </el-input>
+                     </div>
+                    <div class="h-info">
+                        上传图片{{registerForm.house_pic}}
+                        <el-upload
+                                action=""
+                                list-type="picture-card"
+                                :on-change="handleRemove">
+                            <i class="el-icon-plus"></i>
+                        </el-upload>
+                    </div>
                     <div>
-                        <el-button style="margin-left:200px" plain @click="Enter1">修改</el-button>
+                        <el-button style="margin-left:400px" plain @click="Enter1">修改</el-button>
                         <el-button style="margin-left:200px" plain @click="Enter2">确认</el-button>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import {getMyHouse} from "../../../../../resource/house";
+    import {setUpHouse} from "../../../../../resource/house";
     export default {
         components: {},
         data() {
 
             return {
+
+                registerForm:{
+                    house_id:0,
+                    state:0,
+                    low_location:"",
+                    specific_location:"",
+                    floor:0,
+                    elevator:"",
+                    lease:0,
+                    lease_type:0,
+                    house_type:0,
+                    lon:"",
+                    lat:"",
+                    area:"",
+                    house_pic:false,
+                },
                 showinput:true,
                 shouphone:false,
-                house_hash:0,
-                owner_id:0,
-                verify:0,
-                owner:0,
-                owner_name:0,
-                state:0,
-                provi:"",
-                city:"",
-                sector:"",
-                commu_name:"",
-                specific_location:"",
-                floor:0,
-                elevator:"",
-                elevator_text:"",
-                lease:0,
-                house_type:0 , // 1 一室 2 二室 3 其他
-                house_owner_credit:0,       //房主的信誉
-                dialogImageUrl: '',
-                dialogVisible: false,
                 note: {
                     backgroundImage: "url(" + require("../../../../../image/User/bk3.png") + ")",
                     backgroundRepeat: "no-repeat",
@@ -173,35 +153,21 @@
             }
         },
         created(){
-            getMyHouse().then(res => {
-                this.house_hash = res.data.house_hash;
-                this.owner_id = res.data.owner_id;
-                this.owner = res.data.owner;
-                this.verify = res.data.verify;
-                this.owner_name = res.data.owner_name;
-                this.state = res.data.state;
-                this.provi = res.data.low_location.provi;
-                this.city = res.data.low_location.city;
-                this.sector =res.data.low_location.sector;
-                this.commu_name = res.data.low_location.commu_name;
-                this.specific_location = res.data.specific_location;
-                this.floor = res.data.floor;
-                this.elevator = res.data.elevator;
-                if (this.elevator==true){
-                    this.elevator_text="有电梯"
-                } else {
-                    console.log(this.elevator)
-                    this.elevator_text="没有"
-                }
-                this.lease = res.data.lease;
-                this.house_type = res.data.house_type;
-                this.house_owner_credit = res.data.house_owner_credit;
-
-
-
-            })
-
         },
+
+        computed: {
+            ruleFormData() {
+                let formData = new FormData()
+                // console.log(this.ruleForm);
+                Object.keys(this.registerForm).forEach(key => {
+                    // if (key === 'checkpassword') return
+                    formData.append(key, this.registerForm[key])
+                })
+                // console.log(formData)
+                return formData
+            }
+        },
+
         methods:{
             Enter1(){
                 this.showinput = false;
@@ -210,18 +176,36 @@
             Enter2(){
                 this.showinput = true;
                 this.shouphone = false;
-            },
-            change_p(){
-                src:'http://www.w3school.com.cn/example/html/venus.html';
+                var that = this;
+                new Promise(resolve => {
+                    // 图片压缩
+                    let formData = this.ruleFormData;
+                    let img = new Image();
+                    img.src = URL.createObjectURL(formData.get('house_pic'));
+                    img.onload = () => {
+                        compressImage(img).then(file => {
+                            formData.append('house_pic',file);
+                            resolve(formData)
+                        })
+                    }
+                }).then(formData => setUpHouse(formData))
+                    .then(() => {
+                            this.$message({
+                                message: '修改成功',
+                                type: 'success'
+                            });
+                        },
+                        e => {
+                            this.$message.error(`出错：${e.message}`);
+                        })
+
             },
             handleRemove(file, fileList) {
                 console.log(file, fileList);
+                this.registerForm.house_pic = file.raw;
             },
-            handlePictureCardPreview(file) {
-                this.dialogImageUrl = file.url;
-                this.dialogVisible = true;
-            }
-        }
+            },
+
     }
 </script>
 
@@ -255,4 +239,6 @@
         float: left;
         margin-left: 50px;
     }
+
+
 </style>

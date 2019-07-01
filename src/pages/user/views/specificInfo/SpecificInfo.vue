@@ -8,7 +8,6 @@
                     <div class="opacityBlack">
                         <img class="rollPhoto"  :src="item">
                     </div>
-
                 </el-carousel-item>
             </el-carousel>
 
@@ -34,13 +33,13 @@
                     <el-col :span="8">合租</el-col>
                 </el-row>
             </div>
-            <!--<ShowPosition :long="116.399" :lat="39.910"></ShowPosition>-->
+            <ShowPosition :long="116.399" :lat="39.910"></ShowPosition>
         </div>
         <div id="rightDiv" style="">
             <div>
-                <p>{{speciInfo.owner}}</p>
+                <p>孙XX</p>
                 <div>
-                    <p>信誉等级{{speciInfo.house_owner_credit}}</p>
+                    <p>信誉等级</p>
                     <p>电话：{{phone}}</p>
                 </div>
                 <el-button @click="contact">查看联系电话</el-button>
@@ -94,9 +93,7 @@
         created(){
 
             getSpeInfo('123').then(res=>{
-                // console.log(res)
-                // alert(123)
-                this.speciInfo = res
+                this.speciInfo = res.data
             }),
 
             contactOwner('123').then(res=>{

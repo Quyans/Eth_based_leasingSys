@@ -155,7 +155,7 @@ export function ownerGet(){
     })
 }
 
-//获取用户反馈请求
+//房主获取用户反馈请求
 export function userGet(){
     return Promise.resolve({
         "status":200,

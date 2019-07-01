@@ -74,47 +74,6 @@ export function getUserBalance(username) {
     //     }
     // }).then(handleResponse)
 }
-//获取交易记录
-export function getTransRecord(username) {
-    return  Promise.resolve({
-        "status":200,
-        "message":"success",
-        "data":{
-            "username":"liupenghao",//用户名
-            "name":"刘鹏昊",//姓名
-            "record":[
-                {
-                    "time": "2019-1-13",    //交易时间
-                    "gas": 500,  //花费的手续费
-                    "low_location":{
-                        "provi":"山东省",
-                        "city":"济南市",
-                        "sector":"历下区",
-                        "commu_name":"奥龙官邸"
-                        },
-                    "specific_location":"2号楼3单元1801"
-                },
-
-                {
-                    "time": "2019-1-13 ",   //交易时间
-                    "gas": 500 , //花费的手续费
-                    "low_location":{
-                        "provi":"山东省",
-                        "city":"济南市",
-                        "sector":"历下区",
-                        "commu_name":"奥龙官邸"
-                    },
-                    "specific_location":"2号楼3单元1801",
-                },
-            ],
-        }
-    })
-    // return server.get('user/trans_record', {
-    //     params: {
-    //         username
-    //     }
-    // }).then(handleResponse)
-}
 
 //联系房主
 export function contactOwner(house_hash) {
@@ -129,6 +88,84 @@ export function contactOwner(house_hash) {
     return server.post('/user/contact_owner',  qs.stringify({house_hash})).then(handleResponse)
 }
 
+//房主获取与他相关的请求
+
+export function ownerGet(){
+    return Promise.resolve({
+        "status":200,
+        "message":"success",
+        "data":{
+            tract:[
+                {
+                    "requestID":"xxoo",
+                    "username":"xxdd",   //请求的人的用户名
+                    "name":"曲延松",       //请求的人的姓名
+                    "house_hash":"adfafd",    //请求的房子hash
+                    "commu_name":"茗筑美嘉",  //房子小区名
+                    "state":0    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
+                },
+                {
+                    "requestID":"xsxoo",
+                    "username":"xxdd",   //请求的人的用户名
+                    "name":"曲延松",       //请求的人的姓名
+                    "house_hash":"adfafd",    //请求的房子hash
+                    "commu_name":"奥龙官邸",  //房子小区名
+                    "state":0    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
+                },
+            ]
+        }
+
+    })
+}
+
+//房主回应请求
+export function ownerRes(request_response) {
+    // console.log(form.get('profile'))
+    return Promise.resolve({
+        "status":200,
+        "message":"OK",
+    })
+    return server.post('/tract/ownerRes',  qs.stringify({request_response})).then(handleResponse)
+}
+
+//房主获取用户反馈请求
+export function userGet(){
+    return Promise.resolve({
+        "status":200,
+        "message":"success",
+        "data":{
+            tract:[
+                {
+                    "requestID":"xxoo",
+                    "username":"xxdd",   //请求的人的用户名
+                    "name":"曲延松",       //请求的人的姓名
+                    "house_hash":"adfafd",    //请求的房子hash
+                    "commu_name":"茗筑美嘉",  //房子小区名
+                    "state":2    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
+                },
+                {
+                    "requestID":"xsxoo",
+                    "username":"xxdd",   //请求的人的用户名
+                    "name":"曲延松",       //请求的人的姓名
+                    "house_hash":"adfafd",    //请求的房子hash
+                    "commu_name":"奥龙官邸",  //房子小区名
+                    "state":2    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
+                },
+            ]
+        }
+
+    })
+}
+
+//房主回应请求并支付
+export function userIden(request_response,pay_password) {
+    // console.log(form.get('profile'))
+    return Promise.resolve({
+        "status":200,
+        "message":"OK",
+    })
+    return server.post('/tract/userIden',  qs.stringify({request_response,pay_password})).then(handleResponse)
+}
 
 //评价房子
 export function evaluateHouse(form) {

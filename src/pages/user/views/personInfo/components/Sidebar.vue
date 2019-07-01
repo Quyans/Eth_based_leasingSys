@@ -81,7 +81,7 @@
                                 title: '房主通知'
                             },
                             {
-                                index: 'addhouse',
+                                index: '0',
                                 title: '用户通知',
                             },
                         ]

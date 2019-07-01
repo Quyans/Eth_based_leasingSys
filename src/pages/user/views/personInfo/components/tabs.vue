@@ -16,8 +16,11 @@
                         <el-table-column prop="date" width="180"></el-table-column>
                         <el-table-column width="120">
                             <template slot-scope="scope">
+
                                 <el-button size="small" @click="yes(scope.$index)">同意</el-button>
+                                <div style="float: right;margin-right: 45px">
                                 <el-button size="small" @click="no(scope.$index)">拒绝</el-button>
+                                </div>
                             </template>
                         </el-table-column>
                     </el-table>
@@ -44,7 +47,11 @@
                         <el-table :data="read" :show-header="false" style="width: 100%">
                             <el-table-column>
                                 <template slot-scope="scope">
-                                    <span class="message-title">{{scope.row.title}}</span>
+                                    请求人帐号：<span class="message-title">{{scope.row.username}}</span>
+                                    姓名：<span class="message-title">{{scope.row.name}}</span>
+                                    房子：<span class="message-title">{{scope.row.house_hash}}</span>
+                                    房子地址：<span class="message-title">{{scope.row.commu_name}}</span>
+                                    请求状态：<span class="message-title">{{scope.row.state}}</span>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="date" width="150"></el-table-column>
@@ -62,7 +69,7 @@
 </template>
 
 <script>
-    import {ownerGet,userGet} from "../../../../../resource/user";
+    import {ownerGet,userGet,ownerRes,userIden} from "../../../../../resource/tract";
 
     export default {
         name: 'tabs',
@@ -70,22 +77,12 @@
             return {
                 message: 'first',
                 showHeader: false,
-                unread: [{
-                    date: '2018-04-19 20:00:00',
-                    title: 'xxxx想跟你签订合约',
-                },{
-                    date: '2018-04-19 21:00:00',
-                    title: 'xxxx合约取消',
-                }],
+                unread: [],
                 second:[],
-
-                read: [{
-                    date: '2018-04-19 20:00:00',
-                    title: '合约签订'
-                }],
+                request_response: false,
+                pay_password:0,
+                read: [],
                 recycle: [{
-                    date: '2018-04-19 20:00:00',
-                    title: '合约取消'
                 }]
             }
         },
@@ -104,26 +101,32 @@
                 const item = this.unread.splice(index, 1);
                 console.log(item);
                 this.read = item.concat(this.read);
-
+                this.request_response = true;
+                ownerRes(this.request_response);
             },
             no(index) {
                 const item = this.unread.splice(index, 1);
                 console.log(item);
                 this.read = item.concat(this.read);
+                this.request_response = false;
+                ownerRes(this.request_response);
             },
             pay(index) {
-                const item = this.second.splice(index, 1);
-                console.log(item);
-                this.read = item.concat(this.read);
-                this.$prompt('请输入邮箱', '提示', {
+                this.$prompt('请输入密码', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                 }).then(({ value }) => {
+                    const item = this.second.splice(index, 1);
+                    console.log(item);
+                    this.read = item.concat(this.read);
+                    this.request_response = true;
+                    this.pay_password = this.value;
+                    userIden(request_response,pay_password)
                     this.$message({
                         type: 'success',
-                        message: '你的邮箱是: ' + value
                     });
                 }).catch(() => {
+
                     this.$message({
                         type: 'info',
                         message: '取消输入'
