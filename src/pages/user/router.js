@@ -56,7 +56,7 @@ export let router = new Router({
                     component: resolve => require(['./views/personInfo/components/pocket.vue'], resolve),
                 },
                 {
-                    path:'/Myhouse1',
+                    path:'/Myhouse',
                     props:true,
                     component: resolve => require(['./views/personInfo/components/Myhouse.vue'], resolve),
                 },

@@ -4,38 +4,54 @@
                  text-color="indigo" active-text-color="#20a0ff" unique-opened router>
             <template v-for="item in items">
                 <template v-if="item.subs">
-                    <el-submenu :index="item.index" :key="item.index">
+                    <el-submenu :index="item.index">
                         <template slot="title">
                             <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
                         </template>
                         <template v-for="subItem in item.subs">
-                            <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index">
-                                <template slot="title">{{ subItem.title }}</template>
-                                <el-menu-item v-for="(threeItem,i) in subItem.subs" :key="i" :index="threeItem.index">
-                                    {{ threeItem.title }}
-                                </el-menu-item>
-                            </el-submenu>
-                            <el-menu-item v-else :index="subItem.index" :key="subItem.index">
-                                {{ subItem.title }}
+                            <el-menu-item :index="subItem.index">
+                                 {{ subItem.title }}
                             </el-menu-item>
                         </template>
                     </el-submenu>
                 </template>
                 <template v-else>
+                    <template v-if="item.subs1">
+                        <el-submenu :index="item.index">
+                            <template slot="title">
+                                <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
+                            </template>
+                            <template v-for="subItem1 in item.subs1">
+                                <el-menu-item  index="Myhouse">
+                                    {{ subItem1.commu_name }}
+<!--                                    <myhouse :hash="subItem1.house_hash"></myhouse>-->
+                                </el-menu-item>
+                            </template>
+                        </el-submenu>
+                    </template>
+                    <template v-else>
                     <el-menu-item :index="item.index" :key="item.index">
                         <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
                     </el-menu-item>
-                </template>
+                     </template>
+                     </template>
             </template>
         </el-menu>
     </div>
 </template>
 
 <script>
+    import {getUserInfo} from "../../../../../resource/user";
+    import  Myhouse from "./Myhouse"
     export default {
+        components: { Myhouse},
         data() {
             return {
+                houseId:123,
+
+
                 collapse: false,
+                house_hash:"",
                 items: [
                     {
                         icon: 'el-icon-user-solid',
@@ -49,22 +65,23 @@
                     },
                     {
                         icon: 'el-icon-s-home',
-                        index: '3',
+                        index: '',
                         title: '我的房屋',
-                        subs: [
+                        subs1: [
                             {
-                                index: 'Myhouse1',
-                                title: '房子1'
-                            },
-                            {
-                                index: 'addhouse',
-                                title: '添加房源',
+                                index: 'Myhouse',
+                                commu_name: '房子1'
                             },
                             {
                                 index: 'upload',
-                                title: '房子3'
+                                commu_name: '房子2'
                             }
                         ]
+                    },
+                    {
+                        icon: 'el-icon-s-home',
+                        index: 'addhouse',
+                        title: '添加房源'
                     },
                     {
                         icon: 'el-icon-school',
@@ -94,11 +111,22 @@
                 },
             }
         },
+        created(){
+            getUserInfo(123).then(res=>{
+                this.items.subs1 = res.data.myhouse;
+                console.log(this.items.subs1)
+
+            })
+        },
+
+
         computed:{
             onRoutes(){
                 return this.$route.path.replace('/','');
             }
         },
+        methods:{
+        }
     }
 </script>
 

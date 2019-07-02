@@ -110,7 +110,23 @@ export function ownerGet(){
                     "name":"曲延松",       //请求的人的姓名
                     "house_hash":"adfafd",    //请求的房子hash
                     "commu_name":"奥龙官邸",  //房子小区名
-                    "state":0    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
+                    "state":1    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
+                },
+                {
+                    "requestID":"xsxoo",
+                    "username":"xxdd",   //请求的人的用户名
+                    "name":"曲延松",       //请求的人的姓名
+                    "house_hash":"adfafd",    //请求的房子hash
+                    "commu_name":"奥龙官邸",  //房子小区名
+                    "state":2    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
+                },
+                {
+                    "requestID":"xsxoo",
+                    "username":"xxdd",   //请求的人的用户名
+                    "name":"曲延松",       //请求的人的姓名
+                    "house_hash":"adfafd",    //请求的房子hash
+                    "commu_name":"奥龙官邸",  //房子小区名
+                    "state":3    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
                 },
             ]
         }

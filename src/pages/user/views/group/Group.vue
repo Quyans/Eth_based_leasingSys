@@ -1,11 +1,13 @@
 <template>
     <div class="group">
+
         <app-bar :style="note">
             <template><span style="color: white;font-size: 1.3em;letter-spacing: 7.5px">{{name}}</span></template>
             <template slot="right">
                 <el-button type="text" @click="quitGroup" style="margin-right: 1em;color:white">退出群组</el-button>
             </template>
         </app-bar>
+        <Test  @father="change_p()"  :abc="toson" ></Test>
         <section class="content">
             <div class="owner-tag" v-if="ownerName">
                 <div class="owner-tag__key" style="color: white">创建者：</div>
@@ -35,6 +37,8 @@
             <i class="el-icon-loading" v-else/>
         </section>
         <check-validator ref="checkValidator" :group-id="id"/>
+
+        <p>{{abc}}</p>
     </div>
 </template>
 
@@ -50,6 +54,8 @@
     import CheckingHistory from "@/pages/user/views/group/components/CheckingHistory";
     import {getAbsenceRequestFeedback, reportAbsence} from "@/resource/leave";
 
+    import Test from"./components/Test"
+
     let test = false
 
     export default {
@@ -57,6 +63,7 @@
         components: {
             CheckingHistory,
             CheckButton, CheckValidator, ButtonMore, Icon, HaveNotJoined, AppBar,
+            Test
         },
         props: {
             id: {
@@ -101,6 +108,8 @@
         },
         data() {
             return {
+                toson:"afdklajdflkajdflkajf",
+                abc:"thisisfather",
                 ownerId: undefined,
                 ownerName: undefined,
 
@@ -144,6 +153,11 @@
             }
         },
         methods: {
+            change_p(){
+
+              this.abc="im son"
+            },
+
             check() {
                 this.$refs.checkValidator.check(this.needLocation, this.needFace)
                     .then(() => {

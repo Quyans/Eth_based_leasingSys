@@ -9,8 +9,8 @@
          <div class="fir">
             <div class="phone">
                 <el-carousel class="hourse" trigger="click" height="300px">
-                    <el-carousel-item v-for="item in phonelist" :key="item.key">
-                        <img :src="item.src">
+                    <el-carousel-item v-for="item in phonelist">
+                        <img class="myHousePhoto" :src="item">
                     </el-carousel-item>
                 </el-carousel>
                 <div class="h-info">
@@ -109,9 +109,13 @@
     import {getMyHouse,updateHouseInfo} from "../../../../../resource/house";
     export default {
         components: {},
+         props:[
+            'hash'
+         ],
         data() {
 
             return {
+                hash:"",
                 tableData:[],
                 registerForm:{
                     state:0,
@@ -138,8 +142,8 @@
                 dialogImageUrl: '',
                 dialogVisible: false,
                 phonelist:[
-                    {key: '1', src: 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1561713939&di=25c1a8a562a1dd37fe024f0604fd46b3&src=http://r.bstatic.com/images/hotel/max1024x768/987/98767654.jpg'},
-                    {key: '2', src: ''}
+                    'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1561713939&di=25c1a8a562a1dd37fe024f0604fd46b3&src=http://r.bstatic.com/images/hotel/max1024x768/987/98767654.jpg',
+                    ''
                 ],
                 note: {
                     backgroundImage: "url(" + require("../../../../../image/User/bk3.png") + ")",
@@ -286,5 +290,10 @@
 
     .el-carousel__item:nth-child(2n+1) {
         background-color: #d3dce6;
+    }
+
+    .myHousePhoto{
+        width: 100%;
+        height: 100%;
     }
 </style>
