@@ -23,11 +23,10 @@
         data() {
             return {
                 note: {
-                    backgroundImage: "url(" + require("../../../../../image/User/bk3.png") + ")",
+                    backgroundImage: "url(" + require("../../../../../image/User/bk3_withTitle.jpg") + ")",
                     backgroundRepeat: "no-repeat",
                     // height: '100%',
                     backgroundSize: '100% 100%',
-
                 },
                 vis_login:false,
                 vis_register:false,

@@ -46,7 +46,7 @@
             </div>
 
             <div style="width: 100%;position: relative;top: 50vh">
-                <el-button @click="submitPro">申请入住</el-button>
+                <el-button @click="submitPro()">申请入住</el-button>
             </div>
         </div>
     </div>

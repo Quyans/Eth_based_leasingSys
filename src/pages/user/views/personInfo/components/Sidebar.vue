@@ -81,7 +81,7 @@
                                 title: '房主通知'
                             },
                             {
-                                index: '0',
+                                index: 'tabsUser',
                                 title: '用户通知',
                             },
                         ]

@@ -5,8 +5,8 @@
                 <MyTitle></MyTitle>
                 <searchCondition></searchCondition>
                 <el-divider style="background-color: black" content-position="left"></el-divider>
-                <el-row>
-                    <el-col :span="8"><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>
+                <el-row v-for="item in computed_rough_Info.length">
+                    <el-col :span="8" ><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>
                     <el-col :span="8"><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>
                     <el-col :span="8"><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>
                 </el-row>
@@ -47,13 +47,61 @@
                     backgroundRepeat: "no-repeat",
                     backgroundSize: 'cover',
                 },
-                computed_rough_Info:{
-                    "photo":"sadfadsfadf",   //一张图片的hash
-                    "low_str_location":"山东省济南市历下区**小区",
-                    "lease":"5000",
-                    "house_type":"2",
-                    "lease_type":"1",
-                }
+                computed_rough_Info:[
+                    {"photo":"sadfadsfadf",   //一张图片的hash
+                        "low_str_location":"山东省济南市历下区**小区",
+                        "lease":"5000",
+                        "house_type":"2",
+                        "lease_type":"1",
+                        "house_hash":"house1"},
+                    {
+                        "photo":"sadfadsfadf",   //一张图片的hash
+                        "low_str_location":"山东省济南市历下区**小区",
+                        "lease":"5000",
+                        "house_type":"2",
+                        "lease_type":"1",
+                        "house_hash":"house2"
+                    },
+                    {
+                        "photo":"sadfadsfadf",   //一张图片的hash
+                        "low_str_location":"山东省济南市历下区**小区",
+                        "lease":"5000",
+                        "house_type":"2",
+                        "lease_type":"1",
+                        "house_hash":"house3"
+                    },{
+                        "photo":"sadfadsfadf",   //一张图片的hash
+                        "low_str_location":"山东省济南市历下区**小区",
+                        "lease":"5000",
+                        "house_type":"2",
+                        "lease_type":"1",
+                        "house_hash":"house4"
+                    },{
+                        "photo":"sadfadsfadf",   //一张图片的hash
+                        "low_str_location":"山东省济南市历下区**小区",
+                        "lease":"5000",
+                        "house_type":"2",
+                        "lease_type":"1",
+                        "house_hash":"house5"
+                    },
+                    {
+                        "photo":"sadfadsfadf",   //一张图片的hash
+                        "low_str_location":"山东省济南市历下区**小区",
+                        "lease":"5000",
+                        "house_type":"2",
+                        "lease_type":"1",
+                        "house_hash":"house6"
+                    },
+                    {
+                        "photo":"sadfadsfadf",   //一张图片的hash
+                        "low_str_location":"山东省济南市历下区**小区",
+                        "lease":"5000",
+                        "house_type":"2",
+                        "lease_type":"1",
+                        "house_hash":"house7"
+                    }
+
+                ]
 
 
             }
@@ -107,7 +155,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         padding-top: 3vh;
-        height: 100%;
+        min-height: 100%;
     }
 
     #home .avatar-uploader .el-upload {

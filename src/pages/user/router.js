@@ -75,6 +75,11 @@ export let router = new Router({
                     path:'/tabs',
                     props:true,
                     component: resolve => require(['./views/personInfo/components/tabs.vue'], resolve),
+                },
+                {
+                    path:'/tabsUser',
+                    props:true,
+                    component: resolve => require(['./views/personInfo/components/tabsUser.vue'], resolve),
                 }
             ]
         },

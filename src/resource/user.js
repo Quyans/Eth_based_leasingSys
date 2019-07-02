@@ -266,8 +266,7 @@ export function changeUserInfo(username,credit) {
 //获取房屋列表
 export function getHouseList() {
     return  Promise.resolve({
-        "status":200,
-        "message":"success",
+
         "data":{
             "verified":[            //通过验证的房子
                 {

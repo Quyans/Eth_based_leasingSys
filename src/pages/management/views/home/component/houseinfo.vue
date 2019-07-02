@@ -53,7 +53,7 @@
 
                 }],
                 note: {
-                    backgroundImage: "url(" + require("../../../../../image/User/bk3.png") + ")",
+                    backgroundImage: "url(" + require("../../../../../image/User/bk3_withTitle.jpg") + ")",
                     backgroundRepeat: "no-repeat",
                     backgroundSize: '100% 100%',
 
