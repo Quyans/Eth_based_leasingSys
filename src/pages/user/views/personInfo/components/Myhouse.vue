@@ -9,7 +9,7 @@
         <div class="bk":style="note2">
          <div class="fir">
             <div class="phone">
-                <el-carousel class="hourse" trigger="click" height="300px">
+                <el-carousel class="hourse" trigger="click" height="310px">
                     <el-carousel-item v-for="item in phonelist">
                         <img class="myHousePhoto" :src="item">
                     </el-carousel-item>
@@ -91,11 +91,11 @@
                 <div class="h-info">
                     评论：
                 <template v-for="comment in tableData">
-                    <div>
+                    <div style="margin-top: 30px">
                         <div>评论人：{{comment.user_id}}</div>
                         <div>评价：{{comment.comment}}</div>
                         <div><img :src="comment.comment_pic"></div>
-                        <el-divider content-position="center">分割线</el-divider>
+                        <HR align=center width=1000 color=black SIZE=2></HR>
                     </div>
                 </template>
                 </div>
