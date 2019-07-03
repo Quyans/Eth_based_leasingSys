@@ -12,7 +12,7 @@
                                 姓名：<span class="message-title">{{scope.row.name}}</span>
                                 房子：<span class="message-title">{{scope.row.house_hash}}</span>
                                 房子地址：<span class="message-title">{{scope.row.commu_name}}</span>
-                                请求状态：<span class="message-title">{{scope.row.state}}</span>
+                                请求状态：<span class="message-title">{{state_Com(scope.row.state)}}</span>
                             </template>
                         </el-table-column>
                         <el-table-column prop="date" width="180"></el-table-column>
@@ -44,27 +44,7 @@
                         </el-table-column>
                     </el-table>
                 </el-tab-pane>
-                <el-tab-pane :label="`已处理消息(${read.length})`" name="second">
-                    <template v-if="message === 'second'">
-                        <el-table :data="read" :show-header="false" style="width: 100%">
-                            <el-table-column>
-                                <template slot-scope="scope">
-                                    请求人帐号：<span class="message-title">{{scope.row.username}}</span>
-                                    姓名：<span class="message-title">{{scope.row.name}}</span>
-                                    房子：<span class="message-title">{{scope.row.house_hash}}</span>
-                                    房子地址：<span class="message-title">{{scope.row.commu_name}}</span>
-                                    请求状态：<span class="message-title">{{scope.row.state}}</span>
-                                </template>
-                            </el-table-column>
-                            <el-table-column prop="date" width="150"></el-table-column>
-                            <el-table-column width="120">
-                                <template slot-scope="scope">
-                                    <el-button type="danger" @click="handleDel(scope.$index)">删除</el-button>
-                                </template>
-                            </el-table-column>
-                        </el-table>
-                    </template>
-                </el-tab-pane>
+
             </el-tabs>
         </div>
     </div>
@@ -161,8 +141,19 @@
         computed: {
             unreadNum(){
                 return this.unread.length;
+            },
+            state_Com(state){
+                switch (state){
+                    case 0:
+                        return '房主未批准'
+                    case 1:
+                        return  '请您确认合约'
+                    case 2:
+                        return  '正在等待房主确认'
+                }
             }
-        }
+        },
+
     }
 </script>
 

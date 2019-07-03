@@ -75,7 +75,8 @@
 <style>
     .roughHouse{
         height: 200px;
-        width: 80%;
+        width: 30%;
+        margin: 10px 1%;
         background-color: antiquewhite;
         display: inline-block;
     }

@@ -239,7 +239,6 @@
             handleRemove(file, fileList) {
                 console.log(file, fileList);
                 this.registerForm.picture = file.raw;
-
             },
         }
     }

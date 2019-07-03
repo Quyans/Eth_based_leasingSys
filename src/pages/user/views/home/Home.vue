@@ -5,11 +5,14 @@
                 <MyTitle></MyTitle>
                 <searchCondition></searchCondition>
                 <el-divider style="background-color: black" content-position="left"></el-divider>
-                <el-row v-for="item in computed_rough_Info.length">
-                    <el-col :span="8" ><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>
-                    <el-col :span="8"><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>
-                    <el-col :span="8"><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>
-                </el-row>
+                <!--<el-row v-for="item in computed_rough_Info.length">-->
+                    <!--<el-col :span="8" ><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>-->
+                    <!--<el-col :span="8"><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>-->
+                    <!--<el-col :span="8"><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>-->
+                <!--</el-row>-->
+                <div style="width: 100%; text-align: center">
+                    <RoughHouse v-for="item in computed_rough_Info " :roughInfo="item"></RoughHouse>
+                </div>
             </div>
 
         </div>
@@ -50,14 +53,14 @@
                 computed_rough_Info:[
                     {"photo":"sadfadsfadf",   //一张图片的hash
                         "low_str_location":"山东省济南市历下区**小区",
-                        "lease":"5000",
+                        "lease":"30",
                         "house_type":"2",
                         "lease_type":"1",
                         "house_hash":"house1"},
                     {
                         "photo":"sadfadsfadf",   //一张图片的hash
                         "low_str_location":"山东省济南市历下区**小区",
-                        "lease":"5000",
+                        "lease":"80000",
                         "house_type":"2",
                         "lease_type":"1",
                         "house_hash":"house2"
@@ -65,14 +68,14 @@
                     {
                         "photo":"sadfadsfadf",   //一张图片的hash
                         "low_str_location":"山东省济南市历下区**小区",
-                        "lease":"5000",
+                        "lease":"300",
                         "house_type":"2",
                         "lease_type":"1",
                         "house_hash":"house3"
                     },{
                         "photo":"sadfadsfadf",   //一张图片的hash
                         "low_str_location":"山东省济南市历下区**小区",
-                        "lease":"5000",
+                        "lease":"70",
                         "house_type":"2",
                         "lease_type":"1",
                         "house_hash":"house4"
