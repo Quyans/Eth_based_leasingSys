@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <div class="Myhouse" :style="note">
             <div class="button_group">
                 我的房子
@@ -99,7 +100,6 @@
                 </template>
                 </div>
             </div>
-
          </div>
         </div>
     </div>
@@ -111,10 +111,15 @@
     export default {
         name:"Myhouse",
         components: {},
+        props:{
+            house_hash:{
+                required:true,
+                type:String,
+            }
+        },
         data() {
-
             return {
-                hash:"",
+                hash:"house_hash",
                 houseId:"",
                 tableData:[],
                 registerForm:{
@@ -161,7 +166,7 @@
             }
         },
         created(){
-            getMyHouse().then(res => {
+            getMyHouse(this.hash).then(res => {
                 this.tableData = res.data.house_comment;
                 this.registerForm.house_id_hash = res.data.house_id_hash;
                 this.owner_id = res.data.owner_id;
@@ -185,9 +190,6 @@
                 this.registerForm.lease = res.data.lease;
                 this.house_type = res.data.house_type;
                 this.house_owner_credit = res.data.house_owner_credit;
-
-
-
             })
 
         },

@@ -51,7 +51,7 @@ export function getMyHouse(house_id_hash) {
                     ],
                 }
             ]
-        }
+        },
     // return server.get('user/myhouse', {
     //     params: {
     //         house_hash

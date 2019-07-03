@@ -1,5 +1,6 @@
 <template>
     <div class="sidebar">
+
         <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse":style="note"
                  text-color="indigo" active-text-color="#20a0ff" unique-opened router>
             <template v-for="item in items">
@@ -22,9 +23,11 @@
                                 <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
                             </template>
                             <template v-for="subItem1 in name">
-                                <el-menu-item  index="Myhouse" @click="setHouseId(subItem1.house_id_hash)">
+
+                                <el-menu-item  @click="setHouseId(subItem1.house_id_hash)">
                                    {{subItem1.commu_name}}
                                 </el-menu-item>
+
                             </template>
                         </el-submenu>
                     </template>
@@ -36,6 +39,7 @@
                      </template>
             </template>
         </el-menu>
+
     </div>
 </template>
 
@@ -45,7 +49,7 @@
         components: {},
         data() {
             return {
-
+                house_hash:'123',
                 collapse: false,
                 houseid:"",
                 name:[],
@@ -114,9 +118,11 @@
             }
         },
         methods:{
+
             setHouseId(houseId){
                 this.houseid = houseId;
                 console.log(this.houseid)
+                this.$router.push(`/Myhouse/${this.houseid}`)
             }
         }
     }
