@@ -56,12 +56,12 @@
                 items: [
                     {
                         icon: 'el-icon-user-solid',
-                        index: 'info',
+                        index: '/info',
                         title: '个人资料'
                     },
                     {
                         icon: 'el-icon-s-cooperation',
-                        index: 'pocket',
+                        index: '/pocket',
                         title: '钱包'
                     },
                     {
@@ -73,12 +73,12 @@
                     },
                     {
                         icon: 'el-icon-s-home',
-                        index: 'addhouse',
+                        index: '/addhouse',
                         title: '添加房源'
                     },
                     {
                         icon: 'el-icon-school',
-                        index: 'Mybus',
+                        index: '/Mybus',
                         title: '我的交易'
                     },
                     {
@@ -87,11 +87,11 @@
                         title: '我的通知',
                         subs: [
                             {
-                                index: 'tabs',
+                                index: '/tabs',
                                 title: '房主通知'
                             },
                             {
-                                index: 'tabsUser',
+                                index: '/tabsUser',
                                 title: '用户通知',
                             },
                         ]
