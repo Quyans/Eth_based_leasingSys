@@ -84,7 +84,7 @@ export let router = new Router({
             ]
         },
         {
-            path:'/house/:houseHash',
+            path:'/house/:house_hash',
             name:'specificInfo',
             props:true,
             component:_('SpecificInfo')

@@ -1,6 +1,5 @@
 <template>
     <div class="group">
-
         <app-bar :style="note">
             <template><span style="color: white;font-size: 1.3em;letter-spacing: 7.5px">{{name}}</span></template>
             <template slot="right">

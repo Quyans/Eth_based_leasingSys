@@ -1,7 +1,7 @@
 <template>
     <div id="houseHome">
         <div   class="sub_home"  style="">
-            <h2>房子名称</h2>
+            <h2>房子名称{{house_hash}}</h2>
             <el-carousel :autoplay="false"  type="card" height="200px">
                 <el-carousel-item v-for="item in speciInfo.house_pic" >
                     <!--<h3 class="medium">{{ item }}</h3>-->
@@ -60,8 +60,15 @@
         components: {
             ShowPosition
         },
+        props: {
+            house_hash: {
+                required: true,
+                type: String
+            }
+        },
         data(){
             return{
+                house_id_hash:"",
                 speciInfo:{
                     lease:'',
                     house_pic: [

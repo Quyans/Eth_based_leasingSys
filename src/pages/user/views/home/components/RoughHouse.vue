@@ -1,5 +1,5 @@
 <template>
-    <router-link :to='"/house/"+ rough_info.house_hash'>
+    <!--<router-link :to='"/house/"+ rough_info.house_hash'>-->
         <div class="roughHouse" @click="goSpecInfo()">
             <el-row style="height: 100%">
                 <el-col :span="12">
@@ -17,7 +17,7 @@
                 </el-col>
             </el-row>
         </div>
-    </router-link>
+    <!--</router-link>-->
 </template>
 
 <script>
@@ -64,7 +64,7 @@
                 this.rough_info = compute_int2str(this.computedInfo)
             },
             goSpecInfo(){
-
+                this.$router.push(`/house/${this.rough_info.house_hash}`)
             }
         }
     }
