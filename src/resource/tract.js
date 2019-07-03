@@ -1,7 +1,45 @@
 import {handleResponse, server} from "../utils/http";
 import qs from "qs";
 
+//管路员进行仲裁
+export function managerGet() {
+    return  Promise.resolve({
+        "status":200,
+        "message":"success",
+        "data":{
+            tract:[
+                {
+                    "ownername":"xxdd",   //请求房主的名字
+                    "owner":"曲延松",       //请求的房主的姓名
+                    "username":"xxasfddd",  //请求房客的名字
+                    "user":"刘鹏昊",       //请求的房客的的姓名
+                    "house_id_hash":"adfafd",    //请求的房子房产证的hash
+                    "commu_name":"茗筑美嘉",  //房子小区名
+                    },
 
+                {
+                    "ownername":"sdfadfsa",   //请求房主的名字
+                    "owner":"郭松岳",       //请求的房主的姓名
+                    "username":"xxasfddd",   //请求房客的名字
+                    "user":"王亚平",       //请求的房客的的姓名
+                    "house_id_hash":"sfd",    //请求的房子房产证的hash
+                    "commu_name":"江南水城",  //房子小区名
+                },
+
+]
+},
+    })
+}
+
+//管理员仲裁反馈
+export function managerRes(username,ownername,res) {
+    // console.log(form.get('profile'))
+    return Promise.resolve({
+        "status":200,
+        "message":"OK",
+    })
+    return server.post('/tract/managerRes',  qs.stringify({username,ownername,res})).then(handleResponse)
+}
 
 export function userSet(house_hash,owner) {
     // console.log(form.get('profile'))

@@ -34,8 +34,8 @@ export let router = new Router({
             component: _('login'),
         },
             {
-                path:'/info',
-                component: resolve => require(['../user/views/personInfo/components/Info'], resolve),
+                path:'/manager',
+                component: resolve => require(['../management/views/home/component/manager'], resolve),
             },
             {
                 path:'/userinfo',

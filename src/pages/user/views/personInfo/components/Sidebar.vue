@@ -23,7 +23,6 @@
                                 <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
                             </template>
                             <template v-for="subItem1 in name">
-
                                 <el-menu-item  @click="setHouseId(subItem1.house_id_hash)">
                                    {{subItem1.commu_name}}
                                 </el-menu-item>

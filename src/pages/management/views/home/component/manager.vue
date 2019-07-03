@@ -11,31 +11,41 @@
                     stripe
                     style="width: 100%">
                 <el-table-column
-                        prop="photo"
-                        label="图片"
-                        width="180">
-                    <template slot-scope="scope">
-                        　　　　<img :src="scope.row.photo" width="100" height="100" class="head_pic"/>
-                        　　</template>
+                        prop="ownername"
+                        label="房主用户名"
+                        width="150">
                 </el-table-column>
                 <el-table-column
-                        prop="low_location"
-                        label="地址">
+                        prop="owner"
+                        label="房子名字"
+                        width="120">
                 </el-table-column>
                 <el-table-column
-                        prop="lease"
-                        label="费用"
-                        width="100">
+                        prop="username"
+                        label="租客用户名"
+                        width="150">
                 </el-table-column>
                 <el-table-column
-                        prop="house_type"
-                        label="房型"
+                        prop="user"
+                        label="租客名"
+                        width="120">
+                </el-table-column>
+                <el-table-column
+                        prop="house_id_hash"
+                        label="房子的房产证的hash"
+                        width="300">
+                </el-table-column>
+                <el-table-column
+                        prop="commu_name"
+                        label="小区"
                         width="200">
                 </el-table-column>
                 <el-table-column
-                        prop="lease_type"
-                        label="状态"
-                        width="100">
+                        label="仲裁">
+                    <template slot-scope="scope">
+                        <el-button @click="own(scope.row)" type="text" >房主违约</el-button>
+                        <el-button @click="used(scope.row)" type="text">房客违约</el-button>
+                    </template>
                 </el-table-column>
             </el-table>
         </div>
@@ -44,7 +54,7 @@
 
 <script>
 
-    import {getHouseList} from "../../../../../resource/user";
+    import {managerGet,managerRes} from "../../../../../resource/tract";
     export default {
         name: "houseinfo",
         components: {},
@@ -53,7 +63,6 @@
         data() {
             return {
                 tableData:[{
-
                 }],
                 note: {
                     backgroundImage: "url(" + require("../../../../../image/User/bk3_withTitle.jpg") + ")",
@@ -71,14 +80,20 @@
             }
         },
         created(){
-            getHouseList().then(res => {
-                this.tableData = res.data.verified
+            managerGet().then(res => {
+                this.tableData = res.data.tract;
             })
         },
 
 
 
         methods:{
+            own(rows){
+            managerRes(rows.username,rows.ownername,1);
+            },
+            used(rows){
+                managerRes(rows.username,rows.ownername,2);
+            }
         }
     }
 </script>

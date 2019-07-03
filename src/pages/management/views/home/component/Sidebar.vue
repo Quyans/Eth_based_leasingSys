@@ -11,9 +11,6 @@
                         <template v-for="subItem in item.subs">
                             <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index">
                                 <template slot="title">{{ subItem.title }}</template>
-                                <el-menu-item v-for="(threeItem,i) in subItem.subs" :key="i" :index="threeItem.index">
-                                    {{ threeItem.title }}
-                                </el-menu-item>
                             </el-submenu>
                             <el-menu-item v-else :index="subItem.index" :key="subItem.index">
                                 {{ subItem.title }}
@@ -46,6 +43,11 @@
                         icon: 'el-icon-lx-copy',
                         index: 'houseinfo',
                         title: '房子列表'
+                    },
+                    {
+                        icon: 'el-icon-lx-copy',
+                        index: 'manager',
+                        title: '合约仲裁'
                     },
                 ],
                 note:{
