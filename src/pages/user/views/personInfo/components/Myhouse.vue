@@ -14,7 +14,7 @@
                     </el-carousel-item>
                 </el-carousel>
                 <div class="h-info">
-                    房产证:<span style="margin-left:50px">{{registerForm.house_hash}}</span>
+                    房产证:<span style="margin-left:50px">{{registerForm.house_id_hash}}</span>
                 </div>
                 <div class="h-info" style="margin-left: 50px">
                 房主身份证:<span style="margin-left:30px">{{owner_id}}</span>
@@ -107,19 +107,19 @@
 
 <script>
     import {getMyHouse,updateHouseInfo} from "../../../../../resource/house";
+
     export default {
+        name:"Myhouse",
         components: {},
-         props:[
-            'hash'
-         ],
         data() {
 
             return {
                 hash:"",
+                houseId:"",
                 tableData:[],
                 registerForm:{
                     state:0,
-                    house_hash:0,
+                    house_id_hash:0,
                     elevator:"",
                     lease:0,
                     picture:false,
@@ -143,7 +143,7 @@
                 dialogVisible: false,
                 phonelist:[
                     'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1561713939&di=25c1a8a562a1dd37fe024f0604fd46b3&src=http://r.bstatic.com/images/hotel/max1024x768/987/98767654.jpg',
-                    ''
+                    'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1561713939&di=25c1a8a562a1dd37fe024f0604fd46b3&src=http://r.bstatic.com/images/hotel/max1024x768/987/98767654.jpg'
                 ],
                 note: {
                     backgroundImage: "url(" + require("../../../../../image/User/bk3.png") + ")",
@@ -163,7 +163,7 @@
         created(){
             getMyHouse().then(res => {
                 this.tableData = res.data.house_comment;
-                this.registerForm.house_hash = res.data.house_hash;
+                this.registerForm.house_id_hash = res.data.house_id_hash;
                 this.owner_id = res.data.owner_id;
                 this.owner = res.data.owner;
                 this.verify = res.data.verify;
@@ -243,6 +243,8 @@
         }
     }
 </script>
+
+
 
 <style scoped lang="scss">
     .Myhouse{

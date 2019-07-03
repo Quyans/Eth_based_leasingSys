@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="tabs">
         <div class="container">
             <el-tabs v-model="message">
                 <el-tab-pane :label="`未处理请求(${unread.length})`" name="first">
@@ -11,13 +11,18 @@
                                 房子：<span class="message-title">{{scope.row.house_hash}}</span>
                                 房子地址：<span class="message-title">{{scope.row.commu_name}}</span>
                                 <div v-if="scope.row.state==0">
-                                请求状态：<span class="message-title">等待请求</span>
+                                请求状态：<span class="message-title">等待处理</span>
                                 </div>
                                 <div v-else-if="scope.row.state==1">
-                                    请求状态：<span class="message-title">处理中</span>
+                                    请求状态：<span class="message-title">等待房客处理</span>
                                 </div>
                                 <div v-else-if="scope.row.state==2">
-                                    请求状态：<span class="message-title">等待支付</span>
+                                    <div v-if="scope.row.res == true">
+                                       请求状态：<span class="message-title">等待支付</span>
+                                    </div>
+                                    <div v-else>
+                                        请求状态：<span class="message-title">已被拒绝</span>
+                                    </div>
                                 </div>
                                 <div v-else>
                                     请求状态：<span class="message-title">完成合约</span>
@@ -28,7 +33,7 @@
                         <el-table-column width="120">
                             <template slot-scope="scope">
                                 <div v-if="scope.row.state==0">
-                                <el-button size="small" @click="yes(scope.$index)">同意</el-button>
+                                <el-button size="small" @click="yes(scope.$index)">支付</el-button>
                                 <div style="float: right;margin-right: 45px">
                                 <el-button size="small" @click="no(scope.$index)">拒绝</el-button>
                                 </div>
@@ -37,7 +42,12 @@
                                     等待处理中
                                 </div>
                                 <div v-if="scope.row.state==2">
-                                    <el-button size="small" @click="pay(scope.$index)">支付</el-button>
+                                    <div v-if="scope.row.res == true">
+                                    <el-button size="small" @click="pay(scope.$index)">确认</el-button>
+                                    </div>
+                                    <div v-else>
+                                        已被拒绝
+                                    </div>
                                 </div>
                                 <div v-if="scope.row.state==3">
                                     合约完成
@@ -79,7 +89,23 @@
             yes(index) {
                 this.request_response = true;
                 ownerRes(this.request_response);
-                this.$router.go(0);
+                this.$prompt('请输入密码', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                }).then(({ value }) => {
+                    this.$message({
+                        type: 'success',
+                        message: '支付成功',
+                    });
+                    userIden(this.request_response,value);
+                    this.$router.go(0);
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '取消输入'
+                    });
+                });
+
             },
             no(index) {
                 this.request_response = false;
@@ -90,18 +116,15 @@
                 this.$prompt('请输入密码', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
+                    center: true,
                 }).then(({ value }) => {
-                    const item = this.second.splice(index, 1);
-                    console.log(item);
-                    this.read = item.concat(this.read);
                     this.request_response = true;
                     this.pay_password = this.value;
-                    userIden(request_response,pay_password)
                     this.$message({
                         type: 'success',
+                        message:'支付成功'
                     });
                 }).catch(() => {
-
                     this.$message({
                         type: 'info',
                         message: '取消输入'
@@ -119,6 +142,10 @@
 </script>
 
 <style>
+    .tabs{
+        width: 100%;
+        height: 100%;
+    }
     .message-title{
         cursor: pointer;
     }

@@ -21,10 +21,9 @@
                             <template slot="title">
                                 <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
                             </template>
-                            <template v-for="subItem1 in item.subs1">
-                                <el-menu-item  index="Myhouse">
-                                    {{ subItem1.commu_name }}
-<!--                                    <myhouse :hash="subItem1.house_hash"></myhouse>-->
+                            <template v-for="subItem1 in name">
+                                <el-menu-item  index="Myhouse" @click="setHouseId(subItem1.house_id_hash)">
+                                   {{subItem1.commu_name}}
                                 </el-menu-item>
                             </template>
                         </el-submenu>
@@ -42,16 +41,14 @@
 
 <script>
     import {getUserInfo} from "../../../../../resource/user";
-    import  Myhouse from "./Myhouse"
     export default {
-        components: { Myhouse},
+        components: {},
         data() {
             return {
-                houseId:123,
-
 
                 collapse: false,
-                house_hash:"",
+                houseid:"",
+                name:[],
                 items: [
                     {
                         icon: 'el-icon-user-solid',
@@ -68,14 +65,6 @@
                         index: '',
                         title: '我的房屋',
                         subs1: [
-                            {
-                                index: 'Myhouse',
-                                commu_name: '房子1'
-                            },
-                            {
-                                index: 'upload',
-                                commu_name: '房子2'
-                            }
                         ]
                     },
                     {
@@ -114,9 +103,8 @@
         created(){
             getUserInfo(123).then(res=>{
                 this.items.subs1 = res.data.myhouse;
-                console.log(this.items.subs1)
-
-            })
+                this.name = res.data.myhouse;
+            });
         },
 
 
@@ -126,6 +114,10 @@
             }
         },
         methods:{
+            setHouseId(houseId){
+                this.houseid = houseId;
+                console.log(this.houseid)
+            }
         }
     }
 </script>

@@ -17,12 +17,12 @@ export function getUserInfo(id) {
             "myhouse":[
                 {
                     "commu_name":"奥龙官邸",
-                    "house_hash":"sdfaafadsfasd"
+                    "house_id_hash":"sdfaafadsfasd"
                 },
 
                 {
                     "commu_name":"茗筑美嘉",
-                    "house_hash":"sdfsdafsdfadf"
+                    "house_id_hash":"sdfsdafsdfadf"
                 },
             ]
         }

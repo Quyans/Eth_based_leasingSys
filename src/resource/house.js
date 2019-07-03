@@ -1,7 +1,8 @@
 import {handleResponse, server} from "../utils/http";
 import qs from "qs";
 
-export function getMyHouse(house_hash) {
+
+export function getMyHouse(house_id_hash) {
     return  Promise.resolve({
         "status":200,
         "message":"success",
@@ -11,7 +12,7 @@ export function getMyHouse(house_hash) {
                 "sdfadsfadsfasf",
                 "sadfadsfasfsa",
             ],
-            "house_hash":"sdfwenk31345",//房产证号
+            "house_id_hash":"sdfaafadsfasd",//房产证号
             "owner_id":"37012506546564",//房主身份证号
             "verify":"true" ,  //经过验证
             "owner":"quyanso111",//拥有者的账号

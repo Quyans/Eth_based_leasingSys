@@ -113,7 +113,7 @@
 </template>
 
 <script>
-    import {setUpHouse} from "../../../../../resource/house";
+    import {addHouse} from "../../../../../resource/house";
     export default {
         components: {},
         data() {
@@ -188,7 +188,7 @@
                             resolve(formData)
                         })
                     }
-                }).then(formData => setUpHouse(formData))
+                }).then(formData => addHouse(formData))
                     .then(() => {
                             this.$message({
                                 message: '修改成功',
