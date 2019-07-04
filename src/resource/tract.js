@@ -135,48 +135,53 @@ export function ownerGet(){
         "data":{
             tract:[
                 {
-                    "requestID":"xxoo",
                     "username":"xxdd",   //请求的人的用户名
                     "name":"曲延松",       //请求的人的姓名
-                    "house_hash":"adfafd",    //请求的房子hash
+                    "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"茗筑美嘉",  //房子小区名
-                    "state":0,//  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
-                    "res":true
+                    "tract_status":'submit'
                 },
                 {
-                    "requestID":"xsxoo",
                     "username":"xxdd",   //请求的人的用户名
                     "name":"曲延松",       //请求的人的姓名
-                    "house_hash":"adfafd",    //请求的房子hash
+                    "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"奥龙官邸",  //房子小区名
-                    "state":1,    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
-                    "res":true
+                    "tract_status":'effect'
                 },
                 {
-                    "requestID":"xsxoo",
                     "username":"xxdd",   //请求的人的用户名
                     "name":"曲延松",       //请求的人的姓名
-                    "house_hash":"adfafd",    //请求的房子hash
+                    "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"奥龙官邸",  //房子小区名
-                    "state":2,    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
-                    "res":false
+                    "tract_status":'refused'
                 },
                 {
-                    "requestID":"xsxoo",
                     "username":"xxdd",   //请求的人的用户名
                     "name":"曲延松",       //请求的人的姓名
-                    "house_hash":"adfafd",    //请求的房子hash
+                    "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"奥龙官邸",  //房子小区名
-                    "state":2,    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
-                    "res":true
+                    "tract_status":'fail'
                 },
                 {
-                    "requestID":"xsxoo",
                     "username":"xxdd",   //请求的人的用户名
                     "name":"曲延松",       //请求的人的姓名
-                    "house_hash":"adfafd",    //请求的房子hash
+                    "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"奥龙官邸",  //房子小区名
-                    "state":3    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
+                    "tract_status":'userIden'
+                },
+                {
+                    "username":"xxdd",   //请求的人的用户名
+                    "name":"曲延松",       //请求的人的姓名
+                    "house_id_hash":"adfafd",    //请求的房子hash
+                    "commu_name":"奥龙官邸",  //房子小区名
+                    "tract_status":'finish'
+                },
+                {
+                    "username":"xxdd",   //请求的人的用户名
+                    "name":"曲延松",       //请求的人的姓名
+                    "house_id_hash":"adfafd",    //请求的房子hash
+                    "commu_name":"奥龙官邸",  //房子小区名
+                    "tract_status":'ownerIden'
                 },
             ]
         }
@@ -185,13 +190,23 @@ export function ownerGet(){
 }
 
 //房主回应请求
-export function ownerRes(request_response) {
+export function ownerRes(username,request_response) {
     // console.log(form.get('profile'))
     return Promise.resolve({
         "status":200,
         "message":"OK",
     })
-    return server.post('/tract/ownerRes',  qs.stringify({request_response})).then(handleResponse)
+    return server.post('/tract/ownerRes',  qs.stringify({username,request_response})).then(handleResponse)
+}
+
+//房主确认请求
+export function ownerIden(username,request_response) {
+    // console.log(form.get('profile'))
+    return Promise.resolve({
+        "status":200,
+        "message":"OK",
+    })
+    return server.post('/tract/ownerIden',  qs.stringify({username,request_response})).then(handleResponse)
 }
 
 //房主获取用户反馈请求
@@ -202,20 +217,25 @@ export function userGet(){
         "data":{
             tract:[
                 {
-                    "requestID":"xxoo",
-                    "username":"xxdd",   //请求的人的用户名
+                    "ownername":"xxdd",   //请求房主的名字
                     "name":"曲延松",       //请求的人的姓名
-                    "house_hash":"adfafd",    //请求的房子hash
+                    "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"茗筑美嘉",  //房子小区名
-                    "state":2    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
+                    "tract_status":'submit'
                 },
                 {
-                    "requestID":"xsxoo",
-                    "username":"xxdd",   //请求的人的用户名
+                    "ownername":"xxdd",   //请求的人的用户名
                     "name":"曲延松",       //请求的人的姓名
-                    "house_hash":"adfafd",    //请求的房子hash
+                    "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"奥龙官邸",  //房子小区名
-                    "state":2    //  0未回复  1 卖家同意买家未确认  2 买家确认卖家未确认 3、 卖家确认
+                    "tract_status":'effect'
+                },
+                {
+                    "ownername":"xxdd",   //请求的人的用户名
+                    "name":"曲延松",       //请求的人的姓名
+                    "house_id_hash":"adfafd",    //请求的房子hash
+                    "commu_name":"奥龙官邸",  //房子小区名
+                    "tract_status":'ownerIden'
                 },
             ]
         }
@@ -224,13 +244,13 @@ export function userGet(){
 }
 
 //房主回应请求并支付
-export function userIden(request_response,pay_password) {
+export function userIden(username,request_response) {
     // console.log(form.get('profile'))
     return Promise.resolve({
         "status":200,
         "message":"OK",
     })
-    return server.post('/tract/userIden',  qs.stringify({request_response,pay_password})).then(handleResponse)
+    return server.post('/tract/userIden',  qs.stringify({username,request_response})).then(handleResponse)
 }
 
 //评价房子

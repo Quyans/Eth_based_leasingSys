@@ -14,45 +14,59 @@
                         <img class="myHousePhoto" :src="item">
                     </el-carousel-item>
                 </el-carousel>
-                <div class="h-info">
-                    房产证:<span style="margin-left:50px">{{registerForm.house_id_hash}}</span>
-                </div>
-                <div class="h-info" style="margin-left: 50px">
-                房主身份证:<span style="margin-left:30px">{{owner_id}}</span>
-                 </div>
-                <div class="h-info">
-                    房源验证:<span style="margin-left:30px">{{verify}}</span>
-                </div>
-                <div class="h-info" style="margin-left: 165px">
-                    房主帐号:<span style="margin-left:50px">{{owner}}</span>
-                </div>
-                <div class="h-info">
-                    房主姓名:<span style="margin-left:30px">{{owner_name}}</span>
-                </div>
-                <div class="h-info" style="margin-left: 135px">
-                房主信誉:<span style="margin-left:50px">{{house_owner_credit}}</span>
-                </div>
-                <div class="h-info">
-                    省份:<span style="margin-left:80px">{{provi}}</span>
-                </div>
-                <div class="h-info" style="margin-left: 135px">
-                    城市:<span style="margin-left:50px">{{city}}</span>
-                </div>
-                <div class="h-info">
-                    市区:<span style="margin-left:80px">{{sector}}</span>
-                </div>
-                <div class="h-info" style="margin-left: 135px">
-                    小区:<span style="margin-left:50px">{{commu_name}}</span>
-                </div>
-                <div class="h-info">
-                    具体地址:<span style="margin-left:30px">{{specific_location}}</span>
-                </div>
-                <div class="h-info" style="margin-left: 30px">
-                    楼层:<span style="margin-left:50px">{{floor}}</span>
-                </div>
-                <div class="h-info">
-                    房型:<span style="margin-left:30px">{{house_type}}</span>
-                </div>
+                <el-row style="height: 0">
+                 <el-col :span="7">
+                    <div class="h-info">
+                    房产证:<span style="margin-left:30px">{{registerForm.house_id_hash}}</span>
+                     </div>
+                     <div class="h-info">
+                         房主帐号:<span style="margin-left:30px">{{owner}}</span>
+                     </div>
+                     <div class="h-info">
+                         房主姓名:<span style="margin-left:30px">{{owner_name}}</span>
+                     </div>
+                     <div class="h-info">
+                         省份:<span style="margin-left:80px">{{provi}}</span>
+                     </div>
+                     <div class="h-info">
+                         市区:<span style="margin-left:80px">{{sector}}</span>
+                     </div>
+                 </el-col>
+                    <el-col :span="8">
+                        <div class="h-info">
+                            房主身份证:<span style="margin-left: 20px">{{owner_id}}</span>
+                        </div>
+                        <div class="h-info">
+                            房源验证:<span style="margin-left:50px">{{verify}}</span>
+                        </div>
+                        <div class="h-info">
+                            房主信誉:<span style="margin-left:50px">{{house_owner_credit}}</span>
+                        </div>
+                        <div class="h-info">
+                            城市:<span style="margin-left:50px">{{city}}</span>
+                        </div>
+                        <div class="h-info">
+                            小区:<span style="margin-left:50px">{{commu_name}}</span>
+                        </div>
+                    </el-col>
+                </el-row>
+                <el-row style="height: 0">
+                    <el-col :span="7">
+                        <div class="h-info">
+                            具体地址:<span style="margin-left:0">{{specific_location}}</span>
+                        </div>
+                    </el-col>
+                        <el-col :span="4">
+                        <div class="h-info" >
+                            楼层:<span style="margin-left:50px">{{floor}}</span>
+                        </div>
+                         </el-col>
+                        <el-col :span="4">
+                        <div class="h-info">
+                            房型:<span style="margin-left:30px">{{house_type}}</span>
+                        </div>
+                        </el-col>
+                </el-row>
                 <div class="h-info">
                     房子可用:<el-input
                         placeholder="请输入内容"
@@ -60,7 +74,7 @@
                         v-bind:disabled="showinput">
                 </el-input>
                 </div>
-                <div class="h-info">
+                <div class="h-info" style="margin-left: 50px">
                     有无电梯:
                     <el-input
                         placeholder="请输入内容"
@@ -147,6 +161,8 @@
                 dialogImageUrl: '',
                 dialogVisible: false,
                 phonelist:[
+                    'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1561713939&di=25c1a8a562a1dd37fe024f0604fd46b3&src=http://r.bstatic.com/images/hotel/max1024x768/987/98767654.jpg',
+                    'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1561713939&di=25c1a8a562a1dd37fe024f0604fd46b3&src=http://r.bstatic.com/images/hotel/max1024x768/987/98767654.jpg',
                     'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1561713939&di=25c1a8a562a1dd37fe024f0604fd46b3&src=http://r.bstatic.com/images/hotel/max1024x768/987/98767654.jpg',
                     'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1561713939&di=25c1a8a562a1dd37fe024f0604fd46b3&src=http://r.bstatic.com/images/hotel/max1024x768/987/98767654.jpg'
                 ],

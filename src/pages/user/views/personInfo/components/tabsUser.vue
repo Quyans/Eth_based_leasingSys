@@ -2,55 +2,63 @@
     <div class="notify">
         <div class="container">
             <el-tabs v-model="message">
-                <el-tab-pane :label="`未处理请求(${unread.length})`" name="first">
+                <el-tab-pane :label="`用户消息列表(${unread.length})`" name="first">
                     <el-table :data="unread" :show-header="false" style="width: 100%">
                         <el-table-column>
                             <template slot-scope="scope">
-                                请求人帐号：<span class="message-title">{{scope.row.username}}</span>
+                                请求人帐号：<span class="message-title">{{scope.row.ownername}}</span>
                                 姓名：<span class="message-title">{{scope.row.name}}</span>
-                                房子：<span class="message-title">{{scope.row.house_hash}}</span>
+                                房子：<span class="message-title">{{scope.row.house_id_hash}}</span>
                                 房子地址：<span class="message-title">{{scope.row.commu_name}}</span>
-                                <div v-if="scope.row.state==0">
-                                    请求状态：<span class="message-title">等待房主处理</span>
+                                <div v-if="scope.row.tract_status=='submit'">
+                                    请求状态：<span class="message-title">等待对方支付</span>
                                 </div>
-                                <div v-else-if="scope.row.state==1">
-                                    <div v-if="scope.row.res == true">
-                                        请求状态：<span class="message-title">等待支付</span>
-                                    </div>
-                                    <div v-else>
-                                        请求状态：<span class="message-title">已被拒绝</span>
-                                    </div>
+                                <div v-else-if="scope.row.tract_status=='effect'">
+                                    请求状态：<span class="message-title">合约已生效</span>
                                 </div>
-                                <div v-else-if="scope.row.state==2">
-                                    请求状态：<span class="message-title">等待房主支付</span>
+                                <div v-else-if="scope.row.tract_status=='finish'">
+                                    请求状态：<span class="message-title">合约已完成</span>
                                 </div>
-                                <div v-else>
-                                    请求状态：<span class="message-title">完成合约</span>
+                                <div v-else-if="scope.row.tract_status=='fail'">
+                                    请求状态：<span class="message-title">合约失败</span>
+                                </div>
+                                <div v-else-if="scope.row.tract_status=='refused'">
+                                    请求状态：<span class="message-title">对方拒绝</span>
+                                </div>
+                                <div v-else-if="scope.row.tract_status=='ownerIden'">
+                                    请求状态：<span class="message-title">对方已确认</span>
+                                </div>
+                                <div v-else-if="scope.row.tract_status=='userIden'">
+                                    请求状态：<span class="message-title">你已确认</span>
                                 </div>
                             </template>
                         </el-table-column>
                         <el-table-column prop="date" width="180"></el-table-column>
                         <el-table-column width="120">
                             <template slot-scope="scope">
-                                <div v-if="scope.row.state==0">
-                                    等待处理中
+                                <div v-if="scope.row.tract_status=='submit'">
+                                    等待对方支付
                                 </div>
-                                <div v-if="scope.row.state==1">
-                                    <div v-if="scope.row.res == true">
-                                        <el-button size="small" @click="pay(scope.$index)">支付</el-button>
-                                        <div style="float: right;margin-right: 45px">
-                                            <el-button size="small" @click="no(scope.$index)">拒绝</el-button>
-                                        </div>
-                                    </div>
-                                    <div v-else>
-                                        已被拒绝
-                                    </div>
+                                <div v-if="scope.row.tract_status=='effect'">
+                                    合约生效中
                                 </div>
-                                <div v-if="scope.row.state==2">
-                                    等待房主支付
+                                <div v-if="scope.row.tract_status=='refused'">
+                                    对方拒绝了这个请求
                                 </div>
-                                <div v-if="scope.row.state==3">
+                                <div v-if="scope.row.tract_status=='finish'">
                                     合约完成
+                                </div>
+                                <div v-if="scope.row.tract_status=='fail'">
+                                    合约失败
+                                </div>
+                                <div v-if="scope.row.tract_status=='ownerIden'">
+                                    <el-button size="small" @click="yes(scope.row)">确认</el-button>
+                                    <div style="float: right;margin-right: 45px">
+                                        <el-button size="small" @click="no(scope.row)">拒绝</el-button>
+                                    </div>
+                                </div>
+                                <div v-if="scope.row.tract_status=='userIden'">
+                                    你以确认，等待对方确认
                                 </div>
                             </template>
                         </el-table-column>
@@ -62,7 +70,7 @@
 </template>
 
 <script>
-    import {ownerGet,userGet,ownerRes,userIden} from "../../../../../resource/tract";
+    import {userGet,ownerRes,userIden} from "../../../../../resource/tract";
 
     export default {
         name: 'notify',
@@ -80,7 +88,7 @@
         },
 
         created(){
-            ownerGet().then(res=>{
+            userGet().then(res=>{
                 this.unread = res.data.tract
             })
         },
@@ -88,32 +96,13 @@
         methods: {
             yes(index) {
                 this.request_response = true;
-                ownerRes(this.request_response);
+                userIden(index.username,this.request_response);
                 this.$router.go(0);
             },
             no(index) {
                 this.request_response = false;
-                ownerRes(this.request_response);
+                userIden(index.username,this.request_response);
                 this.$router.go(0);
-            },
-            pay(index) {
-                this.$prompt('请输入密码', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                }).then(({ value }) => {
-                    this.request_response = true;
-                    this.pay_password = this.value;
-                    this.$message({
-                        type: 'success',
-                        message:'支付成功'
-                    });
-                    userIden(this.request_response,value);
-                }).catch(() => {
-                    this.$message({
-                        type: 'info',
-                        message: '取消输入'
-                    });
-                });
             },
         },
         computed: {
