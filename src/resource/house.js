@@ -97,6 +97,7 @@ export function getSpeInfo(house_hash) {
                 "sector":"历下区",
                 "commu_name":"奥龙官邸",
             },
+            low_str_location:'山东省济南市历下区奥龙官邸',
             "specific_location":"2号楼3单元1801",
             "floor":18,
             "elevator":"true",

@@ -5,7 +5,7 @@
                 <div style="width: 100%;background-color: #7140b6;border-radius: 10px 0 0 0">
                     <div style="padding: 10px">
                         <h3 style="color: #f1edfc; display: inline-block">{{speciInfo.low_location.commu_name}}</h3>
-                        <a><h3 style="display: inline-block;float: right;color: #fafcf7">返回</h3></a>
+                        <a href="user.html"><h3 style="display: inline-block;float: right;color: #fafcf7">返回</h3></a>
                     </div>
                 </div>
 
@@ -20,8 +20,8 @@
                     <!--</el-carousel>-->
                 <!--</div>-->
 
-                <div>
-                    <div style="width: 50%;display: inline-block;vertical-align: top">
+                <div style="padding-top: 20px;width: 95%;margin: 0 auto">
+                    <div style="width: 50%; ; display: inline-block;vertical-align: top">
                         <el-carousel :autoplay="false" indicator-position="outside">
                             <el-carousel-item v-for="item in speciInfo.house_pic" >
                                 <div class="opacityBlack">
@@ -30,50 +30,60 @@
                             </el-carousel-item>
                         </el-carousel>
                     </div>
-                    <div style="width: 50%;height: 500px;display: inline-block;background-color: wheat">
+                    <div style="width: 50%;display: inline-block;">
+                        <div style="width: 80%;margin: 0 auto">
+                            <div class="subLabel"  style="background-color: #805688;font-size: 20px;color: #fff2ff;">
+                                房屋信息
+                            </div>
+                            <div class="textHouse">
+                                <el-row :gutter="20">
+                                    <el-col :span="12">
+                                        <p>户型{{speciInfo.house_type}}</p>
+                                        <p>面积：{{speciInfo.area}}</p>
+                                        <p>楼层：3</p>
+                                        <p>类型：普通住宅</p>
+                                    </el-col>
+                                    <el-col :span="12">
+                                        <p>{{speciInfo.lease}}元/月</p>
+                                        <p>WIFI</p>
+                                        <p>
+                                            电梯:有
+                                        </p>
+                                        <p>合租</p>
+                                    </el-col>
+                                </el-row>
+                            </div>
 
+                            <div class="subLabel"  style="background-color: #ffd068;color: #fffaf8;margin-top: 30px">
+                                房屋地址</div>
+                            <div class="textHouse">
+                                <p>
+                                    {{speciInfo.low_str_location}}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div style="text-align: center">
-                    <div class="sub_title">
-                        <span>房屋信息</span>
+                <div style="text-align: center;padding-top: 5%">
+                    <div class="subLabel"  style="vertical-align: top;background-color:#ffffff;
+                    font-size: 20px;color: #7245ae;display: inline-block;    margin: 10px 20px 0 0;">
+                        房屋信息
                     </div>
-                    <p>{{speciInfo.lease}}元/月</p>
-                    <el-row class="subTitleRow" >
-                        <el-col :span="8">户型{{speciInfo.house_type}}</el-col>
-                        <el-col :span="8">装修{{}}</el-col>
-                        <el-col :span="8">WIFI</el-col>
-                    </el-row>
-                    <el-row class="subTitleRow" >
-                        <el-col :span="8">面积：{{speciInfo.area}}</el-col>
-                        <el-col :span="8">朝向：南</el-col>
-                        <el-col :span="8">电梯：有</el-col>
-                    </el-row>
-
-                    <el-row class="subTitleRow" >
-                        <el-col :span="8">楼层：3</el-col>
-                        <el-col :span="8">类型：普通住宅</el-col>
-                        <el-col :span="8">合租</el-col>
-                    </el-row>
-
-                    <div class="sub_title">
-                        <span>房屋概况</span>
-                    </div>
+                    <ShowPosition style="display: inline-block" :long="116.399" :lat="39.910"></ShowPosition>
                 </div>
-                <ShowPosition :long="116.399" :lat="39.910"></ShowPosition>
             </div>
-            <div id="rightDiv" style="">
+            <div id="rightDiv" >
                 <div id="idCard">
                     <div style="text-align: center; padding-bottom: 10px">
                         <i  style="font-size: 40px" class="el-icon-user-solid"></i>
                         <p>{{speciInfo.owner_name}}</p>
                     </div>
-                    <div>
+                    <div style="padding: 2px 10px">
                         <p>信誉等级:{{speciInfo.house_owner_credit}}</p>
                         <p>电话：{{phone}}</p>
+                        <el-button type="text" @click="contact">查看联系电话</el-button>
                     </div>
-                    <el-button type="text" @click="contact">查看联系电话</el-button>
                 </div>
 
                 <div style="width: 100%;position: relative;top: 50vh">
@@ -127,7 +137,7 @@
                         sector:"历下区",
                         commu_name:"奥龙官邸",
                     },
-
+                    low_str_location:'',
                     specific_location:'',
                     floor:0,
                     elevator:false,
@@ -211,6 +221,7 @@
         /*height: 100%;*/
         background-image: url("../../../../image/User/bk1.png");
         background-repeat: no-repeat;
+        min-height: 100%;
         background-size: cover;
     }
     .sub_title{
@@ -225,6 +236,7 @@
         background-color: #7140b6;
         border-radius: 0 10px 10px 0;
         box-shadow: 5px 5px 30px darkgrey;
+        color: #fbe9ff;
     }
 </style>
 <style lang="scss" scoped>
@@ -248,7 +260,7 @@
         /* float: right; */
 
         right: 10%;
-        color: #d0c6c6;
+        /*color: #d0c6c6;*/
         vertical-align: top;
         display: inline-block;
     }
@@ -269,6 +281,17 @@
         /*padding-top: 3vh;*/
         min-height: 100%;
         border-radius: 5px 0 10px 10px;
+    }
+    .subLabel{
+        width: 100px;
+        text-align: center;
+        padding: 7px 2px;
+        border-radius: 5px;
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+    .textHouse{
+        padding-top: 20px;
     }
 </style>
 <style>
