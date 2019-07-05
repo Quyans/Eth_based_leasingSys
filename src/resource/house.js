@@ -62,7 +62,6 @@ export function getMyHouse(house_id_hash) {
 
 //修改我的房子
 export function updateHouseInfo(form) {
-    console.log(form.get('profile'))
     return server.post('user/myHouse', form).then(handleResponse)
 }
 //增加房源

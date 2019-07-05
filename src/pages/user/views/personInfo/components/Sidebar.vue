@@ -120,7 +120,7 @@
 
             setHouseId(houseId){
                 this.houseid = houseId;
-                console.log(this.houseid)
+               // console.log(this.houseid)
                 this.$router.push(`/Myhouse/${this.houseid}`)
             }
         }
