@@ -1,4 +1,4 @@
-import {handleResponse, server} from "../utils/http";
+import {handleResponse, server,testtanchuang} from "../utils/http";
 import qs from "qs";
 
 export function getUserInfo(id) {
@@ -185,16 +185,17 @@ export function userGet(){
 }
 
 //房客请求入住
-export function userSet(house_hash,owner) {
+export function userSet(house_id_hash,owner) {
     // console.log(form.get('profile'))
+    return testtanchuang()
     return Promise.resolve({
         "status":200,
         "message":"success",
         "data": {
-            "requestID":"xxoso",
+
         }
     })
-    return server.post('/user/tract/userSet',  qs.stringify({house_hash,owner})).then(handleResponse)
+    return server.post('/user/tract/userSet',  qs.stringify({house_id_hash,owner})).then(handleResponse)
 }
 
 //评价房子
@@ -242,8 +243,7 @@ export function getAllUser() {
         }
     })
     return server.get('/user/changeinfo', {
-        params: {
-        }
+
     }).then(handleResponse)
 }
 

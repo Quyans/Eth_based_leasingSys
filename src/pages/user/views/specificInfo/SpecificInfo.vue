@@ -168,13 +168,14 @@
                 this.phone = this.phoneValid
             },
             submitPro(){
-                userSet(this.speciInfo.house_hash,this.speciInfo.owner_id).then(res=>{
-                    this.$message({
-                        message: "请求成功",
-                        type: "success",
-                        center: true
-                    })
-                })
+                // userSet(this.speciInfo.house_hash,this.speciInfo.owner_id).then(res=>{
+                //     this.$message({
+                //         message: "请求成功",
+                //         type: "success",
+                //         center: true
+                //     })
+                // })
+                userSet(this.speciInfo.house_hash,this.speciInfo.owner_id)
             }
 
         }
@@ -295,5 +296,7 @@
     }
 </style>
 <style>
-
+    #test{
+        width: 300px !important;
+    }
 </style>
