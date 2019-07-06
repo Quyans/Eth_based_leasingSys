@@ -824,10 +824,10 @@
 
   /**
    * Compute image edges using Sobel operator. Computes the vertical and
-   * horizontal gradients of the image and combines the computed images to
+   * horizontal gradients of the image and combines the computed img to
    * find edges in the image. The way we implement the Sobel filter here is by
    * first grayscaling the image, then taking the horizontal and vertical
-   * gradients and finally combining the gradient images to make up the final
+   * gradients and finally combining the gradient img to make up the final
    * image. Adapted from https://github.com/kig/canvasfilters.
    * @param {pixels} pixels The pixels in a linear [r,g,b,a,...] array.
    * @param {number} width The image width.
@@ -1252,13 +1252,13 @@
   };
 
   /**
-   * Matches sets of features {mi} and {m′j} extracted from two images taken
+   * Matches sets of features {mi} and {m′j} extracted from two img taken
    * from similar, and often successive, viewpoints. A classical procedure
    * runs as follows. For each point {mi} in the first image, search in a
    * region of the second image around location {mi} for point {m′j}. The
    * search is based on the similarity of the local image windows, also known
    * as kernel windows, centered on the points, which strongly characterizes
-   * the points when the images are sufficiently close. Once each keypoint is
+   * the points when the img are sufficiently close. Once each keypoint is
    * described with its binary string, they need to be compared with the
    * closest matching point. Distance metric is critical to the performance of
    * in- trusion detection systems. Thus using binary strings reduces the size
@@ -2760,7 +2760,7 @@
   /**
    * Derives the binary features from the image for each landmark. 
    * @param {object} forest The random forest to search for the best binary feature match.
-   * @param {array} images The images with pixels in a grayscale linear array.
+   * @param {array} images The img with pixels in a grayscale linear array.
    * @param {array} currentShapes The current landmarks shape.
    * @param {array} boudingBoxes The bounding boxes of the faces.
    * @param {matrix} meanShape The mean shape of the current landmarks set.

@@ -145,25 +145,6 @@ export function ownerGet(){
                     "username":"xxdd",   //请求的人的用户名
                     "name":"曲延松",       //请求的人的姓名
                     "house_id_hash":"adfafd",    //请求的房子hash
-                    "commu_name":"茗筑美嘉",  //房子小区名
-                    "tract_status":'submit'
-                },      {
-                    "username":"xxdd",   //请求的人的用户名
-                    "name":"曲延松",       //请求的人的姓名
-                    "house_id_hash":"adfafd",    //请求的房子hash
-                    "commu_name":"茗筑美嘉",  //房子小区名
-                    "tract_status":'submit'
-                },      {
-                    "username":"xxdd",   //请求的人的用户名
-                    "name":"曲延松",       //请求的人的姓名
-                    "house_id_hash":"adfafd",    //请求的房子hash
-                    "commu_name":"茗筑美嘉",  //房子小区名
-                    "tract_status":'submit'
-                },
-                {
-                    "username":"xxdd",   //请求的人的用户名
-                    "name":"曲延松",       //请求的人的姓名
-                    "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"奥龙官邸",  //房子小区名
                     "tract_status":'effect'
                 },
@@ -263,13 +244,13 @@ export function userGet(){
 }
 
 //房主回应请求并支付
-export function userIden(username,request_response) {
+export function userIden(ownername,requestIdentify) {
     // console.log(form.get('profile'))
     return Promise.resolve({
         "status":200,
         "message":"OK",
     })
-    return server.post('/tract/userIden',  qs.stringify({username,request_response})).then(handleResponse)
+    return server.post('/tract/userIden',  qs.stringify({ownername,requestIdentify})).then(handleResponse)
 }
 
 //评价房子
@@ -403,4 +384,13 @@ export function getHouseList() {
     //
     //     }
     // }).then(handleResponse)
+}
+//输入支付密码
+export function payPass(payPass) {
+    // console.log(form.get('profile'))
+    return Promise.resolve({
+        "status":200,
+        "message":"success",
+    })
+    return server.post('/tract/payPass',  qs.stringify({payPass})).then(handleResponse)
 }

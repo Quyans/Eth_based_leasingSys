@@ -11,10 +11,12 @@
                     <!--<el-col :span="8"><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>-->
                 <!--</el-row>-->
                 <div style="width: 100%; text-align: center">
-                    <RoughHouse v-for="item in computed_rough_Info " :roughInfo="item"></RoughHouse>
+                    <div v-for="item in computed_rough_Info " style="width: 30%;display: inline-block;margin: 20px 0" >
+                        <RoughHouse  style="margin: 0 auto" :styNum="item.styNum" :roughInfo="item"></RoughHouse>
+                    </div>
                 </div>
+                <div id="home_footer"></div>
             </div>
-
         </div>
     </div>
 </template>
@@ -27,6 +29,7 @@
     import RegisterForm from "./components/RegisterForm"
     import searchCondition from "./components/searchCondition"
     import RoughHouse from "./components/RoughHouse"
+    import {searchLowHouse} from "../../../../resource/house"
     export default {
         name: 'home',
         components: {
@@ -38,6 +41,16 @@
             RoughHouse
         },
         created() {
+            searchLowHouse(1,1,1,1,1).then(res =>{
+                // console.log(res)
+                var temp = res;
+                var len = temp.length
+                for (var i = 0;i<len;i++){
+                    temp[i].styNum = i
+                }
+                this.computed_rough_Info = temp
+                console.log(temp)
+            })
         },
         data() {
             return {
@@ -51,62 +64,51 @@
                     backgroundSize: 'cover',
                 },
                 computed_rough_Info:[
-                    {"photo":"sadfadsfadf",   //一张图片的hash
-                        "low_str_location":"山东省济南市历下区**小区",
-                        "lease":"30",
-                        "house_type":"2",
+                    {"photo":"",   //一张图片的hash
+                        "low_str_location":"**小区",
+                        "lease":"",
+                        "house_type":"",
                         "lease_type":"1",
-                        "house_hash":"house1"},
+                        "house_hash":""},
                     {
-                        "photo":"sadfadsfadf",   //一张图片的hash
-                        "low_str_location":"山东省济南市历下区**小区",
-                        "lease":"80000",
-                        "house_type":"2",
-                        "lease_type":"1",
-                        "house_hash":"house2"
+                        "photo":"",   //一张图片的hash
+                        "low_str_location":"**小区",
+                        "lease":"",
+                        "house_type":"",
+                        "lease_type":"",
+                        "house_hash":""
                     },
                     {
-                        "photo":"sadfadsfadf",   //一张图片的hash
-                        "low_str_location":"山东省济南市历下区**小区",
-                        "lease":"300",
-                        "house_type":"2",
-                        "lease_type":"1",
-                        "house_hash":"house3"
+                        "photo":"",   //一张图片的hash
+                        "low_str_location":"**小区",
+                        "lease":"",
+                        "house_type":"",
+                        "lease_type":"",
+                        "house_hash":""
                     },{
-                        "photo":"sadfadsfadf",   //一张图片的hash
-                        "low_str_location":"山东省济南市历下区**小区",
-                        "lease":"70",
-                        "house_type":"2",
-                        "lease_type":"1",
-                        "house_hash":"house4"
+                        "photo":"",   //一张图片的hash
+                        "low_str_location":"**小区",
+                        "lease":"",
+                        "house_type":"",
+                        "lease_type":"",
+                        "house_hash":""
                     },{
-                        "photo":"sadfadsfadf",   //一张图片的hash
-                        "low_str_location":"山东省济南市历下区**小区",
-                        "lease":"5000",
-                        "house_type":"2",
-                        "lease_type":"1",
-                        "house_hash":"house5"
+                        "photo":"",   //一张图片的hash
+                        "low_str_location":"",
+                        "lease":"",
+                        "house_type":"",
+                        "lease_type":"",
+                        "house_hash":""
                     },
                     {
-                        "photo":"sadfadsfadf",   //一张图片的hash
-                        "low_str_location":"山东省济南市历下区**小区",
-                        "lease":"5000",
-                        "house_type":"2",
-                        "lease_type":"1",
-                        "house_hash":"house6"
+                        "photo":"",   //一张图片的hash
+                        "low_str_location":"",
+                        "lease":"",
+                        "house_type":"",
+                        "lease_type":"",
+                        "house_hash":""
                     },
-                    {
-                        "photo":"sadfadsfadf",   //一张图片的hash
-                        "low_str_location":"山东省济南市历下区**小区",
-                        "lease":"5000",
-                        "house_type":"2",
-                        "lease_type":"1",
-                        "house_hash":"house7"
-                    }
-
                 ]
-
-
             }
         },
         methods: {
@@ -151,9 +153,14 @@
         height: 100%;
     }
 
+
 </style>
 <style scoped>
+
+
+
     #home{
+        font-family: simsun;
         background-image: url("../../../../image/User/bk1.png");
         background-repeat: no-repeat;
         background-size: cover;
@@ -196,7 +203,7 @@
     .sub_home{
 
         margin: 0 auto;
-        top: 40px;
+        /*top: 40px;*/
         box-shadow:5px 5px 30px darkgrey;
         width: 80%;
     }
@@ -205,6 +212,13 @@
     .el-dialog {
         width: 100% !important;
         max-width: 450px;
+    }
+    #home_footer{
+        width: 60%;
+        height: 300px;
+        background-image: url("../../../../image/User/bk_footer.png");
+        background-size: 100% 100%;
+        margin: 0 auto;
     }
 
 </style>

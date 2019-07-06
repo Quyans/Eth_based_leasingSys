@@ -1,6 +1,6 @@
 <template>
     <!--<router-link :to='"/house/"+ rough_info.house_hash'>-->
-        <div class="roughHouse" @click="goSpecInfo()">
+        <div :style="note" class="roughHouse" @click="goSpecInfo()">
             <el-row style="height: 100%">
                 <el-col :span="12">
                     <div class="houseImg">
@@ -37,6 +37,7 @@
                 this.update()
             }
         },
+
         data(){
             return{
                 rough_info:{
@@ -47,6 +48,10 @@
                     lease_type:"",
                     house_hash:"",
                 },
+                note:{
+                  backgroundColor:''
+                },
+
                 computedInfo:{
                     "photo":"sadfadsfadf",   //一张图片的hash
                     "low_str_location":"山东省济南市历下区**小区",
@@ -57,14 +62,36 @@
             }
         },
         props:[
-            'roughInfo'
+            'roughInfo','styNum'
         ],
         methods:{
             update(){
                 this.rough_info = compute_int2str(this.computedInfo)
+                var color = this.setBackColor(this.styNum)
+                this.note.backgroundColor=color
+                // console.log(color)
+                // document.getElementById("roughDiv").style.backgroundColor=color
             },
             goSpecInfo(){
                 this.$router.push(`/house/${this.rough_info.house_hash}`)
+            },
+            setBackColor(num){
+                switch (num){
+                    case 0:
+                        return '#fcb79d';
+                    case 1:
+                        return '#feeeda';
+                    case 2:
+                        return '#646bd9';
+                    case 3:
+                        return '#974ec3';
+                    case 4:
+                        return '#504099';
+                    case 5:
+                        return '#746493'
+                    case null:
+                        return 'white'
+                }
             }
         }
     }
@@ -75,10 +102,11 @@
 <style>
     .roughHouse{
         height: 200px;
-        width: 30%;
+        width: 80%;
         margin: 10px 1%;
-        background-color: antiquewhite;
+        /*background-color: antiquewhite;*/
         display: inline-block;
+        box-shadow: 4px 4px 13px grey;
     }
     .roughHouse .houseImg{
         height: 100%;

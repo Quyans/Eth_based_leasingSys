@@ -1,9 +1,5 @@
 <template>
     <div class="tabs">
-        <div class="button_group">
-            我的通知
-        </div>
-        <HR align=center width=1200px color=#7848ba SIZE=2></HR>
         <div class="container">
             <el-tabs v-model="message">
                 <el-tab-pane :label="`房主消息列表(${unread.length})`" name="first">
@@ -134,20 +130,13 @@
 <style>
     .tabs{
         width: 100%;
-        height: 550px;
-        box-shadow:0px 0px  15px 5px #aaa;
-    }
-    .button_group{
-        color: white;
-        float: left;
-        background-color: #7140b6;
-        width:250px;
-        line-height: 70px;
-        text-align: center;
-        font-size: 200%;
+        height: 100%;
     }
     .message-title{
         cursor: pointer;
+    }
+    .handle-row{
+        margin-top: 30px;
     }
 </style>
 

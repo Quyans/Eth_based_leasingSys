@@ -1,6 +1,7 @@
 <template>
     <div class="sidebar">
-        <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse" style="background-color:rgb(198,181,237)"
+
+        <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse":style="note"
                  text-color="indigo" active-text-color="#20a0ff" unique-opened router>
             <template v-for="item in items">
                 <template v-if="item.subs">
@@ -130,10 +131,10 @@
     .sidebar{
         display: block;
         position: absolute;
-        top: 100px;
-        margin-left: 20px;
+        left: 0;
+        top: 70px;
+        bottom:0;
         overflow-y: scroll;
-        height: 580px;
     }
     .sidebar::-webkit-scrollbar{
         width: 0;

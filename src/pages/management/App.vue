@@ -6,6 +6,7 @@
 
 
 <script>
+    import './style/font.css'
     export default {
         methods:{
         }
