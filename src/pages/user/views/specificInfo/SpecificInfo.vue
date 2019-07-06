@@ -1,6 +1,6 @@
 <template>
     <div id="houseHome">
-        <div style="padding-top: 40px">
+        <div style="padding-top: 40px;text-align: center">
             <div   class="sub_home"  style="">
                 <div style="width: 100%;background-color: #7140b6;border-radius: 10px 0 0 0">
                     <div style="padding: 10px">
@@ -65,12 +65,12 @@
                     </div>
                 </div>
 
-                <div style="text-align: center;padding-top: 5%">
+                <div style=";padding-top: 5%">
                     <div class="subLabel"  style="vertical-align: top;background-color:#ffffff;
-                    font-size: 20px;color: #7245ae;display: inline-block;    margin: 10px 20px 0 0;">
+                    font-size: 20px;color: #7245ae;display: inline-block; float: left;margin-left: 10% ">
                         房屋信息
                     </div>
-                    <ShowPosition style="display: inline-block" :long="116.399" :lat="39.910"></ShowPosition>
+                    <ShowPosition style="margin: 0 auto" :long="116.399" :lat="39.910"></ShowPosition>
                 </div>
             </div>
             <div id="rightDiv" >
@@ -168,14 +168,14 @@
                 this.phone = this.phoneValid
             },
             submitPro(){
-                // userSet(this.speciInfo.house_hash,this.speciInfo.owner_id).then(res=>{
-                //     this.$message({
-                //         message: "请求成功",
-                //         type: "success",
-                //         center: true
-                //     })
-                // })
-                userSet(this.speciInfo.house_hash,this.speciInfo.owner_id)
+                userSet(this.speciInfo.house_hash,this.speciInfo.owner_id).then(res=>{
+                    this.$message({
+                        message: "请求成功",
+                        type: "success",
+                        center: true
+                    })
+                })
+                // userSet(this.speciInfo.house_hash,this.speciInfo.owner_id)
             }
 
         }
@@ -243,8 +243,8 @@
 <style lang="scss" scoped>
 
     .sub_home{
-
-        margin-left: 10%;
+        text-align: left;
+        /*margin-left: 10%;*/
         /*margin-top: 40px;*/
         box-shadow:5px 5px 30px darkgrey;
         /*min-height: 400px;*/

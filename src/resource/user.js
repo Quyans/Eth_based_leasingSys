@@ -187,7 +187,7 @@ export function userGet(){
 //房客请求入住
 export function userSet(house_id_hash,owner) {
     // console.log(form.get('profile'))
-    return testtanchuang()
+    // return testtanchuang()
     return Promise.resolve({
         "status":200,
         "message":"success",
