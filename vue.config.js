@@ -26,12 +26,12 @@ module.exports = {
         },
     },
     devServer: {
-        // proxy: {
-        //     '/api/v1': {
-        //         // target: 'https://39.106.131.88'
-        //     },
-        // },
-        // // https:true
+        proxy: {
+            '/api': {
+                target: 'http://211.87.230.7'
+            },
+        },
+        // https:true
     },
     configureWebpack: {
         plugins: [
@@ -65,5 +65,4 @@ module.exports = {
     //         .end()
     //
     // }
-
-}
+};
