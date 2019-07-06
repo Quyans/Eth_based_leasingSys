@@ -155,7 +155,7 @@
         created(){
 
             getSpeInfo(this.house_hash).then(res=>{
-                this.speciInfo = res.data
+                this.speciInfo = res
             }),
 
             contactOwner(this.speciInfo.owner_id).then(res=>{

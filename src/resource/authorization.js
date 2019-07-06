@@ -31,5 +31,5 @@ export function hasLoggedIn() {
     return sessionStorage.getItem(hasLoggedInKey) === 'true'
 }
 
-server.get('hasLoggedIn').then(handleResponse)
-    .then(flag => sessionStorage.setItem(hasLoggedInKey, flag ? 'true' : 'false'))
+// server.get('hasLoggedIn').then(handleResponse)
+//     .then(flag => sessionStorage.setItem(hasLoggedInKey, flag ? 'true' : 'false'))
