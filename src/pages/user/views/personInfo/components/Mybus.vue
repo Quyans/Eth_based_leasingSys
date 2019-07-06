@@ -72,7 +72,7 @@
         },
         created(){
             getTransRecord().then(res => {
-                this.tableData = res.data.record
+                this.tableData = res.record
             })
         },
 

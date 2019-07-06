@@ -70,7 +70,7 @@
         },
         created(){
             getAllUser().then(res => {
-                this.tableData = res.data.users;
+                this.tableData = res.users;
             })
         },
 

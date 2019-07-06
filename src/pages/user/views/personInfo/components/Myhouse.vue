@@ -21,7 +21,7 @@
                                 <div>评论人：{{comment.user_id}}</div>
                                 <div>评价：{{comment.comment}}</div>
                                 <div><img :src="comment.comment_pic"></div>
-                                <HR align=center width=1000 color=black SIZE=2></HR>
+                                <HR align=center width=800 color=black SIZE=2></HR>
                             </div>
                         </template>
                     </div>
@@ -169,7 +169,7 @@
         },
         created(){
             getMyHouse(this.hash).then(res => {
-                this.tableData = res.house_comment;
+                this.tableData = res.data.house_comment;
                 this.registerForm.house_id_hash = res.house_id_hash;
                 this.owner_id = res.owner_id;
                 this.owner = res.owner;
@@ -255,6 +255,7 @@
     .bk{
         width:100%;
         height:600px;
+        overflow-y: scroll;
         box-shadow:0px 0px  15px 5px #aaa;
     }
     .button_group{

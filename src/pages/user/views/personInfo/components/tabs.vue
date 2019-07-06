@@ -96,7 +96,7 @@
 
         created(){
             ownerGet().then(res=>{
-                this.unread = res.data.tract
+                this.unread = res.tract
             })
         },
 

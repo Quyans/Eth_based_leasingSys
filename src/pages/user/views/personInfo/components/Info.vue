@@ -66,12 +66,12 @@
         },
         created(){
             getUserInfo(123).then(res => {
-                this.vname = res.data.username;
-                this.name = res.data.name;
-                this.phonenum = res.data.phone;
-                this.keyid = res.data.id;
-                this.credit = res.data.credit;
-                this.pw = res.data.password
+                this.vname = res.username;
+                this.name = res.name;
+                this.phonenum = res.phone;
+                this.keyid = res.id;
+                this.credit = res.credit;
+                this.pw = res.password
             })
         },
 

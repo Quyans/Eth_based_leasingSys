@@ -93,7 +93,7 @@
 
         created(){
             userGet().then(res=>{
-                this.unread = res.data.tract
+                this.unread = res.tract
             })
         },
 

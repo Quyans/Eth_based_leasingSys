@@ -72,7 +72,7 @@
         },
         created(){
             managerGet().then(res => {
-                this.tableData = res.data.tract;
+                this.tableData = res.tract;
             })
         },
 

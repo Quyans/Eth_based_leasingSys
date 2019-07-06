@@ -63,7 +63,7 @@
         },
         created(){
             getHouseList().then(res => {
-                this.tableData = res.data.verified
+                this.tableData = res.verified
             })
         },
 

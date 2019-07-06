@@ -33,14 +33,14 @@
         },
         created(){
             getUserBalance(123).then(res1=>{
-                this.num = res1.data.balance
+                this.num = res1.balance
             })
         },
         methods:{
 
             Enter() {
                 invest(this.inn).then(res=>{
-                    this.num = res.data.balance
+                    this.num = res.balance
                 })
 
             }

@@ -104,8 +104,8 @@
         },
         created(){
             getUserInfo(123).then(res=>{
-                this.items.subs1 = res.data.myhouse;
-                this.name = res.data.myhouse;
+                this.items.subs1 = res.myhouse;
+                this.name = res.myhouse;
             });
         },
 
