@@ -58,7 +58,7 @@
                     <div style="  color: darkgrey;    border-radius: 4px;  padding: 0 15px;">
                         <span>性别</span>
                         <div style="text-align: right; display: inline-block;float: right;">
-                            <el-radio-group v-model="radio1" size="mini">
+                            <el-radio-group v-model="registerForm.gender" size="mini">
                                 <el-radio-button label="0">女</el-radio-button>
                                 <el-radio-button label="1">男</el-radio-button>
                             </el-radio-group>
@@ -121,7 +121,7 @@
                     profile_b:false,
                     phone:'',
                     id:'',
-                    gender:'',
+                    gender:0,
                     checked:false
                 },
                 formLabelWidth:'80px',

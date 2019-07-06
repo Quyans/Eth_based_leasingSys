@@ -1,6 +1,6 @@
 <!--用来展示地图组件并且标记-->
 <template>
-    <div class="Map" style="height: 300px;width: 50%">
+    <div class="Map" style="height: 500px;width: 500px">
         <div id="allmap"></div>
     </div>
 </template>
@@ -49,5 +49,4 @@
         height: 100%;
         width: 100%;
     }
-
 </style>

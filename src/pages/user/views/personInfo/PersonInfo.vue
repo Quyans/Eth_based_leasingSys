@@ -1,13 +1,9 @@
 <template>
-    <div class="home">
+    <div class="home":style="note">
         <v-head></v-head>
         <v-sidebar></v-sidebar>
-        <div class="content-box" >
             <div class="content">
-                <transition name="move" mode="out-in">
                     <router-view></router-view>
-                </transition>
-            </div>
         </div>
     </div>
 </template>

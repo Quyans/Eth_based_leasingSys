@@ -56,20 +56,20 @@ export function invest(money) {
 
 
 export function getUserBalance(username) {
-    return  Promise.resolve({
-        "status":200,
-        "message":"success",
-        "data":{
-            "username":"liupenghao",//用户名
-            "name":"刘鹏昊",//姓名
-            "balance":85500  // 余额
-        }
-    })
-    // return server.get('user/balance', {
-    //     params: {
-    //         username
+    // return  Promise.resolve({
+    //     "status":200,
+    //     "message":"success",
+    //     "data":{
+    //         "username":"liupenghao",//用户名
+    //         "name":"刘鹏昊",//姓名
+    //         "balance":85500  // 余额
     //     }
-    // }).then(handleResponse)
+    // })
+    return server.get('user/balance', {
+        params: {
+            username
+        }
+    }).then(handleResponse)
 }
 //获取交易记录
 export function getTransRecord(username) {

@@ -1,6 +1,6 @@
 <template>
     <div class="header":style="note">
-        <div class="logo">用户中心</div>
+        <div class="logo" style="background-color:rgb(198,181,237)">用户中心</div>
         <div class="header-right">
                 <el-button plain @click="goto">首页</el-button>
         </div>
@@ -36,8 +36,11 @@
     .header .logo{
         float: left;
         margin-left: 40px;
-        width:250px;
-        line-height: 70px;
+        margin-top: 10px;
+        width:150px;
+        line-height: 50px;
+        text-align: center;
+        height: 50px;
     }
     .header-right{
         float: right;

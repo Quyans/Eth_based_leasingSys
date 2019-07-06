@@ -1,11 +1,10 @@
 <template>
     <div>
-        <div class="addhouse" :style="note">
-            <div class="button_group">
-                添加房子
-            </div>
-        </div>
         <div class="bk":style="note2">
+            <div class="button_group">
+            添加房子
+        </div>
+            <HR align=center width=1230px color=#7848ba SIZE=2></HR>
             <div class="fir">
                 <div class="phone">
                     <div class="h-info">
@@ -15,14 +14,14 @@
                             v-bind:disabled="showinput">
                     </el-input>
                     </div>
-                    <div class="h-info" style="margin-left: 35px">
+                    <div class="h-info">
                         房子可用:<el-input
                             placeholder="请输入内容"
                             v-model="registerForm.state"
                             v-bind:disabled="showinput">
                     </el-input>
                     </div>
-                    <div class="h-info"style="margin-left: 55px">
+                    <div class="h-info">
                         省份:<el-input
                             placeholder="请输入内容"
                             v-model="registerForm.low_location"
@@ -79,7 +78,7 @@
                             v-bind:disabled="showinput">
                             </el-input>
                     </div>
-                    <div class="h-info"style="margin-left: 90px">
+                    <div class="h-info">
                     纬度:<el-input
                         placeholder="请输入内容"
                         v-model="registerForm.lat"
@@ -103,8 +102,8 @@
                         </el-upload>
                     </div>
                     <div>
-                        <el-button style="margin-left:600px;margin-top: 50px" plain @click="Enter1">修改</el-button>
-                        <el-button style="margin-left:100px" plain @click="Enter2">确认</el-button>
+                        <el-button style="margin-left:200px;margin-top: 50px;width: 150px;background-color: #6e3eb4;color: white" plain @click="Enter1">修改</el-button>
+                        <el-button style="margin-left:100px;width: 150px;background-color: #6e3eb4;color: white" plain @click="Enter2">进行验证</el-button>
                     </div>
                 </div>
             </div>
@@ -113,6 +112,7 @@
 </template>
 
 <script>
+    import {compressImage} from "../../../../../utils";
     import {addHouse} from "../../../../../resource/house";
     export default {
         components: {},
@@ -137,14 +137,8 @@
                 },
                 showinput:true,
                 shouphone:false,
-                note: {
-                    backgroundImage: "url(" + require("../../../../../image/User/bk3.png") + ")",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: '100% 100%',
-
-                },
                 note2: {
-                    backgroundImage: "url(" + require("../../../../../image/User/bk1.png") + ")",
+                    backgroundImage: "url(" + require("../../../../../image/User/bk5.jpg") + ")",
                     backgroundRepeat: "no-repeat",
                     backgroundSize: '100% 100%',
 
@@ -163,7 +157,7 @@
                     // if (key === 'checkpassword') return
                     formData.append(key, this.registerForm[key])
                 })
-                // console.log(formData)
+                console.log(formData)
                 return formData
             }
         },
@@ -210,20 +204,19 @@
 </script>
 
 <style scoped lang="scss">
-    .addhouse{
-        width: 100%;
-        height: 100px;
-    }
+
     .bk{
         width:100%;
         height: 600px;
+        box-shadow:0px 0px  15px 5px #aaa;
     }
     .button_group{
         color: white;
         float: left;
-        margin-left: 40px;
+        background-color: #7140b6;
         width:250px;
         line-height: 70px;
+        text-align: center;
         font-size: 200%;
     }
     .phone{
@@ -237,6 +230,7 @@
     }
     .h-info{
         float: left;
+        width: 200px;
         margin-left: 50px;
     }
 
