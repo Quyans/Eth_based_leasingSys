@@ -149,12 +149,13 @@
 
                 phone_state:false,
                 phone:'',
-                phoneValid:''
+                phoneValid:'',
+                testhash : 'lEj/IW4OvMJgYQbg3BynVA==',
             }
         },
         created(){
 
-            getSpeInfo(this.house_hash).then(res=>{
+            getSpeInfo(this.testhash).then(res=>{
                 this.speciInfo = res
             }),
 

@@ -7,6 +7,7 @@ import './style/global.scss'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 
+
 import checkingListenerWorker from 'worker-loader!./checkingListener.worker.js'
 
 Vue.config.productionTip = false

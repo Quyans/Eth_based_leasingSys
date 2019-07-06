@@ -3,7 +3,7 @@
         <div class="home_2"  >
             <div   class="sub_home" :style="sub_note" style="">
                 <MyTitle></MyTitle>
-                <searchCondition></searchCondition>
+                <searchCondition @searchCon="searchCond"></searchCondition>
                 <el-divider style="background-color: black" content-position="left"></el-divider>
                 <!--<el-row v-for="item in computed_rough_Info.length">-->
                     <!--<el-col :span="8" ><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>-->
@@ -41,16 +41,16 @@
             RoughHouse
         },
         created() {
-            searchLowHouse(1,1,1,1,1).then(res =>{
-                // console.log(res)
-                var temp = res;
-                var len = temp.length
-                for (var i = 0;i<len;i++){
-                    temp[i].styNum = i
-                }
-                this.computed_rough_Info = temp
-                console.log(temp)
-            })
+            // searchLowHouse(1,1,1,1,1).then(res =>{
+            //     // console.log(res)
+            //     var temp = res;
+            //     var len = temp.length
+            //     for (var i = 0;i<len;i++){
+            //         temp[i].styNum = i
+            //     }
+            //     this.computed_rough_Info = temp
+            //     console.log(temp)
+            // })
         },
         data() {
             return {
@@ -113,7 +113,29 @@
         },
         methods: {
 
-        //
+            searchCond(low_location,lease_select,type_select,lease_type,elevator){
+                // console.log(123)
+                // alert(123)
+                // console.log(123)
+                console.log(type_select)
+                searchLowHouse(low_location,lease_select,type_select,lease_type,elevator).then(res => {
+                        var temp = res;
+                        var len = temp.length
+                        for (var i = 0;i<len;i++){
+                            temp[i].styNum = i
+                        }
+                        this.computed_rough_Info = temp
+                        console.log(temp)
+                        this.$message({
+                            message: "查询成功，请稍后",
+                            type: "success",
+                            center: true
+                        })
+                    },
+                    e => {
+                        this.$message.error(`出错：${e.message}`);
+                    })
+            }
 
         }
     }
@@ -157,10 +179,10 @@
 </style>
 <style scoped>
 
-
+  
 
     #home{
-        font-family: simsun;
+        /*font-family: ;*/
         background-image: url("../../../../image/User/bk1.png");
         background-repeat: no-repeat;
         background-size: cover;

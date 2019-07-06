@@ -130,21 +130,20 @@
         },
         methods: {
             search(){
-                console.log(123)
-                searchLowHouse(this.low_location,this.lease_select,this.type_select,
-                    this.lease_type,this.elevator).then(res => {
-                        console.log(res)
-                    this.$message({
-                        message: "查询成功，请稍后",
-                        type: "success",
-                        center: true
-                    })
-                },
-                    e => {
-                    this.$message.error(`出错：${e.message}`);
-                })
-
-
+                this.$emit('searchCon',this.low_location,this.lease_select,this.type_select,this.lease_type,this.elevator)
+                // console.log(123)
+                // searchLowHouse(this.low_location,this.lease_select,this.type_select,
+                //     this.lease_type,this.elevator).then(res => {
+                //         console.log(res)
+                //     this.$message({
+                //         message: "查询成功，请稍后",
+                //         type: "success",
+                //         center: true
+                //     })
+                // },
+                //     e => {
+                //     this.$message.error(`出错：${e.message}`);
+                // })
             }
         }
     }
