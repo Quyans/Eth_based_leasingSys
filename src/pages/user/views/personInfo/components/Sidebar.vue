@@ -1,7 +1,6 @@
 <template>
     <div class="sidebar">
-
-        <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse":style="note"
+        <el-menu class="sidebar-el-menu" :default-active="onRoutes"  style="background-color:rgb(198,181,237)"
                  text-color="indigo" active-text-color="#20a0ff" unique-opened router>
             <template v-for="item in items">
                 <template v-if="item.subs">
@@ -11,7 +10,7 @@
                         </template>
                         <template v-for="subItem in item.subs">
                             <el-menu-item :index="subItem.index">
-                                 {{ subItem.title }}
+                                {{ subItem.title }}
                             </el-menu-item>
                         </template>
                     </el-submenu>
@@ -24,18 +23,18 @@
                             </template>
                             <template v-for="subItem1 in name">
                                 <el-menu-item  @click="setHouseId(subItem1.house_id_hash)">
-                                   {{subItem1.commu_name}}
+                                    {{subItem1.commu_name}}
                                 </el-menu-item>
 
                             </template>
                         </el-submenu>
                     </template>
                     <template v-else>
-                    <el-menu-item :index="item.index" :key="item.index">
-                        <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
-                    </el-menu-item>
-                     </template>
-                     </template>
+                        <el-menu-item :index="item.index" :key="item.index">
+                            <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
+                        </el-menu-item>
+                    </template>
+                </template>
             </template>
         </el-menu>
 
@@ -120,7 +119,7 @@
 
             setHouseId(houseId){
                 this.houseid = houseId;
-               // console.log(this.houseid)
+                // console.log(this.houseid)
                 this.$router.push(`/Myhouse/${this.houseid}`)
             }
         }
@@ -131,10 +130,10 @@
     .sidebar{
         display: block;
         position: absolute;
-        left: 0;
-        top: 70px;
-        bottom:0;
+        top: 100px;
+        margin-left: 20px;
         overflow-y: scroll;
+        height: 580px;
     }
     .sidebar::-webkit-scrollbar{
         width: 0;

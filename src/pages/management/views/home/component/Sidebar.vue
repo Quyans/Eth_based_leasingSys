@@ -1,10 +1,10 @@
 <template>
     <div class="sidebar">
-        <el-menu class="sidebar-el-menu" :default-active="onRoutes":style="note"
+        <el-menu class="sidebar-el-menu" :default-active="onRoutes" style="background-color:rgb(198,181,237)"
                  text-color="indigo" active-text-color="#20a0ff" unique-opened router>
             <template v-for="item in items">
                 <template v-if="item.subs">
-                    <el-submenu :index="item.index" :key="item.index">
+                    <el-submenu :index="item.index">
                         <template slot="title">
                             <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
                         </template>
@@ -50,11 +50,6 @@
                         title: '合约仲裁'
                     },
                 ],
-                note:{
-                    backgroundImage: "url(" + require("../../../../../image/User/bk1.png") + ")",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: 'cover',
-                },
             }
         },
         computed:{
@@ -69,10 +64,10 @@
     .sidebar{
         display: block;
         position: absolute;
-        left: 0;
-        top: 70px;
-        bottom:0;
+        top: 100px;
+        margin-left: 20px;
         overflow-y: scroll;
+        height: 580px;
     }
     .sidebar::-webkit-scrollbar{
         width: 0;

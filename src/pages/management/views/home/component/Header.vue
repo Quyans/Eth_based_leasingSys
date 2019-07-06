@@ -1,8 +1,6 @@
 <template>
     <div class="header":style="note">
-        <div class="logo">后台管理系统</div>
-        <div class="header-right">
-        </div>
+        <div class="logo" style="background-color:rgb(198,181,237)">后台管理</div>
     </div>
 </template>
 <script>
@@ -17,7 +15,6 @@
             }
         },
         methods:{
-            // 用户名下拉菜单选择事件
         }
     }
 </script>
@@ -32,61 +29,17 @@
     }
     .header .logo{
         float: left;
-        width:250px;
-        line-height: 70px;
+        margin-left: 40px;
+        margin-top: 10px;
+        width:150px;
+        line-height: 50px;
+        text-align: center;
+        height: 50px;
     }
     .header-right{
         float: right;
+        margin-top: 10px;
         padding-right: 50px;
     }
-    .header-user-con{
-        display: flex;
-        height: 70px;
-        align-items: center;
-    }
-    .btn-fullscreen{
-        transform: rotate(45deg);
-        margin-right: 5px;
-        font-size: 24px;
-    }
-    .btn-bell, .btn-fullscreen{
-        position: relative;
-        width: 30px;
-        height: 30px;
-        text-align: center;
-        border-radius: 15px;
-        cursor: pointer;
-    }
-    .btn-bell-badge{
-        position: absolute;
-        right: 0;
-        top: -2px;
-        width: 8px;
-        height: 8px;
-        border-radius: 4px;
-        background: #f56c6c;
-        color: #fff;
-    }
-    .btn-bell .el-icon-bell{
-        color: #fff;
-    }
-    .user-name{
-        margin-left: 10px;
-    }
-    .user-avator{
-        margin-left: 20px;
-    }
-    .user-avator img{
-        display: block;
-        width:40px;
-        height:40px;
-        border-radius: 50%;
-    }
-    .el-dropdown-link{
-        color: #fff;
-        cursor: pointer;
-    }
-    .el-dropdown-menu__item{
-        text-align: center;
-    }
+
 </style>

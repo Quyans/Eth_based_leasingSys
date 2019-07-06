@@ -1,11 +1,9 @@
 <template>
-    <div>
-        <div class="userinfo" :style="note">
+        <div class="bk":style="note2">
             <div class="button_group">
                 用户管理
             </div>
-        </div>
-        <div class="bk":style="note2">
+            <HR align=center width=1230px color=#7848ba SIZE=2></HR>
             <el-table
                     :data="tableData"
                     stripe
@@ -45,7 +43,6 @@
                 </el-table-column>
             </el-table>
         </div>
-    </div>
 </template>
 
 <script>
@@ -61,14 +58,8 @@
                 newcredit:0,
                 showinput:true,
                 tableData:[],
-                note: {
-                    backgroundImage: "url(" + require("../../../../../image/User/bk3.png") + ")",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: '100% 100%',
-
-                },
                 note2: {
-                    backgroundImage: "url(" + require("../../../../../image/User/bk1.png") + ")",
+                    backgroundImage: "url(" + require("../../../../../image/User/bk5.jpg") + ")",
                     backgroundRepeat: "no-repeat",
                     backgroundSize: '100% 100%',
 
@@ -112,13 +103,12 @@
 </script>
 
 <style scoped lang="scss">
-    .Mybus{
-        width: 100%;
-        height: 100px;
-    }
+
     .bk{
         width:100%;
         height: 600px;
+        box-shadow:0px 0px  15px 5px #aaa;
+
     }
     .button_group{
         color: white;

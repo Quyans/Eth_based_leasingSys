@@ -1,5 +1,9 @@
 <template>
     <div class="tabs">
+        <div class="button_group">
+            我的通知
+        </div>
+        <HR align=center width=1200px color=#7848ba SIZE=2></HR>
         <div class="container">
             <el-tabs v-model="message">
                 <el-tab-pane :label="`房主消息列表(${unread.length})`" name="first">
@@ -11,17 +15,17 @@
                                 房子：<span class="message-title">{{scope.row.house_id_hash}}</span>
                                 房子地址：<span class="message-title">{{scope.row.commu_name}}</span>
                                 <div v-if="scope.row.tract_status=='submit'">
-                                请求状态：<span class="message-title">等待支付</span>
+                                    请求状态：<span class="message-title">等待支付</span>
                                 </div>
                                 <div v-else-if="scope.row.tract_status=='effect'">
                                     请求状态：<span class="message-title">合约已生效</span>
                                 </div>
                                 <div v-else-if="scope.row.tract_status=='finish'">
-                                       请求状态：<span class="message-title">合约已完成</span>
-                                    </div>
-                                    <div v-else-if="scope.row.tract_status=='fail'">
-                                        请求状态：<span class="message-title">合约失败</span>
-                                    </div>
+                                    请求状态：<span class="message-title">合约已完成</span>
+                                </div>
+                                <div v-else-if="scope.row.tract_status=='fail'">
+                                    请求状态：<span class="message-title">合约失败</span>
+                                </div>
                                 <div v-else-if="scope.row.tract_status=='refused'">
                                     请求状态：<span class="message-title">已拒绝</span>
                                 </div>
@@ -37,16 +41,16 @@
                         <el-table-column width="120">
                             <template slot-scope="scope">
                                 <div v-if="scope.row.tract_status=='submit'">
-                                <el-button size="small" @click="pay(scope.row)">支付</el-button>
-                                <div style="float: right;margin-right: 45px">
-                                <el-button size="small" @click="no1(scope.row)">拒绝</el-button>
-                                </div>
+                                    <el-button size="small" @click="pay(scope.row)">支付</el-button>
+                                    <div style="float: right;margin-right: 45px">
+                                        <el-button size="small" @click="no1(scope.row)">拒绝</el-button>
+                                    </div>
                                 </div>
                                 <div v-if="scope.row.tract_status=='effect'">
                                     合约生效中
                                 </div>
                                 <div v-if="scope.row.tract_status=='refused'">
-                                 你已经拒绝了这个请求
+                                    你已经拒绝了这个请求
                                 </div>
                                 <div v-if="scope.row.tract_status=='finish'">
                                     合约完成
@@ -58,7 +62,7 @@
                                     你以确认，等待对方确认
                                 </div>
                                 <div v-if="scope.row.tract_status=='userIden'">
-                                        <el-button size="small" @click="yes(scope.row)">确认</el-button>
+                                    <el-button size="small" @click="yes(scope.row)">确认</el-button>
                                     <div style="float: right;margin-right: 45px">
                                         <el-button size="small" @click="no(scope.row)">拒绝</el-button>
                                     </div>
@@ -94,13 +98,13 @@
             ownerGet().then(res=>{
                 this.unread = res.data.tract
             })
-    },
+        },
 
         methods: {
             yes(index) {
                 this.request_response = true;
                 ownerIden(index.username,this.request_response);
-                    this.$router.go(0);
+                this.$router.go(0);
             },
             no(index) {
                 this.request_response = false;
@@ -130,13 +134,20 @@
 <style>
     .tabs{
         width: 100%;
-        height: 100%;
+        height: 550px;
+        box-shadow:0px 0px  15px 5px #aaa;
+    }
+    .button_group{
+        color: white;
+        float: left;
+        background-color: #7140b6;
+        width:250px;
+        line-height: 70px;
+        text-align: center;
+        font-size: 200%;
     }
     .message-title{
         cursor: pointer;
-    }
-    .handle-row{
-        margin-top: 30px;
     }
 </style>
 
