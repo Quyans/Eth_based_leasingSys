@@ -322,6 +322,5 @@ export function getHouseList() {
     //         ],
     //     }
     // })
-    return server.get('house/allInfo', {
-    }).then(handleResponse)
+    return server.get('house/allInfo').then(handleResponse)
 }

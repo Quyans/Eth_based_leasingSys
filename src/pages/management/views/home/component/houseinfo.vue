@@ -3,7 +3,7 @@
             <div class="button_group">
                 用户管理
             </div>
-            <HR align=center width=1230px color=#7848ba SIZE=2></HR>
+            <HR align=center width=1200px color=#7848ba SIZE=2></HR>
             <el-table
                     :data="tableData"
                     stripe
@@ -13,11 +13,11 @@
                         label="图片"
                         width="180">
                     <template slot-scope="scope">
-                        　　　　<img :src="scope.row.photo" width="100" height="100" class="head_pic"/>
+                        　　　　<img :src="fir+scope.row.house_pic" width="100" height="100" class="head_pic"/>
                         　　</template>
                 </el-table-column>
                 <el-table-column
-                        prop="low_location"
+                        prop="low_str_location"
                         label="地址">
                 </el-table-column>
                 <el-table-column
@@ -49,6 +49,7 @@
 
         data() {
             return {
+                fir:"http://211.87.230.14:8080/ipfs/",
                 tableData:[{
 
                 }],
@@ -63,7 +64,7 @@
         },
         created(){
             getHouseList().then(res => {
-                this.tableData = res.verified
+                this.tableData = res.verified;
             })
         },
 
@@ -79,13 +80,15 @@
     .bk{
         width:100%;
         height: 600px;
+        overflow-y: scroll;
         box-shadow:0px 0px  15px 5px #aaa;
     }
     .button_group{
         color: white;
+        background-color: #6e3eb4;
         float: left;
-        margin-left: 40px;
         width:250px;
+        text-align: center;
         line-height: 70px;
         font-size: 200%;
     }

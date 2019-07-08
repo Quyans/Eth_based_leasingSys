@@ -3,7 +3,7 @@
             <div class="button_group">
                 用户管理
             </div>
-            <HR align=center width=1230px color=#7848ba SIZE=2></HR>
+            <HR align=center width=1200px color=#7848ba SIZE=2></HR>
             <el-table
                     :data="tableData"
                     stripe
@@ -93,12 +93,14 @@
     .bk{
         width:100%;
         height: 600px;
+        overflow-y: scroll;
         box-shadow:0px 0px  15px 5px #aaa;
     }
     .button_group{
         color: white;
+        background-color: #6e3eb4;
         float: left;
-        margin-left: 40px;
+        text-align: center;
         width:250px;
         line-height: 70px;
         font-size: 200%;

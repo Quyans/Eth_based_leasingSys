@@ -35,7 +35,7 @@
                             map.addOverlay(new BMap.Marker(point));
                             that.$emit('send',point);
                         }else{
-                            alert("您选择地址没有解析到结果!");
+                            alert("请您输入更加详细的地址!");
                         }
                     }, this.city);
                 })

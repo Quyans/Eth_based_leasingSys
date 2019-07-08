@@ -21,7 +21,6 @@
                             class="avatar-uploader"
                             action=""
                             :show-file-list="false"
-
                             :on-change="getFile_a"
                             :before-upload="beforeAvatarUpload">
                         <img v-if="imageUrl_a" :src="imageUrl_a" class="avatar">

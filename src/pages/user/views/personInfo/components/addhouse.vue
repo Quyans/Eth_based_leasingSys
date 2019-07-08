@@ -7,6 +7,8 @@
             <HR align=center width=1230px color=#7848ba SIZE=2></HR>
             <div class="fir">
                 <div class="phone">
+                    <el-row>
+                        <el-col :span="6">
                     <div class="h-info">
                         房产证:<el-input
                             placeholder="请输入内容"
@@ -29,6 +31,8 @@
                         </el-option>
                     </el-select>
                     </div>
+                        </el-col>
+                        <el-col :span="6">
                     <div class="h-info">
                         具体地址:<el-input
                             placeholder="请输入内容"
@@ -41,13 +45,15 @@
                             v-model="registerForm.floor">
                     </el-input>
                     </div>
-                    <div class="h-info">
-                        有无电梯:
-                        <el-input
-                                placeholder="请输入内容"
-                                v-model="registerForm.elevator">
+                      <div class="h-info">
+                          小区:<el-input
+                           placeholder="请输入内容"
+                           v-model="address"
+                           v-on:change="reload">
                         </el-input>
-                    </div>
+                      </div>
+                        </el-col>
+                        <el-col :span="6">
                     <div class="h-info">
                         价格:<el-input
                             placeholder="请输入内容"
@@ -66,12 +72,15 @@
                             v-model="registerForm.house_type">
                     </el-input>
                     </div>
-                    <div class="h-info">
-                        小区:<el-input
-                            placeholder="请输入内容"
-                            v-model="address">
-                    </el-input>
-                    </div>
+                        </el-col>
+                        <el-col :span="6">
+                            <div class="h-info">
+                                有无电梯:
+                                <el-input
+                                        placeholder="请输入内容"
+                                        v-model="registerForm.elevator">
+                                </el-input>
+                            </div>
                     <div class="h-info">
                         面积:<el-input
                             placeholder="请输入内容"
@@ -81,17 +90,20 @@
                     <div class="h-info">
                         <el-button style="margin-top:20px;width: 150px;background-color: #6e3eb4;color: white" plain @click="Enter2">进行验证</el-button>
                     </div>
+                        </el-col>
+                    </el-row>
                     <div class="h-info">
                         上传图片{{registerForm.house_pic}}
                         <el-upload
                                 action=""
                                 list-type="picture-card"
                                 :on-change="handleRemove">
+                            <img v-if="imageUrl_a" :src="imageUrl_a"class="avatar">
                             <i class="el-icon-plus"></i>
                         </el-upload>
                     </div>
                     <div class="h-info" v-if="show">
-                        <Map @send="getvalue" style="height: 250px" :name="address" :city="city"></Map>
+                        <Map @send="getvalue" style="height: 250px;margin-top: 20px;margin-left: 50px" :name="address" :city="city"></Map>
                     </div>
                 </div>
             </div>
@@ -102,7 +114,7 @@
 <script>
     import {compressImage} from "../../../../../utils";
     import {addHouse} from "../../../../../resource/house";
-    import Map from  "../../../../../components/SetPositionBaidu"
+    import Map from  "../../../../../components/SetPositionBaidu";
     export default {
         components: {Map},
         data() {
@@ -127,9 +139,10 @@
                     value: '选项6',
                     label: '长清区'
                 }, ],
-                address:"万达广场",
+                address:"",
                 city:"济南市",
                 show:true,
+                imageUrl_a:"",
                 registerForm:{
                     house_id:0,
                     state:0,
@@ -171,8 +184,13 @@
         },
 
         methods:{
+            reload(){
+                this.show = false;
+                this.$nextTick(() => (this.show = true))
+        },
             getvalue(v){
-            console.log(v)
+            this.registerForm.lon = v.lng;
+            this.registerForm.lat = v.lat;
             },
             Enter2(){
                 var that = this;
@@ -202,6 +220,7 @@
             handleRemove(file, fileList) {
                 console.log(file, fileList);
                 this.registerForm.house_pic = file.raw;
+                this.imageUrl_a = URL.createObjectURL(file.raw);
             },
         },
 
@@ -237,6 +256,10 @@
         float: left;
         width: 200px;
         margin-left: 50px;
+    }
+    .avatar{
+        width: 100%;
+        height: 100%;
     }
 
 
