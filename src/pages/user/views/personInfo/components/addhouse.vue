@@ -171,7 +171,7 @@
         },
 
         methods:{
-            getvalue(){
+            getvalue(v){
             console.log(v)
             },
             Enter2(){

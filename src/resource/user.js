@@ -265,66 +265,63 @@ export function changeUserInfo(username,credit) {
 
 //获取房屋列表
 export function getHouseList() {
-    return  Promise.resolve({
-
-        "data":{
-            "verified":[            //通过验证的房子
-                {
-                    "photo":"https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1561713939&di=25c1a8a562a1dd37fe024f0604fd46b3&src=http://r.bstatic.com/images/hotel/max1024x768/987/98767654.jpg",   //一张图片的hash
-                    "low_location":"山东省济南市历下区**小区",
-                    "lease":"5000",
-                    "house_type":"2",
-                    "lease_type":"1",
-                },
-
-               {
-                   "photo":"sadfadsfadf" ,  //一张图片的hash
-                   "low_location":"山东省济南市历下区**小区",
-                   "lease":"5000",
-                   "house_type":"2",
-                   "lease_type":"1",
-               },
-
-               {
-                   "photo":"sadfadsfadf" ,  //一张图片的hash
-                   "low_location":"山东省济南市历下区**小区",
-                   "lease":"5000",
-                   "house_type":"2",
-                   "lease_type":"1",
-               },
-            ],
-
-
-            "non_verified":[            //通过验证的房子
-                {
-                    "photo":"sadfadsfadf",   //一张图片的hash
-                    "low_location":"山东省济南市历下区**小区",
-                    "lease":"5000",
-                    "house_type":"2",
-                    "lease_type":"1",
-                },
-
-               {
-                   "photo":"sadfadsfadf",   //一张图片的hash
-                   "low_location":"山东省济南市历下区**小区",
-                   "lease":"5000",
-                   "house_type":"2",
-                   "lease_type":"1",
-               },
-
-               {
-                   "photo":"sadfadsfadf" ,  //一张图片的hash
-                   "low_location":"山东省济南市历下区**小区",
-                   "lease":"5000",
-                   "house_type":"2",
-                   "lease_type":"1",
-               },
-            ],
-        }
-    })
-    // return server.get('house/allInfo', {
-    //     params: {
+    // return  Promise.resolve({
     //
+    //     "data":{
+    //         "verified":[            //通过验证的房子
+    //             {
+    //                 "photo":"https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1561713939&di=25c1a8a562a1dd37fe024f0604fd46b3&src=http://r.bstatic.com/images/hotel/max1024x768/987/98767654.jpg",   //一张图片的hash
+    //                 "low_location":"山东省济南市历下区**小区",
+    //                 "lease":"5000",
+    //                 "house_type":"2",
+    //                 "lease_type":"1",
+    //             },
+    //
+    //            {
+    //                "photo":"sadfadsfadf" ,  //一张图片的hash
+    //                "low_location":"山东省济南市历下区**小区",
+    //                "lease":"5000",
+    //                "house_type":"2",
+    //                "lease_type":"1",
+    //            },
+    //
+    //            {
+    //                "photo":"sadfadsfadf" ,  //一张图片的hash
+    //                "low_location":"山东省济南市历下区**小区",
+    //                "lease":"5000",
+    //                "house_type":"2",
+    //                "lease_type":"1",
+    //            },
+    //         ],
+    //
+    //
+    //         "non_verified":[            //通过验证的房子
+    //             {
+    //                 "photo":"sadfadsfadf",   //一张图片的hash
+    //                 "low_location":"山东省济南市历下区**小区",
+    //                 "lease":"5000",
+    //                 "house_type":"2",
+    //                 "lease_type":"1",
+    //             },
+    //
+    //            {
+    //                "photo":"sadfadsfadf",   //一张图片的hash
+    //                "low_location":"山东省济南市历下区**小区",
+    //                "lease":"5000",
+    //                "house_type":"2",
+    //                "lease_type":"1",
+    //            },
+    //
+    //            {
+    //                "photo":"sadfadsfadf" ,  //一张图片的hash
+    //                "low_location":"山东省济南市历下区**小区",
+    //                "lease":"5000",
+    //                "house_type":"2",
+    //                "lease_type":"1",
+    //            },
+    //         ],
     //     }
-    // }).then(handleResponse)
+    // })
+    return server.get('house/allInfo', {
+    }).then(handleResponse)
 }
