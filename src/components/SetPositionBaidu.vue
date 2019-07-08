@@ -29,18 +29,21 @@
                     // 创建地址解析器实例
                     var myGeo = new BMap.Geocoder();
                     // 将地址解析结果显示在地图上,并调整地图视野
-                    myGeo.getPoint("济南市万达广场", function(point){
+                    myGeo.getPoint(this.name, function(point){
                         if (point) {
                             map.centerAndZoom(point, 16);
                             map.addOverlay(new BMap.Marker(point));
+                            this.$emit('send',point);
                         }else{
                             alert("您选择地址没有解析到结果!");
                         }
-                    }, "北京市");
+                    }, this.city);
                 })
             })
         },
         props: {
+
+
             province: {
                 type: String
             },

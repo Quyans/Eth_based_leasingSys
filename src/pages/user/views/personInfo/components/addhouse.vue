@@ -10,87 +10,76 @@
                     <div class="h-info">
                         房产证:<el-input
                             placeholder="请输入内容"
-                            v-model="registerForm.house_id"
-                            v-bind:disabled="showinput">
+                            v-model="registerForm.house_id">
                     </el-input>
                     </div>
                     <div class="h-info">
                         房子可用:<el-input
                             placeholder="请输入内容"
-                            v-model="registerForm.state"
-                            v-bind:disabled="showinput">
+                            v-model="registerForm.state">
                     </el-input>
                     </div>
                     <div class="h-info">
-                        省份:<el-input
-                            placeholder="请输入内容"
-                            v-model="registerForm.low_location"
-                            v-bind:disabled="showinput">
-                    </el-input>
+                        市区:  <el-select v-model="registerForm.low_location" placeholder="请选择">
+                        <el-option
+                                v-for="item in options"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
                     </div>
                     <div class="h-info">
                         具体地址:<el-input
                             placeholder="请输入内容"
-                            v-model="registerForm.specific_location"
-                            v-bind:disabled="showinput">
+                            v-model="registerForm.specific_location">
                     </el-input>
                     </div>
                     <div class="h-info">
                         楼层:<el-input
                             placeholder="请输入内容"
-                            v-model="registerForm.floor"
-                            v-bind:disabled="showinput">
+                            v-model="registerForm.floor">
                     </el-input>
                     </div>
                     <div class="h-info">
                         有无电梯:
                         <el-input
                                 placeholder="请输入内容"
-                                v-model="registerForm.elevator"
-                                v-bind:disabled="showinput">
+                                v-model="registerForm.elevator">
                         </el-input>
                     </div>
                     <div class="h-info">
                         价格:<el-input
                             placeholder="请输入内容"
-                            v-model="registerForm.lease"
-                            v-bind:disabled="showinput">
+                            v-model="registerForm.lease">
                     </el-input>
                     </div>
                     <div class="h-info">
                         出租方式:<el-input
                             placeholder="请输入内容"
-                            v-model="registerForm.lease_type"
-                            v-bind:disabled="showinput">
+                            v-model="registerForm.lease_type">
                     </el-input>
                     </div>
                     <div class="h-info">
                         房型:<el-input
                             placeholder="请输入内容"
-                            v-model="registerForm.house_type"
-                            v-bind:disabled="showinput">
+                            v-model="registerForm.house_type">
                     </el-input>
                     </div>
                     <div class="h-info">
-                        经度:<el-input
+                        小区:<el-input
                             placeholder="请输入内容"
-                            v-model="registerForm.lon"
-                            v-bind:disabled="showinput">
-                    </el-input>
-                    </div>
-                    <div class="h-info">
-                        纬度:<el-input
-                            placeholder="请输入内容"
-                            v-model="registerForm.lat"
-                            v-bind:disabled="showinput">
+                            v-model="address">
                     </el-input>
                     </div>
                     <div class="h-info">
                         面积:<el-input
                             placeholder="请输入内容"
-                            v-model="registerForm.area"
-                            v-bind:disabled="showinput">
+                            v-model="registerForm.area">
                     </el-input>
+                    </div>
+                    <div class="h-info">
+                        <el-button style="margin-top:20px;width: 150px;background-color: #6e3eb4;color: white" plain @click="Enter2">进行验证</el-button>
                     </div>
                     <div class="h-info">
                         上传图片{{registerForm.house_pic}}
@@ -101,9 +90,8 @@
                             <i class="el-icon-plus"></i>
                         </el-upload>
                     </div>
-                    <div>
-                        <el-button style="margin-left:200px;margin-top: 50px;width: 150px;background-color: #6e3eb4;color: white" plain @click="Enter1">修改</el-button>
-                        <el-button style="margin-left:100px;width: 150px;background-color: #6e3eb4;color: white" plain @click="Enter2">进行验证</el-button>
+                    <div class="h-info" v-if="show">
+                        <Map @send="getvalue" style="height: 250px" :name="address" :city="city"></Map>
                     </div>
                 </div>
             </div>
@@ -114,12 +102,34 @@
 <script>
     import {compressImage} from "../../../../../utils";
     import {addHouse} from "../../../../../resource/house";
+    import Map from  "../../../../../components/SetPositionBaidu"
     export default {
-        components: {},
+        components: {Map},
         data() {
 
             return {
-
+                options: [{
+                    value: '选项1',
+                    label: '市中区'
+                }, {
+                    value: '选项2',
+                    label: '历下区'
+                }, {
+                    value: '选项3',
+                    label: '历城区'
+                }, {
+                    value: '选项4',
+                    label: '天桥区'
+                }, {
+                    value: '选项5',
+                    label: '槐荫区'
+                }, {
+                    value: '选项6',
+                    label: '长清区'
+                }, ],
+                address:"万达广场",
+                city:"济南市",
+                show:true,
                 registerForm:{
                     house_id:0,
                     state:0,
@@ -135,8 +145,6 @@
                     area:"",
                     house_pic:false,
                 },
-                showinput:true,
-                shouphone:false,
                 note2: {
                     backgroundImage: "url(" + require("../../../../../image/User/bk5.jpg") + ")",
                     backgroundRepeat: "no-repeat",
@@ -163,13 +171,10 @@
         },
 
         methods:{
-            Enter1(){
-                this.showinput = false;
-                this.shouphone = true;
+            getvalue(){
+            console.log(v)
             },
             Enter2(){
-                this.showinput = true;
-                this.shouphone = false;
                 var that = this;
                 new Promise(resolve => {
                     // 图片压缩
