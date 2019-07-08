@@ -103,7 +103,7 @@
     // import wheel from "./components/wheel"
     import {contactOwner,userSet} from "../../../../resource/user"
     import {getSpeInfo} from "../../../../resource/house"
-
+    import {calUrl} from "../../../../resource/ipfs"
     export default {
         name: "SpecificInfo",
         components: {
@@ -150,13 +150,16 @@
                 phone_state:false,
                 phone:'',
                 phoneValid:'',
-                testhash : 'lEj/IW4OvMJgYQbg3BynVA==',
+                testhash : 'm1XQ1LpCH5eRs7gqEQmfEA==',
             }
         },
         created(){
 
             getSpeInfo(this.testhash).then(res=>{
-                this.speciInfo = res
+                var temp = res
+                console.log(temp.house_pic)
+                temp.house_pic=calUrl(temp.house_pic)
+                this.speciInfo = temp
             }),
 
             contactOwner(this.speciInfo.owner_id).then(res=>{

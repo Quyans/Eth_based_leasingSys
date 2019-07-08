@@ -114,6 +114,9 @@
     import {searchLowHouse} from   "../../../../../resource/house"
     export default {
         name: "searchCondition",
+        created(){
+            this.search()
+        },
         data(){
             return{
                 low_location:{

@@ -10,12 +10,14 @@
                     <!--<el-col :span="8"><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>-->
                     <!--<el-col :span="8"><RoughHouse :roughInfo="computed_rough_Info"></RoughHouse></el-col>-->
                 <!--</el-row>-->
-                <div style="width: 100%; text-align: center">
+                <div style="width: 100%; text-align: center;padding-top: 50px">
                     <div v-for="item in computed_rough_Info " style="width: 30%;display: inline-block;margin: 20px 0" >
                         <RoughHouse  style="margin: 0 auto" :styNum="item.styNum" :roughInfo="item"></RoughHouse>
                     </div>
                 </div>
                 <div id="home_footer"></div>
+                请选取一个图像文件: <input type="file" id="file" name="file"/>
+                <div id="result"></div>
             </div>
         </div>
     </div>
@@ -51,6 +53,8 @@
             //     this.computed_rough_Info = temp
             //     console.log(temp)
             // })
+            var that = this
+            window.addEventListener("DOMContentLoaded", that.contentLoaded, false);
         },
         data() {
             return {
@@ -64,50 +68,50 @@
                     backgroundSize: 'cover',
                 },
                 computed_rough_Info:[
-                    {"photo":"",   //一张图片的hash
-                        "low_str_location":"**小区",
-                        "lease":"",
-                        "house_type":"",
-                        "lease_type":"1",
-                        "house_hash":""},
-                    {
-                        "photo":"",   //一张图片的hash
-                        "low_str_location":"**小区",
-                        "lease":"",
-                        "house_type":"",
-                        "lease_type":"",
-                        "house_hash":""
-                    },
-                    {
-                        "photo":"",   //一张图片的hash
-                        "low_str_location":"**小区",
-                        "lease":"",
-                        "house_type":"",
-                        "lease_type":"",
-                        "house_hash":""
-                    },{
-                        "photo":"",   //一张图片的hash
-                        "low_str_location":"**小区",
-                        "lease":"",
-                        "house_type":"",
-                        "lease_type":"",
-                        "house_hash":""
-                    },{
-                        "photo":"",   //一张图片的hash
-                        "low_str_location":"",
-                        "lease":"",
-                        "house_type":"",
-                        "lease_type":"",
-                        "house_hash":""
-                    },
-                    {
-                        "photo":"",   //一张图片的hash
-                        "low_str_location":"",
-                        "lease":"",
-                        "house_type":"",
-                        "lease_type":"",
-                        "house_hash":""
-                    },
+                    // {"photo":"",   //一张图片的hash
+                    //     "low_str_location":"**小区",
+                    //     "lease":"",
+                    //     "house_type":"",
+                    //     "lease_type":"1",
+                    //     "house_hash":""},
+                    // {
+                    //     "photo":"",   //一张图片的hash
+                    //     "low_str_location":"**小区",
+                    //     "lease":"",
+                    //     "house_type":"",
+                    //     "lease_type":"",
+                    //     "house_hash":""
+                    // },
+                    // {
+                    //     "photo":"",   //一张图片的hash
+                    //     "low_str_location":"**小区",
+                    //     "lease":"",
+                    //     "house_type":"",
+                    //     "lease_type":"",
+                    //     "house_hash":""
+                    // },{
+                    //     "photo":"",   //一张图片的hash
+                    //     "low_str_location":"**小区",
+                    //     "lease":"",
+                    //     "house_type":"",
+                    //     "lease_type":"",
+                    //     "house_hash":""
+                    // },{
+                    //     "photo":"",   //一张图片的hash
+                    //     "low_str_location":"",
+                    //     "lease":"",
+                    //     "house_type":"",
+                    //     "lease_type":"",
+                    //     "house_hash":""
+                    // },
+                    // {
+                    //     "photo":"",   //一张图片的hash
+                    //     "low_str_location":"",
+                    //     "lease":"",
+                    //     "house_type":"",
+                    //     "lease_type":"",
+                    //     "house_hash":""
+                    // },
                 ]
             }
         },
@@ -117,7 +121,7 @@
                 // console.log(123)
                 // alert(123)
                 // console.log(123)
-                console.log(type_select)
+                // console.log(type_select)
                 searchLowHouse(low_location,lease_select,type_select,lease_type,elevator).then(res => {
                         var temp = res;
                         var len = temp.length
@@ -126,16 +130,37 @@
                         }
                         this.computed_rough_Info = temp
                         console.log(temp)
-                        this.$message({
-                            message: "查询成功，请稍后",
-                            type: "success",
-                            center: true
-                        })
+                        // this.$message({
+                        //     message: "查询成功，请稍后",
+                        //     type: "success",
+                        //     center: true
+                        // })
                     },
                     e => {
                         this.$message.error(`出错：${e.message}`);
                     })
-            }
+            },
+             ProcessFile(e) {
+                var file = document.getElementById('file').files[0];
+                console.log(file)
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function (event) {
+                        var txt = event.target.result;
+                        // console.log(txt)
+                        var img = document.createElement("img");
+                        img.src = txt;//将图片base64字符串赋值给img的src
+                        // console.log(txt);
+                        document.getElementById("result").appendChild(img);
+                    };
+                }
+                reader.readAsDataURL(file);
+            },
+
+             contentLoaded() {
+                document.getElementById('file').addEventListener('change',
+                    this.ProcessFile, false);
+            },
 
         }
     }
@@ -241,6 +266,7 @@
         background-image: url("../../../../image/User/bk_footer.png");
         background-size: 100% 100%;
         margin: 0 auto;
+        margin-top: 70px;
     }
 
 </style>

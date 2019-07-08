@@ -16,30 +16,32 @@
                 <el-form-item >
                     <el-input v-model="registerForm.id" placeholder="请输入身份证号码" ></el-input>
                 </el-form-item>
-                <el-form-item prop="profile_a">
+                <el-form-item style="text-align: center">
                     <el-upload
-                            class="upload-demo"
-                            drag
+                            class="avatar-uploader"
                             action=""
+                            :show-file-list="false"
+
                             :on-change="getFile_a"
-                            :auto-upload="false"
-                            multiple>
-                        <i class="el-icon-upload"></i>
-                        <div class="el-upload__text">身份证正面照<em>点击上传</em></div>
+                            :before-upload="beforeAvatarUpload">
+                        <img v-if="imageUrl_a" :src="imageUrl_a" class="avatar">
+                        <p>身份证照片面</p>
+
+                    </el-upload>
+
+                    <el-upload
+                            class="avatar-uploader"
+                            action=""
+                            :show-file-list="false"
+                            :on-change="getFile_b"
+                            :before-upload="beforeAvatarUpload">
+                        <img v-if="imageUrl_b" :src="imageUrl_b" class="avatar">
+                        <p style="">身份证国徽面</p>
+                        <!--<i v-else class="el-icon-plus avatar-uploader-icon"></i>-->
                     </el-upload>
                 </el-form-item>
                 <el-form-item prop="profile_b">
-                    <el-upload
-                            class="upload-demo"
-                            drag
-                            :limit=1
-                            action=""
-                            :on-change="getFile_b"
-                            :auto-upload="false"
-                            multiple>
-                        <i class="el-icon-upload"></i>
-                        <div class="el-upload__text">身份证国徽<em>点击上传</em></div>
-                    </el-upload>
+
                 </el-form-item>
 
                 <el-form-item >
@@ -111,6 +113,7 @@
         data() {
 
             return {
+
                 radio1:1,
                 registerForm: {
                     username: '',
@@ -156,10 +159,14 @@
 
             //修改图片一 二
             getFile_a(file,file_list){
+                // console.log(123)
                 this.registerForm.profile_a = file.raw
+                this.imageUrl_a = URL.createObjectURL(file.raw);
             },
             getFile_b(file,file_list){
-                this.registerForm.profile_b = file.raw
+                // console.log(file.raw)
+                this.registerForm.profile_b = file.raw;
+                this.imageUrl_b = URL.createObjectURL(file.raw);
             },
             submit_reg(){
                 var that = this
@@ -196,8 +203,22 @@
                         e => {
                             this.$message.error(`出错：${e.message}`);
                         })
-
-            }
+            },
+            beforeAvatarUpload(file) {
+                const isJPG = file.type === 'image/jpeg';
+                const isLt2M = file.size / 1024 / 1024 < 2;
+                if (!isJPG) {
+                    this.$message.error('上传头像图片只能是 JPG 格式!');
+                }
+                if (!isLt2M) {
+                    this.$message.error('上传头像图片大小不能超过 2MB!');
+                }
+                return isJPG && isLt2M;
+            },
+            handleAvatarSuccess() {
+                // this.imageUrl = URL.createObjectURL(file.raw);
+                console.log(123)
+            },
         }
     }
 
@@ -235,4 +256,21 @@
         border-radius: 4px;
          background-color: white;
     }
+    #registerForm .el-dialog{
+        width: 500px;
+    }
+    #registerForm .avatar{
+        width: 100%;
+        height: 100%;
+    }
+    #registerForm .avatar-uploader{
+        width: 44%;
+        display: inline-block;
+        margin: 0 10px;
+    }
+    #registerForm .el-upload {
+        width: 100%;
+        height: 120px;
+    }
+
 </style>
