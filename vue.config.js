@@ -28,7 +28,7 @@ module.exports = {
     devServer: {
         proxy: {
             '/api': {
-                target: 'http://211.87.230.14:8000'
+                target: 'http://211.87.230.12:8000'
             },
         },
         // https:true

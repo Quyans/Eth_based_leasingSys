@@ -23,13 +23,19 @@ Vue.use(Router)
 
 
 export let router = new Router({
+    mode:'history',
     routes: [
         {
             path: '/',
             name: 'home',
-            redirect:'/login'
+            redirect: '/user'
         },
         {
+            path: '/user',
+            name: 'user',
+            component: resolve => require(['../user/views/home/Home'], resolve),
+        },
+    {
             path: '/login',
             name: 'login',
             component: _('login'),
