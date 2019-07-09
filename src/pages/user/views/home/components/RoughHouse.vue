@@ -4,7 +4,7 @@
             <el-row style="height: 100%">
                 <el-col :span="12">
                     <div class="houseImg">
-
+                        <img style="width: 100%;height:100%" :src="roughInfo.house_pic">
                     </div>
                 </el-col>
                 <el-col :span="12">
@@ -73,7 +73,7 @@
                 // document.getElementById("roughDiv").style.backgroundColor=color
             },
             goSpecInfo(){
-                this.$router.push(`/house/${this.rough_info.house_hash}`)
+                this.$router.push(`/house/${this.rough_info.house_id_hash}`)
             },
             setBackColor(num){
                 switch (num){
@@ -111,7 +111,7 @@
     .roughHouse .houseImg{
         height: 100%;
         width: 100%;
-        background-image: url("../../../../../image/testRoughHouse.png");
+        /*background-image: url("../../../../../image/testRoughHouse.png");*/
         background-size: cover;
     }
     .roughHouse .el-col-12{

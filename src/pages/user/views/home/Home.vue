@@ -16,8 +16,8 @@
                     </div>
                 </div>
                 <div id="home_footer"></div>
-                请选取一个图像文件: <input type="file" id="file" name="file"/>
-                <div id="result"></div>
+                <!--请选取一个图像文件: <input type="file" id="file" name="file"/>-->
+                <!--<div id="result"></div>-->
             </div>
         </div>
     </div>
@@ -32,6 +32,7 @@
     import searchCondition from "./components/searchCondition"
     import RoughHouse from "./components/RoughHouse"
     import {searchLowHouse} from "../../../../resource/house"
+    import {calRoughUrl} from "../../../../resource/ipfs"
     export default {
         name: 'home',
         components: {
@@ -54,7 +55,7 @@
             //     console.log(temp)
             // })
             var that = this
-            window.addEventListener("DOMContentLoaded", that.contentLoaded, false);
+            // window.addEventListener("DOMContentLoaded", that.contentLoaded, false);
         },
         data() {
             return {
@@ -128,8 +129,9 @@
                         for (var i = 0;i<len;i++){
                             temp[i].styNum = i
                         }
-                        this.computed_rough_Info = temp
-                        console.log(temp)
+                        var temp2 = calRoughUrl(temp)
+                        this.computed_rough_Info = temp2
+                        // console.log(temp)
                         // this.$message({
                         //     message: "查询成功，请稍后",
                         //     type: "success",
