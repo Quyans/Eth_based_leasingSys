@@ -4,12 +4,6 @@ const path = require('path')
 
 module.exports = {
     pages: {
-        index: {
-            entry: 'src/pages/index/main.js',
-            template: 'index.template.html',
-            filename: 'index.html',
-            title: 'Index'
-        },
         user: {
             entry: 'src/pages/user/main.js',
             template: 'user.template.html',
@@ -17,6 +11,12 @@ module.exports = {
             title: 'User',
             // 当前版本暂不支持chunks  复议
             // chunks: ['chunk-common']
+        },
+        index: {
+            entry: 'src/pages/index/main.js',
+            template: 'index.template.html',
+            filename: 'index.html',
+            title: 'Index'
         },
         management: {
             entry: 'src/pages/management/main.js',

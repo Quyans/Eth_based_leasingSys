@@ -52,7 +52,7 @@ export function getMyHouse(house_id_hash) {
                 }
             ]
         },
-    // return server.get('user/myhouse', {
+    // return server.post('user/myhouseInfo', {
     //     params: {
     //         house_hash
     //     }
