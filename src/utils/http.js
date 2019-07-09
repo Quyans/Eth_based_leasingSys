@@ -34,7 +34,7 @@ export const handleResponse = resp => {
         return testtanchuang()
     }
     else {
-        throw new RequestError(resp.data.message, resp.data.status)
+        throw new RequestError(resp.message, resp.status)
     }
 }
 

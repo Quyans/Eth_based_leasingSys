@@ -14,6 +14,14 @@
                     <div v-for="item in computed_rough_Info " style="width: 30%;display: inline-block;margin: 20px 0" >
                         <RoughHouse  style="margin: 0 auto" :styNum="item.styNum" :roughInfo="item"></RoughHouse>
                     </div>
+                    <div class="block">
+                        <span class="demonstration">页数较少时的效果</span>
+                        <el-pagination
+                                :hide-on-single-page="true "
+                                layout="prev, pager, next"
+                                :total="20">
+                        </el-pagination>
+                    </div>
                 </div>
                 <div id="home_footer"></div>
                 <!--请选取一个图像文件: <input type="file" id="file" name="file"/>-->
@@ -41,7 +49,7 @@
             loginForm,
             RegisterForm,
             searchCondition,
-            RoughHouse
+            RoughHouse,
         },
         created() {
             // searchLowHouse(1,1,1,1,1).then(res =>{
@@ -62,7 +70,7 @@
                 BASE_URL: process.env.BASE_URL,
                 searchId: '',
                 isScanningQRCode: false,
-
+                page:1,
                 sub_note:{
                     backgroundImage: "url(" + require("../../../../image/User/bk2.jpg") + ")",
                     backgroundRepeat: "no-repeat",
@@ -124,7 +132,8 @@
                 // console.log(123)
                 // console.log(type_select)
                 searchLowHouse(low_location,lease_select,type_select,lease_type,elevator).then(res => {
-                        var temp = res;
+                        var temp = res.houseList;
+                        this.page=res.page
                         var len = temp.length
                         for (var i = 0;i<len;i++){
                             temp[i].styNum = i

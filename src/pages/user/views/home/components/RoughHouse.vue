@@ -22,7 +22,6 @@
 
 <script>
     import {compute_int2str} from "../../../../../resource/house"
-
     export default {
         name: "RoughHouse",
         created(){
