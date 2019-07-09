@@ -101,7 +101,7 @@
                                 action=""
                                 list-type="picture-card"
                                 :on-change="handleRemove">
-                            <i class="el-icon-plus"></i>
+                            <img v-if="imageUrl_a" :src="imageUrl_a"class="avatar">
                         </el-upload>
                     </div>
                 </el-col>
@@ -128,6 +128,7 @@
                 hash:"house_hash",
                 houseId:"",
                 tableData:[],
+                imageUrl_a:"",
                 registerForm:{
                     state:0,
                     house_id_hash:0,
@@ -169,7 +170,7 @@
         },
         created(){
             getMyHouse(this.hash).then(res => {
-                this.tableData = res.data.house_comment;
+                this.tableData = res.house_comment;
                 this.registerForm.house_id_hash = res.house_id_hash;
                 this.owner_id = res.owner_id;
                 this.owner = res.owner;
@@ -243,6 +244,7 @@
             handleRemove(file, fileList) {
                 console.log(file, fileList);
                 this.registerForm.picture = file.raw;
+                this.imageUrl_a = URL.createObjectURL(file.raw);
             },
         }
     }

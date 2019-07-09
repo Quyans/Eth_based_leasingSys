@@ -31,6 +31,15 @@
                         </el-option>
                     </el-select>
                     </div>
+                            <div class="h-info">
+                                上传图片{{registerForm.house_pic}}
+                                <el-upload
+                                        action=""
+                                        list-type="picture-card"
+                                        :on-change="handleRemove">
+                                    <img v-if="imageUrl_a" :src="imageUrl_a"class="avatar">
+                                </el-upload>
+                            </div>
                         </el-col>
                         <el-col :span="6">
                     <div class="h-info">
@@ -52,6 +61,9 @@
                            v-on:change="reload">
                         </el-input>
                       </div>
+                            <div class="h-info" v-if="show">
+                                <Map @send="getvalue" style="height: 250px;margin-top: 20px" :name="address" :city="city"></Map>
+                            </div>
                         </el-col>
                         <el-col :span="6">
                     <div class="h-info">
@@ -87,24 +99,19 @@
                             v-model="registerForm.area">
                     </el-input>
                     </div>
+                            <div class="h-info">
+                                配套设施:<el-input
+                                    type="textarea"
+                                    :rows="6"
+                                    placeholder="请输入内容"
+                                    v-model="registerForm.accessory">
+                            </el-input>
+                            </div>
                     <div class="h-info">
-                        <el-button style="margin-top:20px;width: 150px;background-color: #6e3eb4;color: white" plain @click="Enter2">进行验证</el-button>
+                        <el-button style="margin-top:50px;width: 150px;background-color: #6e3eb4;color: white" plain @click="Enter2">进行验证</el-button>
                     </div>
                         </el-col>
                     </el-row>
-                    <div class="h-info">
-                        上传图片{{registerForm.house_pic}}
-                        <el-upload
-                                action=""
-                                list-type="picture-card"
-                                :on-change="handleRemove">
-                            <img v-if="imageUrl_a" :src="imageUrl_a"class="avatar">
-                            <i class="el-icon-plus"></i>
-                        </el-upload>
-                    </div>
-                    <div class="h-info" v-if="show">
-                        <Map @send="getvalue" style="height: 250px;margin-top: 20px;margin-left: 50px" :name="address" :city="city"></Map>
-                    </div>
                 </div>
             </div>
         </div>
@@ -156,6 +163,7 @@
                     lon:"",
                     lat:"",
                     area:"",
+                    accessory:"",
                     house_pic:false,
                 },
                 note2: {
