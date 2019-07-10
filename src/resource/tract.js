@@ -388,9 +388,9 @@ export function getHouseList() {
 //输入支付密码
 export function payPass(payPass) {
     // console.log(form.get('profile'))
-    return Promise.resolve({
-        "status":200,
-        "message":"success",
-    })
+    // return Promise.resolve({
+    //     "status":200,
+    //     "message":"success",
+    // })
     return server.post('/tract/payPass',  qs.stringify({payPass})).then(handleResponse)
 }

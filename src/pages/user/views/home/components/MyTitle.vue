@@ -6,6 +6,7 @@
                 <el-button type="text" @click="loginBtn" style="color: #eadcff" >登录</el-button>
                 <el-button type="text" @click="RegisterBtn" style="color: #eadcff">注册</el-button>
             </div>
+            <router-link to="/person">个人中心</router-link>
         </div>
         <loginForm :visual="vis_login" @closeLoginForm="closeLoginform" @goRegister="goRegister"></loginForm>
         <RegisterForm :visual="vis_register" @closeRegisterForm="closeRegisterform"

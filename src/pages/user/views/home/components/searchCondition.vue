@@ -95,7 +95,7 @@
                 <div  class="grid-content bg-purple" style="background-color: darkgrey">
                     <el-col :span="4">
                         <div id="moreSelect" class="grid-content bg-purple">
-                            <el-tag >更多筛选</el-tag>
+                            <el-tag >更多</el-tag>
                         </div>
                     </el-col>
                     <el-col :span="18">

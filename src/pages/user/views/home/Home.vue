@@ -14,12 +14,15 @@
                     <div v-for="item in computed_rough_Info " style="width: 30%;display: inline-block;margin: 20px 0" >
                         <RoughHouse  style="margin: 0 auto" :styNum="item.styNum" :roughInfo="item"></RoughHouse>
                     </div>
-                    <div class="block">
-                        <span class="demonstration">页数较少时的效果</span>
+                    <!--<div class="block" v-if="computed_rough_Info.length!=0">-->
+                    <div class="block" v-if="true">
                         <el-pagination
                                 :hide-on-single-page="true "
                                 layout="prev, pager, next"
-                                :total="20">
+                                :total="50"
+
+                                @current-change="currentChange"
+                        >
                         </el-pagination>
                     </div>
                 </div>
@@ -62,7 +65,7 @@
             //     this.computed_rough_Info = temp
             //     console.log(temp)
             // })
-            var that = this
+
             // window.addEventListener("DOMContentLoaded", that.contentLoaded, false);
         },
         data() {
@@ -70,7 +73,7 @@
                 BASE_URL: process.env.BASE_URL,
                 searchId: '',
                 isScanningQRCode: false,
-                page:1,
+                page:0,
                 sub_note:{
                     backgroundImage: "url(" + require("../../../../image/User/bk2.jpg") + ")",
                     backgroundRepeat: "no-repeat",
@@ -121,17 +124,23 @@
                     //     "lease_type":"",
                     //     "house_hash":""
                     // },
-                ]
+                ],
+                low_location:'',
+                lease_select:'',
+                type_select:'',
+                lease_type:'',
+                elevator:'',
             }
         },
         methods: {
 
             searchCond(low_location,lease_select,type_select,lease_type,elevator){
-                // console.log(123)
-                // alert(123)
-                // console.log(123)
-                // console.log(type_select)
-                searchLowHouse(low_location,lease_select,type_select,lease_type,elevator).then(res => {
+                this.low_location=low_location;
+                this.lease_select=lease_select;
+                this.type_select=type_select;
+                this.lease_type=lease_type;
+                this.elevator=elevator;
+                searchLowHouse(this.low_location,this.lease_select,this.type_select,this.lease_type,this.elevator,this.page).then(res => {
                         var temp = res.houseList;
                         this.page=res.page
                         var len = temp.length
@@ -150,7 +159,7 @@
                     e => {
                         this.$message.error(`出错：${e.message}`);
                     })
-            },
+                },
              ProcessFile(e) {
                 var file = document.getElementById('file').files[0];
                 console.log(file)
@@ -173,8 +182,28 @@
                     this.ProcessFile, false);
             },
 
+            currentChange(currentPage){
+                console.log(currentPage)
+                this.page=currentPage-1
+                searchLowHouse(this.low_location,this.lease_select,this.type_select,this.lease_type,this.elevator,this.page).then(res => {
+                        var temp = res.houseList;
+                        this.page=res.page
+                        var len = temp.length
+                        for (var i = 0;i<len;i++){
+                            temp[i].styNum = i
+                        }
+                        var temp2 = calRoughUrl(temp)
+                        this.computed_rough_Info = temp2
+                    },
+                    e => {
+                        this.$message.error(`出错：${e.message}`);
+                    })
+                },
+
+
+            }
         }
-    }
+
 </script>
 <style>
     .avatar-uploader .el-upload {

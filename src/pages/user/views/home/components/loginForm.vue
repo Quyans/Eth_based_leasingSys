@@ -92,6 +92,7 @@
                         type: "success",
                         center: true
                     })
+                    this.closeLogin()
                 })
             }
 

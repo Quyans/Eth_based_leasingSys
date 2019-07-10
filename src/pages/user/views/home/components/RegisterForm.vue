@@ -68,7 +68,7 @@
                     </div>
                 </el-form-item>
                 <el-form-item>
-                    <el-checkbox v-model="registerForm.checked">
+                    <el-checkbox v-model="checked">
                         我已阅读并同意
                     </el-checkbox>
                     <a style="color: #6e3eb4; ">《网站使用协议》</a>
@@ -124,9 +124,8 @@
                     phone:'',
                     id:'',
                     gender:0,
-                    checked:false,
-
                 },
+                checked:false,
                 formLabelWidth:'80px',
                 imageUrl_a:'',
                 imageUrl_b:''
@@ -136,11 +135,12 @@
             ruleFormData() {
                 let formData = new FormData()
                 // console.log(this.ruleForm);
+                console.log(this.registerForm)
                 Object.keys(this.registerForm).forEach(key => {
                     // if (key === 'checkpassword') return
                     formData.append(key, this.registerForm[key])
                 })
-                // console.log(formData)
+                console.log(formData)
                 return formData
             }
         },

@@ -4,10 +4,10 @@ import qs from 'qs'
 const hasLoggedInKey = 'hasLoggedIn'
 
 export function login(username, password) {
-    return Promise.resolve({
-        "status":200,
-        "message":"success",
-        })
+    // return Promise.resolve({
+    //     "status":200,
+    //     "message":"success",
+    //     })
     let res = server.post('user/login', qs.stringify({username, password})).then(handleResponse)
     res.then(() => sessionStorage.setItem(hasLoggedInKey, 'true'))
     return res
@@ -24,6 +24,7 @@ export function register(form) {
     //     "status":200,
     //     "message":"success",
     // })
+    console.log(form)
     return server.post('user/register', form).then(handleResponse)
 }
 

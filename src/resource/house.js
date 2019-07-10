@@ -123,7 +123,7 @@ export function getSpeInfo(house_id_hash) {
 }
 
 
-export function searchLowHouse(low_location,lease_inter,house_type,lease_type,elevator) {
+export function searchLowHouse(low_location,lease_inter,house_type,lease_type,elevator,page) {
     // console.log(123)
     // return Promise.resolve(
     //      [
@@ -177,7 +177,7 @@ export function searchLowHouse(low_location,lease_inter,house_type,lease_type,el
     var city = low_location.city;
     var site_select = low_location.site_select
 
-    return server.post('house/search',  qs.stringify({provi,city,site_select, lease_inter,house_type,lease_type,elevator})).then(handleResponse)
+    return server.post('house/search',  qs.stringify({provi,city,site_select, lease_inter,house_type,lease_type,elevator,page})).then(handleResponse)
 }
 
 export function compute_int2str(computedInfo) {

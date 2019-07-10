@@ -22,7 +22,7 @@
                     </el-input>
                     </div>
                     <div class="h-info">
-                        市区:  <el-select v-model="registerForm.low_location" placeholder="请选择">
+                        市区:  <el-select v-model="registerForm.sector" placeholder="请选择">
                         <el-option
                                 v-for="item in options"
                                 :key="item.value"
@@ -57,7 +57,7 @@
                       <div class="h-info">
                           小区:<el-input
                            placeholder="请输入内容"
-                           v-model="address"
+                           v-model="registerForm.commu_name"
                            v-on:change="reload">
                         </el-input>
                       </div>
@@ -128,22 +128,22 @@
 
             return {
                 options: [{
-                    value: '选项1',
+                    value: '市中区',
                     label: '市中区'
                 }, {
-                    value: '选项2',
+                    value: '历下区',
                     label: '历下区'
                 }, {
-                    value: '选项3',
+                    value: '历城区',
                     label: '历城区'
                 }, {
-                    value: '选项4',
+                    value: '天桥区',
                     label: '天桥区'
                 }, {
-                    value: '选项5',
+                    value: '槐荫区',
                     label: '槐荫区'
                 }, {
-                    value: '选项6',
+                    value: '长清区',
                     label: '长清区'
                 }, ],
                 address:"",
@@ -153,7 +153,11 @@
                 registerForm:{
                     house_id:0,
                     state:0,
-                    low_location:"",
+
+                    provi:"山东省",
+                    city:"济南市",
+                    sector:"",
+                    commu_name:"",
                     specific_location:"",
                     floor:0,
                     elevator:"",

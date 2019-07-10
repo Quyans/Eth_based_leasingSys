@@ -215,7 +215,7 @@
                 let formData = new FormData()
                 console.log(this.ruleForm);
                 Object.keys(this.ruleForm).forEach(key => {
-                    if (key === 'checkpassword') return
+                    // if (key === 'checkpassword') return
                     formData.append(key, this.ruleForm[key])
                 })
                 console.log(formData)
