@@ -22,6 +22,7 @@
 
 <script>
     import {compute_int2str} from "../../../../../resource/house"
+
     export default {
         name: "RoughHouse",
         created(){
@@ -75,6 +76,9 @@
                 this.$router.push(`/house/${this.rough_info.house_id_hash}`)
             },
             setBackColor(num){
+                while(num>6){
+                    num = num-6;
+                }
                 switch (num){
                     case 0:
                         return '#fcb79d';

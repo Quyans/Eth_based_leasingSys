@@ -94,6 +94,11 @@
                             },
                         ]
                     },
+                    {
+                        icon: 'el-icon-school',
+                        index: '/mystep',
+                        title: '我的足迹'
+                    },
                 ],
                 note:{
                     backgroundImage: "url(" + require("../../../../../image/User/bk1.png") + ")",

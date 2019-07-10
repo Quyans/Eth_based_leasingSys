@@ -71,6 +71,14 @@ export function getUserBalance(username) {
     //     }
     // }).then(handleResponse)
 }
+
+//获取我的足迹
+export function getmystep() {
+
+    return server.get('user/history').then(handleResponse)
+    
+}
+
 //获取交易记录
 export function getTransRecord(username) {
     return  Promise.resolve({

@@ -47,7 +47,7 @@
                     </div>
                     <div class="h-info">
                         房子可用:<el-input
-                            style="width: 100px;"
+                            style="width: 100px;margin-left: 10px"
                             placeholder="请输入内容"
                             v-model="registerForm.state"
                             v-bind:disabled="showinput">
@@ -60,6 +60,15 @@
                             v-model="registerForm.lease"
                             v-bind:disabled="showinput">
                     </el-input>
+                    </div>
+                    <div class="h-info">
+                        有无电梯:
+                        <el-input
+                                style="width: 100px;margin-left: 5px"
+                                placeholder="请输入内容"
+                                v-model="elevator_text"
+                                v-bind:disabled="showinput">
+                        </el-input>
                     </div>
                 </el-col>
                 <el-col :span="8">
@@ -82,14 +91,8 @@
                         楼层:<span style="margin-left:50px">{{floor}}</span>
                         房型:<span style="margin-left:30px">{{house_type}}</span>
                     </div>
-                    <div class="h-info">
-                        有无电梯:
-                        <el-input
-                                style="width: 100px"
-                                placeholder="请输入内容"
-                                v-model="elevator_text"
-                                v-bind:disabled="showinput">
-                        </el-input>
+                    <div class="h-info" >
+                        配套设施:<p style="margin-left:50px;width: 100%">{{accessory}}</p>
                     </div>
                     <div class="h-info">
                         <el-button style="margin-left:50px;margin-top: 30px;width: 100px;background-color: #6e3eb4;color: white" plain @click="Enter1">修改</el-button>
@@ -138,6 +141,7 @@
                 },
                 showinput:true,
                 shouphone:false,
+                accessory:"",
                 owner_id:0,
                 verify:0,
                 owner:0,
@@ -183,6 +187,7 @@
                 this.commu_name = res.low_location.commu_name;
                 this.specific_location = res.specific_location;
                 this.floor = res.floor;
+                this.accessory = res.accessory;
                 this.registerForm.elevator = res.elevator;
                 if (this.elevator==true){
                     this.elevator_text="有电梯"
@@ -279,7 +284,7 @@
         font-size: 25px;
     }
     .h-info{
-        font-size: 25px;
+        font-size: 20px;
         margin-top: 5px;
     }
     .el-carousel__item h3 {
