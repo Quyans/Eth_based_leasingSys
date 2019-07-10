@@ -62,7 +62,7 @@
                         </el-input>
                       </div>
                             <div class="h-info" v-if="show">
-                                <Map @send="getvalue" style="height: 250px;margin-top: 20px" :name="address" :city="city"></Map>
+                                <Map @send="getvalue" style="height: 250px;margin-top: 20px" :name="registerForm.commu_name" :city="citys"></Map>
                             </div>
                         </el-col>
                         <el-col :span="6">
@@ -146,8 +146,7 @@
                     value: '长清区',
                     label: '长清区'
                 }, ],
-                address:"",
-                city:"济南市",
+                citys:"济南市",
                 show:true,
                 imageUrl_a:"",
                 registerForm:{
@@ -251,9 +250,9 @@
         float: left;
         background-color: #7140b6;
         width:250px;
-        line-height: 70px;
+        line-height: 50px;
         text-align: center;
-        font-size: 200%;
+        font-size: 150%;
     }
     .phone{
         width:100%;
@@ -268,6 +267,7 @@
         float: left;
         width: 200px;
         margin-left: 50px;
+        margin-top: 15px;
     }
     .avatar{
         width: 100%;

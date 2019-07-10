@@ -1,6 +1,6 @@
 <!--让用户输入房源地点-->
 <template>
-    <div class="Map" style="height: 500px;width: 500px">
+    <div class="Map" style="height: 200%;width: 250%">
         <div id="allmap"></div>
     </div>
 </template>

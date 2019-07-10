@@ -79,8 +79,8 @@
         float: left;
         background-color: #7140b6;
         width:250px;
-        line-height: 70px;
+        line-height: 50px;
         text-align: center;
-        font-size: 200%;
+        font-size: 150%;
     }
 </style>

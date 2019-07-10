@@ -28,7 +28,7 @@ module.exports = {
     devServer: {
         proxy: {
             '/api': {
-                target: 'http://211.87.230.22:8000'
+                target: 'http://211.87.230.10:8000'
             },
         },
         // https:true
@@ -51,6 +51,8 @@ module.exports = {
                     optional: []
                 }
             }),
+
+
         ]
     },
     // chainWebpack: config => {

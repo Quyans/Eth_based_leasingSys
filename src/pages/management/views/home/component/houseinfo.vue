@@ -89,7 +89,7 @@
         float: left;
         width:250px;
         text-align: center;
-        line-height: 70px;
-        font-size: 200%;
+        line-height: 50px;
+        font-size: 150%;
     }
 </style>

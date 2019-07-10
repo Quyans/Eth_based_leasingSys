@@ -102,7 +102,7 @@
         float: left;
         text-align: center;
         width:250px;
-        line-height: 70px;
-        font-size: 200%;
+        line-height: 50px;
+        font-size: 150%;
     }
 </style>
