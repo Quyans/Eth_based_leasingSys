@@ -1,5 +1,5 @@
 //计算哈希值到url
-var baseUrl = 'http://211.87.230.22:8080/ipfs/'
+var baseUrl = 'http://121.250.222.90:8080/ipfs/'
 export function calUrl(hashList) {
 
     var temp = hashList

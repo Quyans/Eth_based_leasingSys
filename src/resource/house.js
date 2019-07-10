@@ -117,7 +117,8 @@ export function getSpeInfo(house_id_hash) {
     //         ]
     //     }
     // })
-    console.log(house_id_hash)
+    // console.log(house_id_hash)
+    // var house_id_hash="eHg6zhM8qYhIK/TzrDDYzg=="
     return server.post('house/speinfo', qs.stringify({house_id_hash})).then(handleResponse)
     // return server.post('house/speinfo',qs.stringify({house_id_hash})).then(handleResponse)
 }

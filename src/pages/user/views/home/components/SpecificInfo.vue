@@ -98,11 +98,11 @@
     </div>
 </template>
 <script>
-    import ShowPosition from "../../../../components/ShowPosition"
+    import ShowPosition from "../../../../../components/ShowPosition"
     // import wheel from "./components/wheel"
-    import {contactOwner,userSet} from "../../../../resource/user"
-    import {getSpeInfo} from "../../../../resource/house"
-    import {calUrl} from "../../../../resource/ipfs"
+    import {contactOwner,userSet} from "../../../../../resource/user"
+    import {getSpeInfo} from "../../../../../resource/house"
+    import {calUrl} from "../../../../../resource/ipfs"
     export default {
         name: "SpecificInfo",
         components: {
@@ -153,17 +153,19 @@
             }
         },
         created(){
+            console.log(123123123)
             getSpeInfo(this.house_hash).then(res=>{
                 var temp = res
-                console.log(temp.house_pic)
+                // console.log(temp.house_pic)
                 temp.house_pic=calUrl(temp.house_pic)
                 this.speciInfo = temp
-            }),
-
-            contactOwner(this.speciInfo.owner_id).then(res=>{
-                this.phoneValid = res.data.phone
-                this.phone=this.phoneValid.substr(0, 3) + '****' + this.phoneValid.substr(7);
+                contactOwner(this.speciInfo.owner_id).then(res=>{
+                    this.phoneValid = res.data.phone
+                    this.phone=this.phoneValid.substr(0, 3) + '****' + this.phoneValid.substr(7);
+                })
             })
+
+
         },
         methods:{
             contact(){
@@ -179,8 +181,24 @@
                 })
                 // userSet(this.speciInfo.house_hash,this.speciInfo.owner_id)
             }
-
+        },
+        watch:{
+            house_hash(val) {
+                if (val!=this.house_hash){
+                    getSpeInfo(val).then(res=>{
+                        var temp = res
+                        // console.log(temp.house_pic)
+                        temp.house_pic=calUrl(temp.house_pic)
+                        this.speciInfo = temp
+                        contactOwner(this.speciInfo.owner_id).then(res=>{
+                            this.phoneValid = res.data.phone
+                            this.phone=this.phoneValid.substr(0, 3) + '****' + this.phoneValid.substr(7);
+                        })
+                    })
+                }
+            }
         }
+
     }
 </script>
 
@@ -222,7 +240,7 @@
     #houseHome{
         /*background-color: #48385c;*/
         /*height: 100%;*/
-        background-image: url("../../../../image/User/bk1.png");
+        background-image: url("../../../../../image/User/bk1.png");
         background-repeat: no-repeat;
         min-height: 100%;
         background-size: cover;
@@ -278,7 +296,7 @@
 
     }
     .sub_home{
-        background-image: url("../../../../image/User/bk2.jpg");
+        background-image: url("../../../../../image/User/bk2.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         /*padding-top: 3vh;*/

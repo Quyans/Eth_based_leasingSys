@@ -7,6 +7,7 @@
                 <el-button type="text" @click="RegisterBtn" style="color: #eadcff">注册</el-button>
             </div>
             <router-link to="/person">个人中心</router-link>
+            <el-button @click="logOut">注销</el-button>
         </div>
         <loginForm :visual="vis_login" @closeLoginForm="closeLoginform" @goRegister="goRegister"></loginForm>
         <RegisterForm :visual="vis_register" @closeRegisterForm="closeRegisterform"
@@ -18,6 +19,8 @@
 <script>
     import loginForm from "../components/loginForm";
     import RegisterForm from "../components/RegisterForm";
+    import {logout} from "../../../../../resource/authorization";
+
     export default {
         name: "MyTitle",
         components: {loginForm,RegisterForm},
@@ -54,6 +57,9 @@
             goRegister(){
                 this.vis_register = true;
                 this.vis_login = false;
+            },
+            logOut(){
+                logout()
             }
         }
     }

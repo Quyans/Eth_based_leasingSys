@@ -88,12 +88,12 @@ export let router = new Router({
                 }
             ]
         },
-        {
-            path:'/house/:house_hash',
-            name:'specificInfo',
-            props:true,
-            component:_('SpecificInfo')
-        }
+        // {
+        //     path:'/house/:house_hash',
+        //     name:'specificInfo',
+        //     props:true,
+        //     component:_('SpecificInfo')
+        // }
     ]
 })
 // router.beforeEach(((to, from, next) => {

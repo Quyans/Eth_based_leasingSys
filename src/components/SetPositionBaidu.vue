@@ -15,7 +15,7 @@
         name: 'SetPositionBaidu',
         data () {
             return {
-
+                temp:"济南市",
             }
         },
         mounted() {
@@ -37,7 +37,7 @@
                         }else{
                             alert("请您输入更加详细的地址!");
                         }
-                    }, this.city);
+                    }, this.temp);
                 })
             })
         },

@@ -12,7 +12,7 @@
                 <!--</el-row>-->
                 <div style="width: 100%; text-align: center;padding-top: 50px">
                     <div v-for="item in computed_rough_Info " style="width: 30%;display: inline-block;margin: 20px 0" >
-                        <RoughHouse  style="margin: 0 auto" :styNum="item.styNum" :roughInfo="item"></RoughHouse>
+                        <RoughHouse @goSpec="gospec" style="margin: 0 auto" :styNum="item.styNum" :roughInfo="item"></RoughHouse>
                     </div>
                     <!--<div class="block" v-if="computed_rough_Info.length!=0">-->
                     <div class="block" v-if="true">
@@ -31,6 +31,7 @@
                 <!--<div id="result"></div>-->
             </div>
         </div>
+        <SpecificInfo v-if="specShow" :house_hash="house_id_hash_prop"></SpecificInfo>
     </div>
 </template>
 
@@ -42,6 +43,7 @@
     import RegisterForm from "./components/RegisterForm"
     import searchCondition from "./components/searchCondition"
     import RoughHouse from "./components/RoughHouse"
+    import SpecificInfo from "./components/SpecificInfo"
     import {searchLowHouse} from "../../../../resource/house"
     import {calRoughUrl} from "../../../../resource/ipfs"
     export default {
@@ -53,6 +55,7 @@
             RegisterForm,
             searchCondition,
             RoughHouse,
+            SpecificInfo
         },
         created() {
             // searchLowHouse(1,1,1,1,1).then(res =>{
@@ -70,6 +73,8 @@
         },
         data() {
             return {
+                house_id_hash_prop:"",
+                specShow:false,
                 BASE_URL: process.env.BASE_URL,
                 searchId: '',
                 isScanningQRCode: false,
@@ -133,14 +138,18 @@
             }
         },
         methods: {
-
+            gospec(hash){
+                this.house_id_hash_prop = hash
+                this.specShow = true
+            },
             searchCond(low_location,lease_select,type_select,lease_type,elevator){
                 this.low_location=low_location;
                 this.lease_select=lease_select;
                 this.type_select=type_select;
                 this.lease_type=lease_type;
                 this.elevator=elevator;
-                searchLowHouse(this.low_location,this.lease_select,this.type_select,this.lease_type,this.elevator,this.page).then(res => {
+
+                searchLowHouse(this.low_location,this.lease_select,this.type_select,this.lease_type,this.elevator,0).then(res => {
                         var temp = res.houseList;
                         this.page=res.page
                         var len = temp.length

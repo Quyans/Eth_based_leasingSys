@@ -72,7 +72,8 @@
                 // document.getElementById("roughDiv").style.backgroundColor=color
             },
             goSpecInfo(){
-                this.$router.push(`/house/${this.rough_info.house_id_hash}`)
+                // this.$router.push(`/house/123`)
+                this.$emit('goSpec',this.rough_info.house_id_hash)
             },
             setBackColor(num){
                 switch (num){

@@ -41,17 +41,7 @@ export function managerRes(username,ownername,res) {
     return server.post('/tract/managerRes',  qs.stringify({username,ownername,res})).then(handleResponse)
 }
 
-export function userSet(house_hash,owner) {
-    // console.log(form.get('profile'))
-    return Promise.resolve({
-        "status":200,
-        "message":"success",
-        "data": {
-            "requestID": "xxoo",
-        }
-    })
-    return server.post('/tract/userSet',  qs.stringify({house_hash, owner})).then(handleResponse)
-}
+
 
 //获取交易记录
 export function getTransRecord(username) {
@@ -129,118 +119,120 @@ export function contactOwner(house_hash) {
 //房主获取与他相关的请求
 
 export function ownerGet(){
-    return Promise.resolve({
-        "status":200,
-        "message":"success",
-        "data":{
-            tract:[
-                {
-                    "username":"xxdd",   //请求的人的用户名
-                    "name":"曲延松",       //请求的人的姓名
-                    "house_id_hash":"adfafd",    //请求的房子hash
-                    "commu_name":"茗筑美嘉",  //房子小区名
-                    "tract_status":'submit'
-                },
-                {
-                    "username":"xxdd",   //请求的人的用户名
-                    "name":"曲延松",       //请求的人的姓名
-                    "house_id_hash":"adfafd",    //请求的房子hash
-                    "commu_name":"奥龙官邸",  //房子小区名
-                    "tract_status":'effect'
-                },
-                {
-                    "username":"xxdd",   //请求的人的用户名
-                    "name":"曲延松",       //请求的人的姓名
-                    "house_id_hash":"adfafd",    //请求的房子hash
-                    "commu_name":"奥龙官邸",  //房子小区名
-                    "tract_status":'refused'
-                },
-                {
-                    "username":"xxdd",   //请求的人的用户名
-                    "name":"曲延松",       //请求的人的姓名
-                    "house_id_hash":"adfafd",    //请求的房子hash
-                    "commu_name":"奥龙官邸",  //房子小区名
-                    "tract_status":'fail'
-                },
-                {
-                    "username":"xxdd",   //请求的人的用户名
-                    "name":"曲延松",       //请求的人的姓名
-                    "house_id_hash":"adfafd",    //请求的房子hash
-                    "commu_name":"奥龙官邸",  //房子小区名
-                    "tract_status":'userIden'
-                },
-                {
-                    "username":"xxdd",   //请求的人的用户名
-                    "name":"曲延松",       //请求的人的姓名
-                    "house_id_hash":"adfafd",    //请求的房子hash
-                    "commu_name":"奥龙官邸",  //房子小区名
-                    "tract_status":'finish'
-                },
-                {
-                    "username":"xxdd",   //请求的人的用户名
-                    "name":"曲延松",       //请求的人的姓名
-                    "house_id_hash":"adfafd",    //请求的房子hash
-                    "commu_name":"奥龙官邸",  //房子小区名
-                    "tract_status":'ownerIden'
-                },
-            ]
-        }
-
-    })
+    // return Promise.resolve({
+    //     "status":200,
+    //     "message":"success",
+    //     "data":{
+    //         tract:[
+    //             {
+    //                 "username":"xxdd",   //请求的人的用户名
+    //                 "name":"曲延松",       //请求的人的姓名
+    //                 "house_id_hash":"adfafd",    //请求的房子hash
+    //                 "commu_name":"茗筑美嘉",  //房子小区名
+    //                 "tract_status":'submit'
+    //             },
+    //             {
+    //                 "username":"xxdd",   //请求的人的用户名
+    //                 "name":"曲延松",       //请求的人的姓名
+    //                 "house_id_hash":"adfafd",    //请求的房子hash
+    //                 "commu_name":"奥龙官邸",  //房子小区名
+    //                 "tract_status":'effect'
+    //             },
+    //             {
+    //                 "username":"xxdd",   //请求的人的用户名
+    //                 "name":"曲延松",       //请求的人的姓名
+    //                 "house_id_hash":"adfafd",    //请求的房子hash
+    //                 "commu_name":"奥龙官邸",  //房子小区名
+    //                 "tract_status":'refused'
+    //             },
+    //             {
+    //                 "username":"xxdd",   //请求的人的用户名
+    //                 "name":"曲延松",       //请求的人的姓名
+    //                 "house_id_hash":"adfafd",    //请求的房子hash
+    //                 "commu_name":"奥龙官邸",  //房子小区名
+    //                 "tract_status":'fail'
+    //             },
+    //             {
+    //                 "username":"xxdd",   //请求的人的用户名
+    //                 "name":"曲延松",       //请求的人的姓名
+    //                 "house_id_hash":"adfafd",    //请求的房子hash
+    //                 "commu_name":"奥龙官邸",  //房子小区名
+    //                 "tract_status":'userIden'
+    //             },
+    //             {
+    //                 "username":"xxdd",   //请求的人的用户名
+    //                 "name":"曲延松",       //请求的人的姓名
+    //                 "house_id_hash":"adfafd",    //请求的房子hash
+    //                 "commu_name":"奥龙官邸",  //房子小区名
+    //                 "tract_status":'finish'
+    //             },
+    //             {
+    //                 "username":"xxdd",   //请求的人的用户名
+    //                 "name":"曲延松",       //请求的人的姓名
+    //                 "house_id_hash":"adfafd",    //请求的房子hash
+    //                 "commu_name":"奥龙官邸",  //房子小区名
+    //                 "tract_status":'ownerIden'
+    //             },
+    //         ]
+    //     }
+    //
+    // })
+    return server.get('/tract/ownerGet').then(handleResponse)
 }
 
 //房主回应请求
 export function ownerRes(username,request_response) {
     // console.log(form.get('profile'))
-    return Promise.resolve({
-        "status":200,
-        "message":"OK",
-    })
+    // return Promise.resolve({
+    //     "status":200,
+    //     "message":"OK",
+    // })
     return server.post('/tract/ownerRes',  qs.stringify({username,request_response})).then(handleResponse)
 }
 
 //房主确认请求
 export function ownerIden(username,request_response) {
     // console.log(form.get('profile'))
-    return Promise.resolve({
-        "status":200,
-        "message":"OK",
-    })
+    // return Promise.resolve({
+    //     "status":200,
+    //     "message":"OK",
+    // })
     return server.post('/tract/ownerIden',  qs.stringify({username,request_response})).then(handleResponse)
 }
 
-//房主获取用户反馈请求
+//用户获取房主反馈请求
 export function userGet(){
-    return Promise.resolve({
-        "status":200,
-        "message":"success",
-        "data":{
-            tract:[
-                {
-                    "ownername":"xxdd",   //请求房主的名字
-                    "name":"曲延松",       //请求的人的姓名
-                    "house_id_hash":"adfafd",    //请求的房子hash
-                    "commu_name":"茗筑美嘉",  //房子小区名
-                    "tract_status":'submit'
-                },
-                {
-                    "ownername":"xxdd",   //请求的人的用户名
-                    "name":"曲延松",       //请求的人的姓名
-                    "house_id_hash":"adfafd",    //请求的房子hash
-                    "commu_name":"奥龙官邸",  //房子小区名
-                    "tract_status":'effect'
-                },
-                {
-                    "ownername":"xxdd",   //请求的人的用户名
-                    "name":"曲延松",       //请求的人的姓名
-                    "house_id_hash":"adfafd",    //请求的房子hash
-                    "commu_name":"奥龙官邸",  //房子小区名
-                    "tract_status":'ownerIden'
-                },
-            ]
-        }
-
-    })
+    // return Promise.resolve({
+    //     "status":200,
+    //     "message":"success",
+    //     "data":{
+    //         tract:[
+    //             {
+    //                 "ownername":"xxdd",   //请求房主的名字
+    //                 "name":"曲延松",       //请求的人的姓名
+    //                 "house_id_hash":"adfafd",    //请求的房子hash
+    //                 "commu_name":"茗筑美嘉",  //房子小区名
+    //                 "tract_status":'submit'
+    //             },
+    //             {
+    //                 "ownername":"xxdd",   //请求的人的用户名
+    //                 "name":"曲延松",       //请求的人的姓名
+    //                 "house_id_hash":"adfafd",    //请求的房子hash
+    //                 "commu_name":"奥龙官邸",  //房子小区名
+    //                 "tract_status":'effect'
+    //             },
+    //             {
+    //                 "ownername":"xxdd",   //请求的人的用户名
+    //                 "name":"曲延松",       //请求的人的姓名
+    //                 "house_id_hash":"adfafd",    //请求的房子hash
+    //                 "commu_name":"奥龙官邸",  //房子小区名
+    //                 "tract_status":'ownerIden'
+    //             },
+    //         ]
+    //     }
+    //
+    // })
+    return server.get('/tract/userGet').then(handleResponse)
 }
 
 //房主回应请求并支付

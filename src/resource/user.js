@@ -196,14 +196,16 @@ export function userGet(){
 export function userSet(house_id_hash,owner) {
     // console.log(form.get('profile'))
     // return testtanchuang()
-    return Promise.resolve({
-        "status":200,
-        "message":"success",
-        "data": {
-
-        }
-    })
-    return server.post('/user/tract/userSet',  qs.stringify({house_id_hash,owner})).then(handleResponse)
+    // return Promise.resolve({
+    //     "status":200,
+    //     "message":"success",
+    //     "data": {
+    //
+    //     }
+    // })
+    // var house_id_hash="eHg6zhM8qYhIK/TzrDDYzg=="
+    // var owner = 'qys'
+    return server.post('/tract/userSet',  qs.stringify({house_id_hash,owner})).then(handleResponse)
 }
 
 //评价房子
@@ -218,54 +220,53 @@ export function evaluateHouse(form) {
 
 //获取所有用户信息
 export function getAllUser() {
-    return  Promise.resolve({
-        "status":200,
-        "message":"success",
-        "data":{
-            "users":[
-                {
-                    "username":"liupenghao",//用户名
-                    "name":"曲延松",         //姓名
-                    "gender":0 ,           //0女 1男
-                    "phone":18560125097,  //电话号码
-                    "id":370102199711111111 , //身份证号
-                    "credit":15         //信誉值
-                },
-                {
-                    "username":"jack",//用户名
-                    "name":"JackSmith",         //姓名
-                    "gender":0 ,           //0女 1男
-                    "phone":13246456789,  //电话号码
-                    "id":37010219975641 , //身份证号
-                    "credit":18         //信誉值
-                },
-                {
-                    "username":"liupenghao",//用户名
-                    "name":"曲延松",         //姓名
-                    "gender":0 ,           //0女 1男
-                    "phone":18560125097,  //电话号码
-                    "id":370102199711111111 , //身份证号
-                    "credit":15         //信誉值
-                }
-            ]
-        }
-    })
+    // return  Promise.resolve({
+    //     "status":200,
+    //     "message":"success",
+    //     "data":{
+    //         "users":[
+    //             {
+    //                 "username":"liupenghao",//用户名
+    //                 "name":"曲延松",         //姓名
+    //                 "gender":0 ,           //0女 1男
+    //                 "phone":18560125097,  //电话号码
+    //                 "id":370102199711111111 , //身份证号
+    //                 "credit":15         //信誉值
+    //             },
+    //             {
+    //                 "username":"jack",//用户名
+    //                 "name":"JackSmith",         //姓名
+    //                 "gender":0 ,           //0女 1男
+    //                 "phone":13246456789,  //电话号码
+    //                 "id":37010219975641 , //身份证号
+    //                 "credit":18         //信誉值
+    //             },
+    //             {
+    //                 "username":"liupenghao",//用户名
+    //                 "name":"曲延松",         //姓名
+    //                 "gender":0 ,           //0女 1男
+    //                 "phone":18560125097,  //电话号码
+    //                 "id":370102199711111111 , //身份证号
+    //                 "credit":15         //信誉值
+    //             }
+    //         ]
+    //     }
+    // })
     return server.get('/user/changeinfo', {
-
     }).then(handleResponse)
 }
 
 //管理员修改用户信息
 export function changeUserInfo(username,credit) {
     // console.log(form.get('profile'))
-    return Promise.resolve({
-        "status":200,
-        "message":"success",
-        "data":{
-            "username":"qys",
-            "credit":30
-        }
-    })
+    // return Promise.resolve({
+    //     "status":200,
+    //     "message":"success",
+    //     "data":{
+    //         "username":"qys",
+    //         "credit":30
+    //     }
+    // })
     return server.post('/user/contact_owner',  qs.stringify({house_hash})).then(handleResponse)
 }
 
