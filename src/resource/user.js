@@ -220,40 +220,40 @@ export function evaluateHouse(form) {
 
 //获取所有用户信息
 export function getAllUser() {
-    // return  Promise.resolve({
-    //     "status":200,
-    //     "message":"success",
-    //     "data":{
-    //         "users":[
-    //             {
-    //                 "username":"liupenghao",//用户名
-    //                 "name":"曲延松",         //姓名
-    //                 "gender":0 ,           //0女 1男
-    //                 "phone":18560125097,  //电话号码
-    //                 "id":370102199711111111 , //身份证号
-    //                 "credit":15         //信誉值
-    //             },
-    //             {
-    //                 "username":"jack",//用户名
-    //                 "name":"JackSmith",         //姓名
-    //                 "gender":0 ,           //0女 1男
-    //                 "phone":13246456789,  //电话号码
-    //                 "id":37010219975641 , //身份证号
-    //                 "credit":18         //信誉值
-    //             },
-    //             {
-    //                 "username":"liupenghao",//用户名
-    //                 "name":"曲延松",         //姓名
-    //                 "gender":0 ,           //0女 1男
-    //                 "phone":18560125097,  //电话号码
-    //                 "id":370102199711111111 , //身份证号
-    //                 "credit":15         //信誉值
-    //             }
-    //         ]
-    //     }
-    // })
-    return server.get('/user/changeinfo', {
-    }).then(handleResponse)
+    return  Promise.resolve({
+        "status":200,
+        "message":"success",
+        "data":{
+            "users":[
+                {
+                    "username":"liupenghao",//用户名
+                    "name":"曲延松",         //姓名
+                    "gender":0 ,           //0女 1男
+                    "phone":18560125097,  //电话号码
+                    "id":370102199711111111 , //身份证号
+                    "credit":15         //信誉值
+                },
+                {
+                    "username":"jack",//用户名
+                    "name":"JackSmith",         //姓名
+                    "gender":0 ,           //0女 1男
+                    "phone":13246456789,  //电话号码
+                    "id":37010219975641 , //身份证号
+                    "credit":18         //信誉值
+                },
+                {
+                    "username":"liupenghao",//用户名
+                    "name":"曲延松",         //姓名
+                    "gender":0 ,           //0女 1男
+                    "phone":18560125097,  //电话号码
+                    "id":370102199711111111 , //身份证号
+                    "credit":15         //信誉值
+                }
+            ]
+        }
+    })
+    // return server.get('/user/changeinfo', {
+    // }).then(handleResponse)
 }
 
 //管理员修改用户信息
@@ -274,62 +274,62 @@ export function changeUserInfo(username,credit) {
 
 //获取房屋列表
 export function getHouseList() {
-    // return  Promise.resolve({
-    //
-    //     "data":{
-    //         "verified":[            //通过验证的房子
-    //             {
-    //                 "photo":"https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1561713939&di=25c1a8a562a1dd37fe024f0604fd46b3&src=http://r.bstatic.com/images/hotel/max1024x768/987/98767654.jpg",   //一张图片的hash
-    //                 "low_location":"山东省济南市历下区**小区",
-    //                 "lease":"5000",
-    //                 "house_type":"2",
-    //                 "lease_type":"1",
-    //             },
-    //
-    //            {
-    //                "photo":"sadfadsfadf" ,  //一张图片的hash
-    //                "low_location":"山东省济南市历下区**小区",
-    //                "lease":"5000",
-    //                "house_type":"2",
-    //                "lease_type":"1",
-    //            },
-    //
-    //            {
-    //                "photo":"sadfadsfadf" ,  //一张图片的hash
-    //                "low_location":"山东省济南市历下区**小区",
-    //                "lease":"5000",
-    //                "house_type":"2",
-    //                "lease_type":"1",
-    //            },
-    //         ],
-    //
-    //
-    //         "non_verified":[            //通过验证的房子
-    //             {
-    //                 "photo":"sadfadsfadf",   //一张图片的hash
-    //                 "low_location":"山东省济南市历下区**小区",
-    //                 "lease":"5000",
-    //                 "house_type":"2",
-    //                 "lease_type":"1",
-    //             },
-    //
-    //            {
-    //                "photo":"sadfadsfadf",   //一张图片的hash
-    //                "low_location":"山东省济南市历下区**小区",
-    //                "lease":"5000",
-    //                "house_type":"2",
-    //                "lease_type":"1",
-    //            },
-    //
-    //            {
-    //                "photo":"sadfadsfadf" ,  //一张图片的hash
-    //                "low_location":"山东省济南市历下区**小区",
-    //                "lease":"5000",
-    //                "house_type":"2",
-    //                "lease_type":"1",
-    //            },
-    //         ],
-    //     }
-    // })
-    return server.get('house/allInfo').then(handleResponse)
+    return  Promise.resolve({
+
+        "data":{
+            "verified":[            //通过验证的房子
+                {
+                    "photo":"https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1561713939&di=25c1a8a562a1dd37fe024f0604fd46b3&src=http://r.bstatic.com/images/hotel/max1024x768/987/98767654.jpg",   //一张图片的hash
+                    "low_str_location":"山东省济南市历下区**小区",
+                    "lease":"5000",
+                    "house_type":"2",
+                    "lease_type":"1",
+                },
+
+               {
+                   "photo":"sadfadsfadf" ,  //一张图片的hash
+                   "low_str_location":"山东省济南市历下区**小区",
+                   "lease":"5000",
+                   "house_type":"2",
+                   "lease_type":"1",
+               },
+
+               {
+                   "photo":"sadfadsfadf" ,  //一张图片的hash
+                   "low_str_location":"山东省济南市历下区**小区",
+                   "lease":"5000",
+                   "house_type":"2",
+                   "lease_type":"1",
+               },
+            ],
+
+
+            "non_verified":[            //通过验证的房子
+                {
+                    "photo":"sadfadsfadf",   //一张图片的hash
+                    "low_location":"山东省济南市历下区**小区",
+                    "lease":"5000",
+                    "house_type":"2",
+                    "lease_type":"1",
+                },
+
+               {
+                   "photo":"sadfadsfadf",   //一张图片的hash
+                   "low_location":"山东省济南市历下区**小区",
+                   "lease":"5000",
+                   "house_type":"2",
+                   "lease_type":"1",
+               },
+
+               {
+                   "photo":"sadfadsfadf" ,  //一张图片的hash
+                   "low_location":"山东省济南市历下区**小区",
+                   "lease":"5000",
+                   "house_type":"2",
+                   "lease_type":"1",
+               },
+            ],
+        }
+    })
+//     return server.get('house/allInfo').then(handleResponse)
 }
