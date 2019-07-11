@@ -6,7 +6,6 @@ export function getMyHouse(house_id_hash) {
     return  Promise.resolve({
         "status":200,
         "message":"success",
-        "data":{
             "house_pic":[
                 "sdfadfasfasfasdfa",   //图片一的哈希值
                 "sdfadsfadsfasf",
@@ -51,7 +50,6 @@ export function getMyHouse(house_id_hash) {
                     ],
                 }
             ]
-        },
     // return server.post('user/myhouseInfo', {
     //     params: {
     //         house_hash

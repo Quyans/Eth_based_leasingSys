@@ -5,7 +5,6 @@ export function getUserInfo(id) {
     return  Promise.resolve({
         "status":200,
         "message":"success",
-        "data":{
             "userType":0,
             "username":"liupenghao",//用户名
             "name":"刘鹏昊",//姓名
@@ -25,7 +24,6 @@ export function getUserInfo(id) {
                     "house_id_hash":"sdfsdafsdfadf"
                 },
             ]
-        }
     })
     // return server.get('user/user', {
     //     params: {
@@ -59,11 +57,9 @@ export function getUserBalance(username) {
     return  Promise.resolve({
         "status":200,
         "message":"success",
-        "data":{
             "username":"liupenghao",//用户名
             "name":"刘鹏昊",//姓名
             "balance":85500  // 余额
-        }
     })
     // return server.get('user/balance', {
     //     params: {

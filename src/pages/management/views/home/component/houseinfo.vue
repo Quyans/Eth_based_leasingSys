@@ -13,7 +13,8 @@
                         label="图片"
                         width="180">
                     <template slot-scope="scope">
-                        　　　　<img :src="fir+scope.row.house_pic" width="100" height="100" class="head_pic"/>
+                        <img :src="fir1" width="100" height="100" class="head_pic"/>
+<!--                        　　　　<img :src="fir+scope.row.house_pic" width="100" height="100" class="head_pic"/>-->
                         　　</template>
                 </el-table-column>
                 <el-table-column
@@ -50,6 +51,7 @@
         data() {
             return {
                 fir:"http://211.87.230.14:8080/ipfs/",
+                fir1:"https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1561713939&di=25c1a8a562a1dd37fe024f0604fd46b3&src=http://r.bstatic.com/images/hotel/max1024x768/987/98767654.jpg",
                 tableData:[{
 
                 }],
