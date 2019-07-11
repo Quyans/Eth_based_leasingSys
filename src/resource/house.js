@@ -35,18 +35,14 @@ export function getMyHouse(house_id_hash) {
                     "user_id":"quyans111",   //评论人账号名
                     "comment":"这个房子挺不错适合居住",   //评论内容
                     "comment_pic":[
-                        "sdfadfasfasfasdfa",   //图片一的哈希值
-                        "sdfadfasfasfasdfa",
-                        "sdfadfasfasfasdfa",
+                        "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1561713939&di=25c1a8a562a1dd37fe024f0604fd46b3&src=http://r.bstatic.com/images/hotel/max1024x768/987/98767654.jpg",
                     ],
                 },
                 {
                     "user_id":"quyans111",   //评论人账号名
                     "comment":"这个房子挺不错适合居住",   //评论内容
                     "comment_pic":[
-                        "sdfadfasfasfasdfa",   //图片一的哈希值
-                        "sdfadfasfasfasdfa",
-                        "sdfadfasfasfasdfa",
+                        "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1561713939&di=25c1a8a562a1dd37fe024f0604fd46b3&src=http://r.bstatic.com/images/hotel/max1024x768/987/98767654.jpg",
                     ],
                 }
             ]

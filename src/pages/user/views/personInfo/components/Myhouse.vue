@@ -20,7 +20,8 @@
                             <div style="margin-top: 30px">
                                 <div>评论人：{{comment.user_id}}</div>
                                 <div>评价：{{comment.comment}}</div>
-                                <div><img :src="comment.comment_pic"></div>
+                                <div><img style="width: 200px" :src="comment.comment_pic">
+                                    <img style="width: 200px" :src="comment.comment_pic"></div>
                                 <HR align=center width=800 color=black SIZE=2></HR>
                             </div>
                         </template>
