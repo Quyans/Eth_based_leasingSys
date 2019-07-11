@@ -4,7 +4,7 @@
             <div class="button_group">
                 添加房子
             </div>
-            <HR align=center width=1230px color=#7848ba SIZE=2></HR>
+            <HR align=center width=1210px color=#7848ba SIZE=2></HR>
             <div class="fir">
                 <div class="phone">
                     <el-row>
@@ -31,16 +31,13 @@
                         </el-option>
                     </el-select>
                     </div>
-                            <div class="h-info">
+                            <div class="h-info1">
                                 上传图片{{registerForm.house_pic}}
                                 <el-upload
-                                        action=""
+                                        class="h-info2"
+                                        action="https://jsonplaceholder.typicode.com/posts/"
                                         list-type="picture-card"
                                         :on-change="handleRemove">
-                                    <el-dialog :visible.sync="dialogVisible">
-                                        <img width="100%" :src="dialogImageUrl" alt="">
-                                    </el-dialog>
-                                    <img v-if="imageUrl_a" :src="imageUrl_a"class="avatar">
                                 </el-upload>
                             </div>
                         </el-col>
@@ -151,7 +148,6 @@
                 }, ],
                 citys:"济南市",
                 show:true,
-                imageUrl_a:"",
                 registerForm:{
                     house_id:0,
                     state:0,
@@ -232,9 +228,7 @@
 
             },
             handleRemove(file, fileList) {
-                console.log(file, fileList);
                 this.registerForm.house_pic = file.raw;
-                this.imageUrl_a = URL.createObjectURL(file.raw);
             },
         },
 
@@ -246,6 +240,7 @@
     .bk{
         width:100%;
         height: 600px;
+        overflow-y: scroll;
         box-shadow:0px 0px  15px 5px #aaa;
     }
     .button_group{
@@ -272,10 +267,29 @@
         margin-left: 50px;
         margin-top: 15px;
     }
+    .h-info1{
+        float: left;
+        width: 300px;
+        margin-left: 50px;
+        margin-top: 15px;
+    }
+    .h-info2{
+        width: 300px;
+    }
     .avatar{
         width: 100%;
         height: 100%;
     }
 
 
+</style>
+<style>
+    .h-info1  .el-upload--picture-card{
+        width: 120px;
+        height: 120px;
+    }
+    .h-info1 .el-upload-list--picture-card .el-upload-list__item{
+        width: 120px;
+        height: 120px;
+    }
 </style>
