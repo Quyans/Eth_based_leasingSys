@@ -124,49 +124,49 @@ export function ownerGet(){
         "message":"success",
             tract:[
                 {
-                    "username":"xxdd",   //请求的人的用户名
+                    "username":"qys",   //请求的人的用户名
                     "name":"曲延松",       //请求的人的姓名
                     "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"茗筑美嘉",  //房子小区名
                     "tract_status":'submit'
                 },
                 {
-                    "username":"xxdd",   //请求的人的用户名
+                    "username":"qys",   //请求的人的用户名
                     "name":"曲延松",       //请求的人的姓名
                     "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"奥龙官邸",  //房子小区名
                     "tract_status":'effect'
                 },
                 {
-                    "username":"xxdd",   //请求的人的用户名
+                    "username":"qys",   //请求的人的用户名
                     "name":"曲延松",       //请求的人的姓名
                     "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"奥龙官邸",  //房子小区名
                     "tract_status":'refused'
                 },
                 {
-                    "username":"xxdd",   //请求的人的用户名
+                    "username":"qys",   //请求的人的用户名
                     "name":"曲延松",       //请求的人的姓名
                     "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"奥龙官邸",  //房子小区名
                     "tract_status":'fail'
                 },
                 {
-                    "username":"xxdd",   //请求的人的用户名
+                    "username":"qys",   //请求的人的用户名
                     "name":"曲延松",       //请求的人的姓名
                     "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"奥龙官邸",  //房子小区名
                     "tract_status":'userIden'
                 },
                 {
-                    "username":"xxdd",   //请求的人的用户名
+                    "username":"qys",   //请求的人的用户名
                     "name":"曲延松",       //请求的人的姓名
                     "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"奥龙官邸",  //房子小区名
                     "tract_status":'finish'
                 },
                 {
-                    "username":"xxdd",   //请求的人的用户名
+                    "username":"qys",   //请求的人的用户名
                     "name":"曲延松",       //请求的人的姓名
                     "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"奥龙官邸",  //房子小区名
@@ -205,21 +205,21 @@ export function userGet(){
         "message":"success",
             tract:[
                 {
-                    "ownername":"xxdd",   //请求房主的名字
+                    "ownername":"qys",   //请求房主的名字
                     "name":"曲延松",       //请求的人的姓名
                     "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"茗筑美嘉",  //房子小区名
                     "tract_status":'submit'
                 },
                 {
-                    "ownername":"xxdd",   //请求的人的用户名
+                    "ownername":"qys",   //请求的人的用户名
                     "name":"曲延松",       //请求的人的姓名
                     "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"奥龙官邸",  //房子小区名
                     "tract_status":'effect'
                 },
                 {
-                    "ownername":"xxdd",   //请求的人的用户名
+                    "ownername":"qys",   //请求的人的用户名
                     "name":"曲延松",       //请求的人的姓名
                     "house_id_hash":"adfafd",    //请求的房子hash
                     "commu_name":"奥龙官邸",  //房子小区名

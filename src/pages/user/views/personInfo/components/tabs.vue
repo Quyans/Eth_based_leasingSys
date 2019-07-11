@@ -11,7 +11,7 @@
                         <el-table-column>
                             <template slot-scope="scope">
                                 请求人帐号：<span class="message-title">{{scope.row.username}}</span>
-                                姓名：<span class="message-title">{{scope.row.name}}</span>
+                                姓名：<el-button type="text" @click="dialogTableVisible = true" class="message-title">{{scope.row.name}}</el-button>
                                 房子：<span class="message-title">{{scope.row.house_id_hash}}</span>
                                 房子地址：<span class="message-title">{{scope.row.commu_name}}</span>
                                 <div v-if="scope.row.tract_status=='submit'">
@@ -73,6 +73,17 @@
                 </el-tab-pane>
             </el-tabs>
         </div>
+        <el-dialog title="用户信息" :visible.sync="dialogTableVisible">
+            <div style="float:left;margin-left: 30px;font-size: 20px">用户姓名：曲延松 </div>
+            <div style="float: left;font-size: 20px;margin-left: 30px">身份证：3000000********0000</div>
+            <div style="float: left;font-size: 20px;margin-left: 30px">信誉度： 15</div>
+            <el-table :data="gridData">
+                <el-table-column property="name" label="评价人" width="150"></el-table-column>
+                <el-table-column property="date" label="时间" width="150"></el-table-column>
+                <el-table-column property="house" label="房子" width="100"></el-table-column>
+                <el-table-column property="address" label="评价"></el-table-column>
+            </el-table>
+        </el-dialog>
     </div>
 </template>
 
@@ -83,8 +94,30 @@
         name: 'tabs',
         data() {
             return {
+                gridData: [{
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    house:'奥龙地府',
+                    address: '有礼貌，很文明，很好的一个人'
+                }, {
+                    date: '2016-05-04',
+                    name: '王小虎',
+                    house:'奥龙地府',
+                    address: '有礼貌，很文明，很好的一个人 '
+                }, {
+                    date: '2016-05-01',
+                    name: '王小虎',
+                    house:'奥龙地府',
+                    address: '有礼貌，很文明，很好的一个人 '
+                }, {
+                    date: '2016-05-03',
+                    name: '王小虎',
+                    house:'奥龙地府',
+                    address: '有礼貌，很文明，很好的一个人'
+                }],
                 message: 'first',
                 showHeader: false,
+                dialogTableVisible: false,
                 unread: [],
                 request_response: false,
                 pay_password:0,
