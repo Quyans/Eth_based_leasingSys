@@ -95,9 +95,14 @@
                         ]
                     },
                     {
-                        icon: 'el-icon-school',
+                        icon: 'el-icon-search',
                         index: '/mystep',
                         title: '我的足迹'
+                    },
+                    {
+                        icon: 'el-icon-user',
+                        index: '/check',
+                        title: '人脸验证'
                     },
                 ],
                 note:{

@@ -37,6 +37,9 @@
                                         action=""
                                         list-type="picture-card"
                                         :on-change="handleRemove">
+                                    <el-dialog :visible.sync="dialogVisible">
+                                        <img width="100%" :src="dialogImageUrl" alt="">
+                                    </el-dialog>
                                     <img v-if="imageUrl_a" :src="imageUrl_a"class="avatar">
                                 </el-upload>
                             </div>
