@@ -33,7 +33,7 @@
     "@vue/cli-service": "^3.0.0-rc.5",
     "jquery": "^3.4.1",
     "minimist": "^1.2.0",
-    "node-sass": "^4.9.2",
+    "node-sass": "^4.13.1",
     "offline-plugin": "^5.0.5",
     "sass-loader": "^7.0.1",
     "vue-template-compiler": "^2.5.16",
