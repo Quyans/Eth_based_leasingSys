@@ -21,7 +21,7 @@
     "register-service-worker": "^1.0.0",
     "stats-webpack-plugin": "^0.7.0",
     "sw-precache-webpack-plugin": "^0.11.5",
-    "underscore": "^1.9.1",
+    "underscore": "^1.12.1",
     "url-parse": "^1.4.3",
     "vue": "^2.5.16",
     "vue-awesome-swiper": "^3.1.3",
