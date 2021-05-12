@@ -10,7 +10,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bean": "^1.0.15",
-    "chart.js": "^2.7.3",
+    "chart.js": "^2.9.4",
     "element-ui": "^2.10.0",
     "flotr2": "^0.1.0",
     "jsqr": "^1.1.1",
