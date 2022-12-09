@@ -17,7 +17,7 @@
     "moment": "^2.22.2",
     "pwa": "^1.9.4",
     "qrcode": "^1.2.2",
-    "qs": "^6.5.2",
+    "qs": "^6.5.3",
     "register-service-worker": "^1.0.0",
     "stats-webpack-plugin": "^0.7.0",
     "sw-precache-webpack-plugin": "^0.11.5",
